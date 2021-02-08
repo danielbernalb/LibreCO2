@@ -31,10 +31,9 @@ const byte BUZZER = 8;
 unsigned int CO2 = 0;
 #define BAUDRATE 9600                                      // Device to CM1106 Serial baudrate (should not be changed)
 
-//#include <Wire.h>
+#include <SoftwareSerial.h>
 #include "SevenSegmentTM1637.h"
 #include "SevenSegmentExtended.h"
-#include <SoftwareSerial.h>
 SevenSegmentExtended display(PIN_CLK, PIN_DIO);
 SoftwareSerial co2CM(PIN_RX, PIN_TX);
 
@@ -49,7 +48,7 @@ void setup()
   display.begin();            // initializes the display
   display.setBacklight(100);  // set the brightness to 100 %
 
-  // Turn off calibration
+  // Turn off calibration and Sensor connection test
   delay(100);
   Serial.print("CM1106 Stop Autocalibration: ");
   static byte cmd[10] = {0x11, 0x07, 0x10, 0x64, 0x02, 0x07, 0x01, 0x90, 0x64, 0x76}; // Command Close ABC
@@ -85,7 +84,7 @@ void loop()
   CO2 = co2CM1106();
 
   if (CO2 > 0) {
-    Serial.print("CO2(ppm):");
+    Serial.print("CO2(ppm): ");
     Serial.println(CO2);
 
     display.clear();
@@ -119,7 +118,7 @@ void loop()
           display.printNumber(i);
           Serial.print(i);
           CO2 = co2CM1106();
-          Serial.print(" CO2(ppm):");
+          Serial.print(" CO2(ppm): ");
           Serial.println(CO2);
           delay(1000);
         }
@@ -148,7 +147,6 @@ int co2CM1106() {
     return (256 * responseHigh) + responseLow;
   } else {
     while (co2CM.available() > 0)  char t = co2CM.read(); // Clear serial input buffer;
-    //return -1;
     return 0;
   }
 }
