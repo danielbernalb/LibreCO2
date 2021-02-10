@@ -29,7 +29,7 @@ const byte PIN_DIO = A0;   // define DIO pin (any digital pin)
 const byte BUTTON = 12;   // define DIO pin (any digital pin)
 const byte BUZZER = 8;
 unsigned int CO2 = 0;
-#define BAUDRATE 9600                                      // Device to CM1106 Serial baudrate (should not be changed)
+#define BAUDRATE 9600      // Device to CM1106 Serial baudrate (should not be changed)
 
 #include <SoftwareSerial.h>
 #include "SevenSegmentTM1637.h"
@@ -43,10 +43,29 @@ void setup()
   pinMode(BUTTON, INPUT_PULLUP);
   Serial.begin(115200);
   Serial.println("Start CM1106 lecture");
-  co2CM.begin(BAUDRATE);                               // (Uno example) device to MH-Z19 serial start
-
   display.begin();            // initializes the display
   display.setBacklight(100);  // set the brightness to 100 %
+  co2CM.begin(BAUDRATE);      // (Uno example) device to CM1106 serial start
+  delay(1000);
+
+  // Connection test
+
+  if (co2CM1106() == 0) {
+    Serial.println("Air sensor not detected. Please check wiring...");
+    display.print("bad");
+    delay(5000);
+    if (co2CM1106() == 0) {
+      Serial.println("Air sensor not detected. Please check wiring...");
+      display.print("bad");
+      delay(5000);
+      if (co2CM1106() == 0) {
+        Serial.println("Air sensor not detected. Please check wiring");
+        Serial.println("Freezed.....RESET the Arduino");
+        display.print("bad-");
+        while (1);
+      }
+    }
+  }
 
   // Turn off calibration and Sensor connection test
   delay(100);
@@ -64,7 +83,7 @@ void setup()
   delay(5000);
 
 
-  // Preheat routine: min 20 seconds for CM1106
+  // Preheat routine: min 30 seconds for CM1106
   display.clear();
   display.print("HEAT");
   Serial.print("Preheat: ");

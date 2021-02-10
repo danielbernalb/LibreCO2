@@ -32,8 +32,8 @@ unsigned int CO2 = 0;
 #include "SevenSegmentTM1637.h"
 #include "SevenSegmentExtended.h"
 #include "SparkFun_SCD30_Arduino_Library.h"
-SCD30 airSensor;
 SevenSegmentExtended display(PIN_CLK, PIN_DIO);
+SCD30 airSensor;
 
 void setup()
 {
@@ -45,17 +45,19 @@ void setup()
   display.begin();            // initializes the display
   display.setBacklight(100);  // set the brightness to 100 %
 
+  // Turn off calibration and Sensor connection test
   if (airSensor.begin(Wire, false) == false) {
     Serial.println("Air sensor not detected. Please check wiring...");
-    display.print("bad");                   // display loop counter
+    display.print("bad");
     delay(5000);
     if (airSensor.begin(Wire, false) == false) {
       Serial.println("Air sensor not detected. Please check wiring...");
-      display.print("bad");                   // display loop counter
+      display.print("bad");
       delay(5000);
       if (airSensor.begin(Wire, false) == false) {
-        Serial.println("Air sensor not detected. Please check your wiring...");
-        display.print("bad-");                   // display loop counter
+        Serial.println("Air sensor not detected. Please check wiring");
+        Serial.println("Freezed.....RESET the Arduino");
+        display.print("bad-");
         while (1);
       }
     }
@@ -79,15 +81,15 @@ void setup()
   display.print("HEAT");
   Serial.print("Preheat: ");
   delay (3000);
-  for (int i = 20; i > -1; i--) { // loop from 0 to 180
+  for (int i = 20; i > -1; i--) { // loop from 0 to 20
     display.printNumber(i);
     Serial.println(i);
-    delay(1000);                         // wait 1000 ms
+    delay(1000);
   }
-  display.clear();                      // clear the display
+  display.clear();
   delay(10);
-  display.print("CO2-");      // display INIT on the display
-  delay(5000);                // wait 1000 ms
+  display.print("CO2-");
+  delay(5000);
 }
 
 void loop()
@@ -95,17 +97,17 @@ void loop()
   if (airSensor.dataAvailable())
   {
     CO2 = airSensor.getCO2();
-    Serial.print("co2(ppm):");
-    Serial.print(CO2);
+    Serial.print("CO2(ppm): ");
+    Serial.println(CO2);
 
-    Serial.print(" temp(C):");
-    Serial.print(airSensor.getTemperature(), 1);
+    Serial.print("Temp(°C): ");
+    Serial.println(airSensor.getTemperature(), 1);
 
-    Serial.print(" humidity(%):");
-    Serial.print(airSensor.getHumidity(), 1);
+    Serial.print("Humidity(%): ");
+    Serial.println(airSensor.getHumidity(), 1);
 
     Serial.println();
-    display.clear();                      // clear the display
+    display.clear();
     delay(10);
     display.printNumber(CO2);
 
@@ -122,7 +124,7 @@ void loop()
       if (digitalRead(BUTTON) == LOW) {
         delay (10);
         if (digitalRead(12) == LOW) {
-          display.clear();                      // clear the display
+          display.clear();
           display.print("h_" + String(int(airSensor.getHumidity())));
           //display.print(int(airSensor.getHumidity()));
           delay (1000);
@@ -144,11 +146,11 @@ void loop()
           display.clear();
           display.print("CAL-");
           delay(5000);
-          for (int i = 300; i > -1; i--) { // loop from 0 to 180
+          for (int i = 300; i > -1; i--) { // loop from 0 to 300
             display.printNumber(i);
             CO2 = airSensor.getCO2();
             Serial.print(i);
-            Serial.print(" CO2(ppm):");
+            Serial.print(" CO2(ppm): ");
             Serial.println(CO2);
             delay(1000);
           }
