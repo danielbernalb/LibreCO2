@@ -29,40 +29,58 @@ const byte PIN_DIO = A0;   // define DIO pin (any digital pin)
 const byte BUTTON = 12;   // define DIO pin (any digital pin)
 const byte BUZZER = 8;
 unsigned int CO2 = 0;
+int Temp = 0;
 #define BAUDRATE 9600                                      // Device to CM1106 Serial baudrate (should not be changed)
 
-//#include <Wire.h>
+#include <SoftwareSerial.h>
 #include "SevenSegmentTM1637.h"
 #include "SevenSegmentExtended.h"
-#include "MHZ19.h" 
-#include <SoftwareSerial.h>
+#include "MHZ19.h"
 SevenSegmentExtended display(PIN_CLK, PIN_DIO);
-SoftwareSerial co2MHZ(PIN_RX, PIN_TX);
-
+SoftwareSerial mySerial(PIN_RX, PIN_TX);
+MHZ19 co2MHZ;
 
 void setup()
 {
   pinMode(BUTTON, INPUT_PULLUP);
   Serial.begin(115200);
-  Serial.println("Start CM1106 lecture");
-  co2MHZ.begin(BAUDRATE);                               // (Uno example) device to MH-Z19 serial start
-
+  Serial.println("Start MHZ14 or MHZ19 lecture");
+  mySerial.begin(BAUDRATE);                               // (Uno example) device to MH-Z19 serial start
   display.begin();            // initializes the display
   display.setBacklight(100);  // set the brightness to 100 %
+  co2MHZ.begin(mySerial);                                // *Serial(Stream) refence must be passed to library begin().
+  delay(1000);
 
-  // Turn off calibration
+  // Connection test
+
+  if (co2MHZ.getCO2() == 0) {
+    Serial.println("Air sensor not detected. Please check wiring...");
+    display.print("bad");                   // display loop counter
+    delay(5000);
+    if (co2MHZ.getCO2() == 0) {
+      Serial.println("Air sensor not detected. Please check wiring...");
+      display.print("bad");                   // display loop counter
+      delay(5000);
+      if (co2MHZ.getCO2() == 0) {
+        Serial.println("Air sensor not detected. Please check your wiring");
+        Serial.println("Freeze.....RESET the Arduino");
+        display.print("bad-");                   // display loop counter
+        while (1);
+      }
+    }
+  }
+
+  // Turn off calibration and Sensor connection test
   delay(100);
-  Serial.print("CM1106 Stop Autocalibration: ");
-  static byte cmd[10] = {0x11, 0x07, 0x10, 0x64, 0x02, 0x07, 0x01, 0x90, 0x64, 0x76}; // Command Close ABC
-  static byte response[4] = {0};
-  co2MHZ.write(cmd, 10);
-  co2MHZ.readBytes(response, 4);
-  if (response[0] == 0x16 && response[1] == 0x01 && response[2] == 0x10 && response[3] == 0xD9) Serial.println("done");
-  else Serial.println(" failed");
+  Serial.print("MHZ19 Stop Autocalibration: ");
+  co2MHZ.autoCalibration(false);                               // Turn OFF calibration
+  Serial.print("MHZ19 Autocalibration: ");
+  co2MHZ.getABC() ? Serial.println(" failed") :  Serial.println(" done");  // now print it's status
+  delay(100);
 
   display.clear();
   display.print("good");
-  Serial.println("CM1106 read OK");
+  Serial.println("MHZ19 read OK");
   delay(5000);
 
 
@@ -71,7 +89,7 @@ void setup()
   display.print("HEAT");
   Serial.print("Preheat: ");
   delay (3000);
-  for (int i = 30; i > -1; i--) { // Preheat from 0 to 30
+  for (int i = 180; i > -1; i--) { // Preheat from 0 to 180
     display.printNumber(i);
     Serial.println(i);
     delay(1000);
@@ -83,10 +101,10 @@ void setup()
 
 void loop()
 {
-  CO2 = co2MHZ1106();
+  CO2 = co2MHZ.getCO2();                             // Request CO2 (as ppm)
 
   if (CO2 > 0) {
-    Serial.print("CO2(ppm):");
+    Serial.print("CO2(ppm): ");
     Serial.println(CO2);
 
     display.clear();
@@ -96,6 +114,11 @@ void loop()
   else {
     delay(10);
   }
+
+  Temp = co2MHZ.getTemperature();                     // Request Temperature (as Celsius)
+  Serial.print("Temp(°C): ");
+  Serial.println(Temp);
+
   // Alarm if CO2 is greater than 1000
 
   if (CO2 > 1000) {
@@ -112,15 +135,15 @@ void loop()
     if (digitalRead(BUTTON) == LOW) {
       delay (2500);
       if (digitalRead(BUTTON) == LOW) {
-        Serial.println("Start calibration process: 300 seconds of 400 ppm stable");
+        Serial.println("Start calibration process: 1200 seconds of 400 ppm stable");
         display.clear();
         display.print("CAL-");
         delay(5000);
-        for (int i = 300; i > -1; i--) { // loop from 0 to 300
+        for (int i = 1200; i > -1; i--) { // loop from 0 to 300
           display.printNumber(i);
           Serial.print(i);
-          CO2 = co2MHZ1106();
-          Serial.print(" CO2(ppm):");
+          CO2 = co2MHZ.getCO2();
+          Serial.print(" CO2(ppm): ");
           Serial.println(CO2);
           delay(1000);
         }
@@ -132,25 +155,6 @@ void loop()
   else {
     Serial.println("Waiting for new data");
     delay(1000);
-  }
-}
-
-int co2MHZ1106() {
-  static byte cmd[4] = {0x11, 0x01, 0x01, 0xED}; // Commands 0x01 Read ppm, 0x10 open/close ABC, 0x03 Calibrate
-  static byte response[8] = {0};                 // response 0x16, 0x05, 0x01, DF1, DF2, DF3, DF4, CRC.  ppm=DF1*256+DF2
-  co2MHZ.write(cmd, 4);
-  co2MHZ.readBytes(response, 8);
-  int crc = 0;
-  for (int i = 0; i < 7; i++) crc += response[i];
-  crc = 256 - crc % 256;
-  if (((int) response[0] == 0x16) && ((int)response[7] == crc)) {
-    unsigned int responseHigh = (unsigned int) response[3];
-    unsigned int responseLow = (unsigned int) response[4];
-    return (256 * responseHigh) + responseLow;
-  } else {
-    while (co2MHZ.available() > 0)  char t = co2MHZ.read(); // Clear serial input buffer;
-    //return -1;
-    return 0;
   }
 }
 
@@ -166,19 +170,9 @@ void Calibration()
 {
   delay(100);
   Serial.print("Resetting forced calibration factor to 400: ");
-  static byte cmd[6] = {0x11, 0x03, 0x03, 0x01, 0x90, 0x58}; // Command Calibration of CO2 Concentration to 400ppm
-  static byte response[4] = {0};
-  co2MHZ.write(cmd, 6);
-  co2MHZ.readBytes(response, 4);
-  if (response[0] == 0x16 && response[1] == 0x01 && response[2] == 0x03 && response[3] == 0xE6) {
-    Serial.println("done");
-    display.clear();
-    display.print("done");
-  }
-  else {
-    Serial.println(" failed");
-    display.clear();
-    display.print("fail");
-  }
+  co2MHZ.calibrate();    // Take a reading which be used as the zero point for 400 ppm
+  Serial.println("done");
+  display.clear();
+  display.print("done");
   delay(5000);
 }
