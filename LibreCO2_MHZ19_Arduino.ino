@@ -63,7 +63,7 @@ void setup()
       delay(5000);
       if (co2MHZ.getCO2() == 0) {
         Serial.println("Air sensor not detected. Please check your wiring");
-        Serial.println("Freeze.....RESET the Arduino");
+        Serial.println("Freezed.....RESET the Arduino");
         display.print("bad-");
         while (1);
       }
