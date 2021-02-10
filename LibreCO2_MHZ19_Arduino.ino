@@ -30,7 +30,7 @@ const byte BUTTON = 12;   // define DIO pin (any digital pin)
 const byte BUZZER = 8;
 unsigned int CO2 = 0;
 int Temp = 0;
-#define BAUDRATE 9600                                      // Device to CM1106 Serial baudrate (should not be changed)
+#define BAUDRATE 9600    // Device to Mhz14 Mhz19 Serial baudrate (should not be changed)
 
 #include <SoftwareSerial.h>
 #include "SevenSegmentTM1637.h"
@@ -45,26 +45,26 @@ void setup()
   pinMode(BUTTON, INPUT_PULLUP);
   Serial.begin(115200);
   Serial.println("Start MHZ14 or MHZ19 lecture");
-  mySerial.begin(BAUDRATE);                               // (Uno example) device to MH-Z19 serial start
+  mySerial.begin(BAUDRATE);   // (Uno example) device to MH-Z19 serial start
   display.begin();            // initializes the display
   display.setBacklight(100);  // set the brightness to 100 %
-  co2MHZ.begin(mySerial);                                // *Serial(Stream) refence must be passed to library begin().
+  co2MHZ.begin(mySerial);     // *Serial(Stream) refence must be passed to library begin().
   delay(1000);
 
   // Connection test
 
   if (co2MHZ.getCO2() == 0) {
     Serial.println("Air sensor not detected. Please check wiring...");
-    display.print("bad");                   // display loop counter
+    display.print("bad");
     delay(5000);
     if (co2MHZ.getCO2() == 0) {
       Serial.println("Air sensor not detected. Please check wiring...");
-      display.print("bad");                   // display loop counter
+      display.print("bad");
       delay(5000);
       if (co2MHZ.getCO2() == 0) {
         Serial.println("Air sensor not detected. Please check your wiring");
         Serial.println("Freeze.....RESET the Arduino");
-        display.print("bad-");                   // display loop counter
+        display.print("bad-");
         while (1);
       }
     }
@@ -84,7 +84,7 @@ void setup()
   delay(5000);
 
 
-  // Preheat routine: min 20 seconds for CM1106
+  // Preheat routine: 3 minutes for MHZ19
   display.clear();
   display.print("HEAT");
   Serial.print("Preheat: ");
@@ -139,7 +139,7 @@ void loop()
         display.clear();
         display.print("CAL-");
         delay(5000);
-        for (int i = 1200; i > -1; i--) { // loop from 0 to 300
+        for (int i = 1200; i > -1; i--) { // loop from 0 to 20 minutes
           display.printNumber(i);
           Serial.print(i);
           CO2 = co2MHZ.getCO2();
