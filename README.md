@@ -42,6 +42,7 @@ Original at right and clone at left
 
 	c. Cubic CM1106, the last option because the distribution in China is for second hand units and sometimes is not available.
 	https://www.aliexpress.com/item/4001082699057.html
+	
 	![Cubic CM1106](https://github.com/danielbernalb/LibreCO2/blob/main/images/Cubic%20CM1106.jpg)
 
 
