@@ -25,11 +25,11 @@ Original at right and clone at left
 
 4. Sensor, options:
 
-	a. Sensirion SCD30. 
+	a. Sensirion SCD30, the most expensive (52 dollars) but in our test the best performance. Sensirion have distributors in USA and Europe. Example:
 	https://www.mouser.com/ProductDetail/Sensirion/SCD30/?qs=rrS6PyfT74fdywu4FxpYjQ%3D%3D
 	![SCD30 Sensirion](https://github.com/danielbernalb/LibreCO2/blob/main/images/Sensirion%20SCD30.jpg)
 
-	b. Winsen MH-Z14 or 19. 
+	b. Winsen MH-Z14 or 19, one of the chepears and most popular, good performance, some slow. Take care with fake clones!!!
 
 	![Winsen MH-Z14a](https://github.com/danielbernalb/LibreCO2/blob/main/images/MH-Z14A.jpg)
 
@@ -40,7 +40,8 @@ Original at right and clone at left
 	Originals in Aliexpress:
 	https://es.aliexpress.com/item/1005001865093513.html
 
-	c. Cubic CM1106, the last option because in China only sales second hand units from one supplier.
+	c. Cubic CM1106, the last option because the distribution in China is for second hand units and sometimes is not available.
+	https://www.aliexpress.com/item/4001082699057.html
 	![Cubic CM1106](https://github.com/danielbernalb/LibreCO2/blob/main/images/Cubic%20CM1106.jpg)
 
 
