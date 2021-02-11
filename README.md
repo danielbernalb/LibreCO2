@@ -10,9 +10,7 @@ Materials:
 
 1. Arduino UNO original or chinese version, the difference is the driver installation, both are very easy to find in any country and work well.
 
-![Arduino original](https://github.com/danielbernalb/LibreCO2/blob/main/images/arduino-uno-original.jpg)
-
-![Arduino clone](https://github.com/danielbernalb/LibreCO2/blob/main/images/arduino-uno-clone.jpg)
+![Arduino original & clone](https://github.com/danielbernalb/LibreCO2/blob/main/images/arduino-uno-original-clone.jpg)
 
 2. 4 digits display TM1687.
 
