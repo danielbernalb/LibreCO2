@@ -1,8 +1,9 @@
 # LibreCO2
 LibreCO2: Simple CO2 meter using Arduino UNO, display, buzzer and CO2 sensor (Sensirion SCD30, Winsen MH-Z14 or MHZ-19 and Cubic CM1106).
 
-  This is an extremely simple version of a low cost CO2 meter with the most common materials on the market: an Arduino UNO or Leonardo, a 4 digits TM1687 display, a common buzzer and the three most popular low cost real CO2 sensor: Sensirion SCD30, Winsen MH-Z14 or 16 and the Cubic CM1106.
-All sensors are NDIR that is the actual standard for real CO2 measurements:
+  This is a very simple version of a low cost CO2 meter with the most common materials on the market: an Arduino UNO or Leonardo, a 4 digits TM1687 display, a common buzzer and the three most popular low cost real CO2 sensor: Sensirion SCD30, Winsen MH-Z14 or 16 and the Cubic CM1106. LibreCO2 use an Arduino UNO or NANO, that is very popular in schools and frequently used in the "technology class" and the majority of schools have many of them. The code is the simplest posible and the .hex file is published for the programming of the Arduino with Xloader and you don{t have to install Arduino software and compilate the code.
+
+All sensors used are NDIR that is the actual standard for real CO2 measurements:
 https://en.wikipedia.org/wiki/Carbon_dioxide_sensor
 https://www.co2meter.com/blogs/news/6010192-how-does-an-ndir-co2-sensor-work
 
