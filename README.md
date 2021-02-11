@@ -29,7 +29,7 @@ Materials:
 a. Sensirion SCD30. 
 
 https://www.mouser.com/ProductDetail/Sensirion/SCD30/?qs=rrS6PyfT74fdywu4FxpYjQ%3D%3D
-![SCD30 Sensirion] (https://github.com/danielbernalb/LibreCO2/blob/main/images/Sensirion%20SCD30.jpg)
+![SCD30 Sensirion](https://github.com/danielbernalb/LibreCO2/blob/main/images/Sensirion%20SCD30.jpg)
 
 b. Winsen MH-Z14 or 19. Only buy MH-Z19 from the Winsen Supplier in Aliexpress, the market is invaded with fake copies, more info in: https://youtu.be/5_QQe75-SZI or in spanish https://emariete.com/sensores-co2-mh-z19b-falsos/.
 Originals in Aliexpress:
