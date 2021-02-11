@@ -12,6 +12,8 @@ Materials:
 
 ![Arduino original & clone](https://github.com/danielbernalb/LibreCO2/blob/main/images/arduino-uno-original-clone.jpg)
 
+Original at right and clone at left
+
 2. 4 digits display TM1687.
 
 ![4 digits display TM1687](https://github.com/danielbernalb/LibreCO2/blob/main/images/Display-TM1687.jpg)
@@ -38,6 +40,7 @@ Originals in Aliexpress:
 https://es.aliexpress.com/item/1005001865093513.html
 
 c. Cubic CM1106, the last option because in China only sales second hand units from one supplier.
+![Cubic CM1106](https://github.com/danielbernalb/LibreCO2/blob/main/images/Cubic%20CM1106.jpg)
 
 
 Connections:
