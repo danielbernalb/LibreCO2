@@ -67,6 +67,17 @@ TX/SCL ---> SCL
 RX/SDA ---> SDA
 
 
+**Winsen MH-Z14 sensor**
+
+Connector pin 4 or 15 pin ---> 5V 
+
+Connector pin 4 or 15 pin ---> 5V 
+
+Connector pin 4 or 15 pin ---> 5V 
+
+Connector pin 4 or 15 pin ---> 5V 
+
+
 **Display---> Arduino PIN**
 
 CLK    ---> 9
