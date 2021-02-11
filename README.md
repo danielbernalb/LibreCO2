@@ -47,7 +47,28 @@ Original at right and clone at left
 
 
 Connections:
-Sensirion SCD30
+Sensirion SCD30 model.
+
+Sensor ---> Arduino PIN
+VIN    ---> 5V 
+GND    ---> GND
+TX/SCL ---> SCL
+RX/SDA ---> SDA
+
+Display---> Arduino PIN
+CLK    ---> 9 
+DIO    ---> 8
+VCC    ---> IOREF in original or 5V in clone
+GND    ---> GND
+
+Buzzer
++      ---> 13
+-      ---> GND
+
+Button Calibration
+Anyone ---> 2
+Anyone ---> 4
+
 
 ![SCD30 connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Connection%20Sensirion%20SCD30.jpg)
 	
