@@ -52,31 +52,9 @@ Original at right and clone at left
 	![Cubic CM1106](https://github.com/danielbernalb/LibreCO2/blob/main/images/Cubic%20CM1106.jpg)
 
 
-**Connections:**
+**Connections for all sensors:**
 
 Electronic component ---> Arduino PIN
-
-**Sensirion SCD30 sensor**
-
-VIN    ---> 5V 
-
-GND    ---> GND
-
-TX/SCL ---> SCL
-
-RX/SDA ---> SDA
-
-
-**Winsen MH-Z14 sensor**
-
-Connector pin 4 or 15 pin ---> 5V 
-
-Connector pin 4 or 15 pin ---> 5V 
-
-Connector pin 4 or 15 pin ---> 5V 
-
-Connector pin 4 or 15 pin ---> 5V 
-
 
 **Display---> Arduino PIN**
 
@@ -102,6 +80,56 @@ Anyone ---> 2
 
 Anyone ---> 4
 
+**Only for Sensirion SCD30**
+
+**Sensirion SCD30 sensor**
+
+VIN    ---> 5V 
+
+GND    ---> GND
+
+TX/SCL ---> SCL
+
+RX/SDA ---> SDA
+
 
 ![SCD30 connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Sensirion%20SCD30%20connection.jpg)
-	
+
+
+**Winsen MH-Z19B sensor**
+
+VIN Pin 1 of connector 4 pins ---> 5V 
+
+GND Pin 2 of connector 4 pins ---> GND
+
+RX Pin 2 of connector 5 pins ---> 10
+
+TX Pin 3 of connector 5 pins ---> 11 
+
+
+![MH-Z19B connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Sensirion%20MHZ19%20connection.jpg)
+
+
+**Winsen MH-Z14A sensor**
+
+Connector pin 4 or 15 pin ---> 5V 
+
+Connector pin 4 or 15 pin ---> 5V 
+
+Connector pin 4 or 15 pin ---> 5V 
+
+Connector pin 4 or 15 pin ---> 5V 
+
+![MH-Z14A connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Sensirion%20MHZ14%20connection.jpg)	
+
+**Cubic CM1106 sensor**
+
+V1 Pin 1 of connector 4 pins ---> 5V 
+
+G Pin 2 of connector 4 pins ---> GND
+
+R Pin 2 of connector 5 pins ---> 10
+
+T Pin 3 of connector 5 pins ---> 11 
+
+![Cubic CM1106](https://github.com/danielbernalb/LibreCO2/blob/main/images/Sensirion%20CM1106%20connection.jpg)
