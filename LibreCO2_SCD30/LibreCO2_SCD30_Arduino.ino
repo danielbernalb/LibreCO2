@@ -22,21 +22,24 @@
   Boton o cable conectado a pin 12
 */
 
+#include <Wire.h>
+#include "SevenSegmentTM1637.h"
+#include "SevenSegmentExtended.h"
+#include "SparkFun_SCD30_Arduino_Library.h"
+#include <avr/wdt.h>
+
 const byte PIN_CLK = A2;   // define CLK pin (any digital pin)
 const byte PIN_DIO = A0;   // define DIO pin (any digital pin)
 const byte BUTTON = 12;   // define DIO pin (any digital pin)
 const byte BUZZER = 8;
 unsigned int CO2 = 0;
 
-#include <Wire.h>
-#include "SevenSegmentTM1637.h"
-#include "SevenSegmentExtended.h"
-#include "SparkFun_SCD30_Arduino_Library.h"
 SevenSegmentExtended display(PIN_CLK, PIN_DIO);
 SCD30 airSensor;
 
 void setup()
 {
+  int ConnRetry = 0;
   pinMode(BUTTON, INPUT_PULLUP);
   Serial.begin(115200);
   Serial.println("Start SCD30 lecture");
@@ -46,31 +49,27 @@ void setup()
   display.setBacklight(100);  // set the brightness to 100 %
 
   // Turn off calibration and Sensor connection test
-  if (airSensor.begin(Wire, false) == false) {
-    Serial.println("Air sensor not detected. Please check wiring...");
-    display.print("bad");
-    delay(5000);
-    if (airSensor.begin(Wire, false) == false) {
-      Serial.println("Air sensor not detected. Please check wiring...");
+  
+ while ((airSensor.begin(Wire, false) == false) OR (ConnRetry < 3))
+  {
+      Serial.println("Air sensor not detected. Please check wiring... Try# " + String(ConnRetry));
       display.print("bad");
       delay(5000);
-      if (airSensor.begin(Wire, false) == false) {
-        Serial.println("Air sensor not detected. Please check wiring");
-        Serial.println("Freezed.....RESET the Arduino");
-        display.print("bad-");
-        while (1);
-      }
+      ConnRetry++;
     }
-  }
-
+ if (ConnRetry == 3) 
+  softwareReset( WDTO_60MS);
+  
   display.print("good");                   // display loop counter
   Serial.println("SCD30 read OK");
   delay(5000);
 
   // Turn off calibration
   Serial.print("Auto calibration set to ");
-  if (airSensor.getAutoSelfCalibration() == true) Serial.println("true");
-  else Serial.println("false");
+  if (airSensor.getAutoSelfCalibration() == true) 
+    Serial.println("true");
+  else 
+    Serial.println("false");
 
   //
   airSensor.setTemperatureOffset((float) 0);    // set for x degrees Temperature offset
@@ -81,11 +80,13 @@ void setup()
   display.print("HEAT");
   Serial.print("Preheat: ");
   delay (3000);
+  
   for (int i = 20; i > -1; i--) { // loop from 0 to 20
     display.printNumber(i);
     Serial.println(i);
     delay(1000);
   }
+  
   display.clear();
   delay(10);
   display.print("CO2-");
@@ -137,6 +138,8 @@ void loop()
     // Close the box and the sensor enter to the calibration process
     // At the end the sensor receives the order of calibration to 400ppm
 
+    ///Esto se puede hacer mejor///
+    
     if (digitalRead(BUTTON) == LOW) {
       delay (2500);
       if (digitalRead(BUTTON) == LOW) {
@@ -179,4 +182,9 @@ void Calibration()
   Serial.print("Resetting forced calibration factor to : 400");
   display.print("done");
   delay(5000);
+}
+
+void softwareReset( uint8_t prescaller) {
+  wdt_enable( prescaller);
+  while(1) {}
 }
