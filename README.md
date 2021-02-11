@@ -46,11 +46,11 @@ Original at right and clone at left
 	![Cubic CM1106](https://github.com/danielbernalb/LibreCO2/blob/main/images/Cubic%20CM1106.jpg)
 
 
-Connections:
+**Connections:**
 
-Sensirion SCD30 model.
+Electronic component ---> Arduino PIN
 
-Sensor ---> Arduino PIN
+**Sensirion SCD30 sensor**
 
 VIN    ---> 5V 
 
@@ -61,7 +61,7 @@ TX/SCL ---> SCL
 RX/SDA ---> SDA
 
 
-Display---> Arduino PIN
+**Display---> Arduino PIN**
 
 CLK    ---> 9
 
@@ -72,14 +72,14 @@ VCC    ---> IOREF in original or 5V in clone
 GND    ---> GND
 
 
-Buzzer
+**Buzzer**
 
 "+"    ---> 13
 
 other  ---> GND
 
 
-Button Calibration
+**Button**
 
 Anyone ---> 2
 
