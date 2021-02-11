@@ -62,8 +62,8 @@ VCC    ---> IOREF in original or 5V in clone
 GND    ---> GND
 
 Buzzer
-+      ---> 13
--      ---> GND
+"+"    ---> 13
+other  ---> GND
 
 Button Calibration
 Anyone ---> 2
