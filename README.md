@@ -80,7 +80,6 @@ Anyone ---> 2
 
 Anyone ---> 4
 
-**Only for Sensirion SCD30**
 
 **Sensirion SCD30 sensor**
 
@@ -94,6 +93,7 @@ RX/SDA ---> SDA
 
 
 ![SCD30 connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Sensirion%20SCD30%20connection.jpg)
+
 
 
 **Winsen MH-Z19B sensor**
@@ -110,6 +110,7 @@ TX Pin 3 of connector 5 pins ---> 11
 ![MH-Z19B connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Sensirion%20MHZ19%20connection.jpg)
 
 
+
 **Winsen MH-Z14A sensor**
 
 Connector pin 4 or 15 pin ---> 5V 
@@ -121,6 +122,7 @@ Connector pin 4 or 15 pin ---> 5V
 Connector pin 4 or 15 pin ---> 5V 
 
 ![MH-Z14A connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Sensirion%20MHZ14%20connection.jpg)	
+
 
 **Cubic CM1106 sensor**
 
