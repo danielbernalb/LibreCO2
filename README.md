@@ -48,4 +48,6 @@ Original at right and clone at left
 
 Connections:
 Sensirion SCD30
+
+![SCD30 connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Connection%20Sensirion%20SCD30.jpg)
 	
