@@ -70,5 +70,5 @@ Anyone ---> 2
 Anyone ---> 4
 
 
-![SCD30 connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Connection%20Sensirion%20SCD30.jpg)
+![SCD30 connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Sensirion%20SCD30%20connection.jpg)
 	
