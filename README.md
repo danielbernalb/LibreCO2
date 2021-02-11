@@ -20,9 +20,7 @@ Original at right and clone at left
 
 3. Optional: buzzer.
 
-![Big buzzer](https://github.com/danielbernalb/LibreCO2/blob/main/images/big-buzzer.jpg)
-
-![Small buzzer](https://github.com/danielbernalb/LibreCO2/blob/main/images/small-buzzer.jpg)
+![Big and small buzzer](https://github.com/danielbernalb/LibreCO2/blob/main/images/big-small-buzzer.jpg)
 
 4. Sensor, options:
 
