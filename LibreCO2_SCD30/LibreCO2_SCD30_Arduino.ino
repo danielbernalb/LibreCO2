@@ -50,7 +50,7 @@ void setup()
 
   // Turn off calibration and Sensor connection test
   
- while ((airSensor.begin(Wire, false) == false) OR (ConnRetry < 3))
+ while ((airSensor.begin(Wire, false) == false) || (ConnRetry < 3))
   {
       Serial.println("Air sensor not detected. Please check wiring... Try# " + String(ConnRetry));
       display.print("bad");
