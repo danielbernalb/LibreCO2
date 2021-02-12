@@ -147,7 +147,7 @@ T Pin 3 of connector 5 pins ---> 11
 
 1. Connect the Arduino to your computer. If the driver is not automatly detected you have to identify if your Arduino is original or chinese clone:
 
-1.1 If the Arduino is original, install Arduino with drivers: https://www.arduino.cc/en/Guide/ArduinoUno
+1.1. If the Arduino is original, install Arduino with drivers: https://www.arduino.cc/en/Guide/ArduinoUno
 
 1.2. If the Arduino is chinese clone please follow the instructions in this web page: https://learn.sparkfun.com/tutorials/how-to-install-ch340-drivers
 
