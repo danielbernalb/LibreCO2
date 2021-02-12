@@ -13,7 +13,7 @@ Materials:
 
 ![Arduino original & clone](https://github.com/danielbernalb/LibreCO2/blob/main/images/arduino-uno-original-clone.jpg)
 
-Original at right and clone at left
+	Original at right and clone at left
 
 2. 4 digits display TM1687.
 
@@ -27,6 +27,7 @@ Original at right and clone at left
 
 	a. Sensirion SCD30, the most expensive (52 dollars) but in our test the best performance. Sensirion have distributors in USA and Europe. Example:
 	https://www.mouser.com/ProductDetail/Sensirion/SCD30/?qs=rrS6PyfT74fdywu4FxpYjQ%3D%3D
+	
 	![SCD30 Sensirion](https://github.com/danielbernalb/LibreCO2/blob/main/images/Sensirion%20SCD30.jpg)
 	
 	Pros: excelent performance (fast, reliable), fast shipping from USA or Europe.
@@ -79,6 +80,8 @@ other  ---> GND
 Anyone ---> 2
 
 Anyone ---> 4
+
+
 
 
 **Sensirion SCD30 sensor**
