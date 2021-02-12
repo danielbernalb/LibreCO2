@@ -31,6 +31,7 @@ Materials:
 	![SCD30 Sensirion](https://github.com/danielbernalb/LibreCO2/blob/main/images/Sensirion%20SCD30.jpg)
 	
 	Pros: excelent performance (fast, reliable), fast shipping from USA or Europe.
+	
 	Cons: price (52 dollars).
 
 	b. Winsen MH-Z14 or 19, one of the chepears and most popular, good performance, some slow. Take care with fake clones!!!
@@ -38,6 +39,7 @@ Materials:
 	![Winsen MH-Z14a](https://github.com/danielbernalb/LibreCO2/blob/main/images/MH-Z14A.jpg)
 	
 	Pros: aceptable performance (slow compared with Sensirion, medium reliable), low price (18 dollars from China)
+	
 	Cons: slow shipping with aliexpress standard shipping (20-one month), fake copies (you have to be careful, recommended only buy from official store)
 
 	Only buy MH-Z19 from the Winsen Supplier in Aliexpress, the market is invaded with fake copies, more info in: https://youtu.be/5_QQe75-SZI or in spanish https://emariete.com/sensores-co2-mh-z19b-falsos/
@@ -139,3 +141,6 @@ R Pin 2 of connector 5 pins ---> 10
 T Pin 3 of connector 5 pins ---> 11 
 
 ![Cubic CM1106](https://github.com/danielbernalb/LibreCO2/blob/main/images/Sensirion%20CM1106%20connection.jpg)
+
+****************************
+**Program the Firmware (code in the Arduino)**
