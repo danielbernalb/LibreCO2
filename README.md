@@ -13,7 +13,7 @@ Materials:
 
 ![Arduino original & clone](https://github.com/danielbernalb/LibreCO2/blob/main/images/arduino-uno-original-clone.jpg)
 
-	Original at right and clone at left
+   Original at right and clone at left
 
 2. 4 digits display TM1687.
 
@@ -83,7 +83,7 @@ Anyone ---> 4
 
 
 
-
+****************************
 **Sensirion SCD30 sensor**
 
 VIN    ---> 5V 
@@ -98,7 +98,7 @@ RX/SDA ---> SDA
 ![SCD30 connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Sensirion%20SCD30%20connection.jpg)
 
 
-
+****************************
 **Winsen MH-Z19B sensor**
 
 VIN Pin 1 of connector 4 pins ---> 5V 
@@ -113,7 +113,7 @@ TX Pin 3 of connector 5 pins ---> 11
 ![MH-Z19B connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Sensirion%20MHZ19%20connection.jpg)
 
 
-
+****************************
 **Winsen MH-Z14A sensor**
 
 Connector pin 4 or 15 pin ---> 5V 
@@ -127,6 +127,7 @@ Connector pin 4 or 15 pin ---> 5V
 ![MH-Z14A connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Sensirion%20MHZ14%20connection.jpg)	
 
 
+****************************
 **Cubic CM1106 sensor**
 
 V1 Pin 1 of connector 4 pins ---> 5V 
