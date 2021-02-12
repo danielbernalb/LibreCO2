@@ -64,7 +64,7 @@ void setup()
   Serial.println("SCD30 read OK");
   delay(5000);
 
-  // Turn off calibration
+  // Review calibration state
   Serial.print("Auto calibration set to ");
   if (airSensor.getAutoSelfCalibration() == true) 
     Serial.println("true");
