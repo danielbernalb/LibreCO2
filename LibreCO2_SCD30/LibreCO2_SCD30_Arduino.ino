@@ -30,13 +30,13 @@ const byte PIN_DIO = A0;   // define DIO pin (any digital pin)
 const byte BUTTON = 12;   // define DIO pin (any digital pin)
 const byte BUZZER = 8;
 unsigned int CO2 = 0;
-unsigned int ConnRetry = 0;
 
 SevenSegmentExtended display(PIN_CLK, PIN_DIO);
 SCD30 airSensor;
 
 void setup()
 {
+  int ConnRetry = 0;
   pinMode(BUTTON, INPUT_PULLUP);
   Serial.begin(115200);
   Serial.println("Start SCD30 lecture");
@@ -46,28 +46,26 @@ void setup()
   display.setBacklight(100);  // set the brightness to 100 %
 
   // Turn off calibration and Sensor connection test
-
-  while ((airSensor.begin(Wire, false) == false) && (ConnRetry < 5))
+  
+ while ((airSensor.begin(Wire, false) == false) && (ConnRetry < 3))
   {
-    Serial.println("Air sensor not detected. Please check wiring... Try# " + String(ConnRetry));
-    display.clear();
-    delay(20);
-    display.print("bad");
-    delay(2500);
-    ConnRetry++;
-  }
-  if (ConnRetry == 5)
-    softwareReset(WDTO_60MS);
-
+      Serial.println("Air sensor not detected. Please check wiring... Try# " + String(ConnRetry));
+      display.print("bad");
+      delay(5000);
+      ConnRetry++;
+    }
+ if (ConnRetry == 3) 
+  softwareReset( WDTO_60MS);
+  
   display.print("good");                   // display loop counter
   Serial.println("SCD30 read OK");
   delay(5000);
 
-  // Review calibration state
+  // Turn off calibration
   Serial.print("Auto calibration set to ");
-  if (airSensor.getAutoSelfCalibration() == true)
+  if (airSensor.getAutoSelfCalibration() == true) 
     Serial.println("true");
-  else
+  else 
     Serial.println("false");
 
   //
@@ -79,13 +77,13 @@ void setup()
   display.print("HEAT");
   Serial.print("Preheat: ");
   delay (3000);
-
+  
   for (int i = 20; i > -1; i--) { // loop from 0 to 20
     display.printNumber(i);
     Serial.println(i);
     delay(1000);
   }
-
+  
   display.clear();
   delay(10);
   display.print("CO2-");
@@ -106,6 +104,7 @@ void loop()
     Serial.print("Humidity(%): ");
     Serial.println(airSensor.getHumidity(), 1);
 
+    Serial.println();
     display.clear();
     delay(10);
     display.printNumber(CO2);
@@ -118,36 +117,54 @@ void loop()
 
     // If you push the button see the humidity measured by SCD30
 
-    while ((digitalRead(BUTTON) == LOW) && (ConnRetry < 3))
-    {
-      delay(15);
-      ConnRetry++;
-    }
-    if (ConnRetry == 3)
-    {
-      HumValue();
-      ConnRetry = 0;
+    if (digitalRead(BUTTON) == LOW) {
+      delay (10);
+      if (digitalRead(BUTTON) == LOW) {
+        delay (10);
+        if (digitalRead(12) == LOW) {
+          display.clear();
+          display.print("h_" + String(int(airSensor.getHumidity())));
+          //display.print(int(airSensor.getHumidity()));
+          delay (1000);
+        }
+      }
     }
 
-    while ((digitalRead(BUTTON) == LOW) && (ConnRetry < 5))
-    {
-      delay(1000);
-      ConnRetry++;
+    // First. put the sensor outside in a close box and wait 5 minutes, this is the reference of 400ppm
+    // Open and push the button more than 5 seconds
+    // Close the box and the sensor enter to the calibration process
+    // At the end the sensor receives the order of calibration to 400ppm
+
+    ///Esto se puede hacer mejor///
+    
+    if (digitalRead(BUTTON) == LOW) {
+      delay (2500);
+      if (digitalRead(BUTTON) == LOW) {
+        delay (2500);
+        if (digitalRead(BUTTON) == LOW) {
+          Serial.println("Start calibration process: 300 seconds of 400 ppm stable");
+          display.clear();
+          display.print("CAL-");
+          delay(5000);
+          for (int i = 300; i > -1; i--) { // loop from 0 to 300
+            display.printNumber(i);
+            CO2 = airSensor.getCO2();
+            Serial.print(i);
+            Serial.print(" CO2(ppm): ");
+            Serial.println(CO2);
+            delay(1000);
+          }
+          Calibration();
+        }
+      }
     }
-    if (ConnRetry == 5)
-    {
-      Calibration();
-      ConnRetry = 0;
-    }
-    else {
-      Serial.println("Waiting for new data");
-      Serial.println();
-      delay(2000);
-    }
+
+  }
+  else {
+    Serial.println("Waiting for new data");
+    delay(2000);
   }
 }
-
-// Alarm above 1000ppm
 
 void Beep()
 {
@@ -156,42 +173,15 @@ void Beep()
   noTone(BUZZER);
 }
 
-void HumValue()
-{
-  display.clear();
-  display.print("h_" + String(int(airSensor.getHumidity())));
-  delay (1000);
-}
-
-// Calibration process
-// First put the sensor outside in a close box to avoid strong winds
-// Open and push the Calibration button more than 5 seconds, the sensor enter to the calibration process
-// Close the box and wait more than 5 minutes
-// At 5 minutes the sensor receives the order of calibration to 400ppm
-// Calibration finished
-
 void Calibration()
 {
-  Serial.println("Start calibration process: 300 seconds of 400 ppm stable");
-  display.clear();
-  display.print("CAL-");
-  delay(5000);
-  for (int i = 300; i > -1; i--) { // loop from 0 to 300
-    display.printNumber(i);
-    CO2 = airSensor.getCO2();
-    Serial.print(i);
-    Serial.print(" CO2(ppm): ");
-    Serial.println(CO2);
-    delay(1000);
-  }
   airSensor.setForcedRecalibrationFactor(400);
-  Serial.println("Resetting forced calibration factor to : 400");
-  Serial.println();
+  Serial.print("Resetting forced calibration factor to : 400");
   display.print("done");
   delay(5000);
 }
 
-void softwareReset(uint8_t prescaller) {
-  wdt_enable(prescaller);
-  while (1) {}
+void softwareReset( uint8_t prescaller) {
+  wdt_enable( prescaller);
+  while(1) {}
 }
