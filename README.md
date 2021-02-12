@@ -181,4 +181,13 @@ When the .hex file has been loaded into the Arduino the right screenshot will sh
   Instructions to compile and burn the code:
   
   https://youtu.be/fJWR7dBuc18
+  
+  
+
+****************************
+**Contact**
+
+Any doubr, bug, apport or comment please contact me at danielbernalb@gmail.com or twitter account @danielbernalb
+
+
 
