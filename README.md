@@ -144,3 +144,41 @@ T Pin 3 of connector 5 pins ---> 11
 
 ****************************
 **Program the Firmware (code in the Arduino)**
+
+1. Connect the Arduino to your computer. If the driver is not automatly detected you have to identify if your Arduino is original or chinese clone:
+
+1.1 If the Arduino is original, install Arduino with drivers: https://www.arduino.cc/en/Guide/ArduinoUno
+
+1.2. If the Arduino is chinese clone please follow the instructions in this web page: https://learn.sparkfun.com/tutorials/how-to-install-ch340-drivers
+
+2. You have two options:
+
+2.1. If you don{t want to install Arduino, only program the code, use Xloader:
+
+How to use Xloader to load a new version of grbl into the Arduino/X-controller.
+
+![Xloader](https://github.com/danielbernalb/LibreCO2/blob/main/images/Xloader1.png)
+
+The left screenshot shows the window that Xloader displays when it starts.
+
+Enter the file path or browse to the .hex file that you would like to load into the Arduino. The files are available in each directory of the Sensor version of CanAirIO.
+
+Select the device type you are going to load into (Uno/ATmega328).
+
+Select the COM port where your Arduino is attached.
+
+The baud rate should be 115200.
+
+Press the “Upload” button.
+
+When the .hex file has been loaded into the Arduino the right screenshot will show the size of the file uploaded, or an error message if the upload fails.
+
+
+2.2. Install Arduino and compile the code.
+  
+  https://www.arduino.cc/en/software
+  
+  Instructions to compile and burn the code:
+  
+  https://youtu.be/fJWR7dBuc18
+
