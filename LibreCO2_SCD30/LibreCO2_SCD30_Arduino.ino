@@ -46,26 +46,26 @@ void setup()
   display.setBacklight(100);  // set the brightness to 100 %
 
   // Turn off calibration and Sensor connection test
-  
- while ((airSensor.begin(Wire, false) == false) && (ConnRetry < 3))
+
+  while ((airSensor.begin(Wire, false) == false) && (ConnRetry < 3))
   {
-      Serial.println("Air sensor not detected. Please check wiring... Try# " + String(ConnRetry));
-      display.print("bad");
-      delay(5000);
-      ConnRetry++;
-    }
- if (ConnRetry == 3) 
-  softwareReset( WDTO_60MS);
-  
+    Serial.println("Air sensor not detected. Please check wiring... Try# " + String(ConnRetry));
+    display.print("bad");
+    delay(5000);
+    ConnRetry++;
+  }
+  if (ConnRetry == 3)
+    softwareReset( WDTO_60MS);
+
   display.print("good");                   // display loop counter
   Serial.println("SCD30 read OK");
   delay(5000);
 
   // Turn off calibration
   Serial.print("Auto calibration set to ");
-  if (airSensor.getAutoSelfCalibration() == true) 
+  if (airSensor.getAutoSelfCalibration() == true)
     Serial.println("true");
-  else 
+  else
     Serial.println("false");
 
   //
@@ -77,13 +77,13 @@ void setup()
   display.print("HEAT");
   Serial.print("Preheat: ");
   delay (3000);
-  
+
   for (int i = 20; i > -1; i--) { // loop from 0 to 20
     display.printNumber(i);
     Serial.println(i);
     delay(1000);
   }
-  
+
   display.clear();
   delay(10);
   display.print("CO2-");
@@ -136,7 +136,7 @@ void loop()
     // At the end the sensor receives the order of calibration to 400ppm
 
     ///Esto se puede hacer mejor///
-    
+
     if (digitalRead(BUTTON) == LOW) {
       delay (2500);
       if (digitalRead(BUTTON) == LOW) {
@@ -183,5 +183,5 @@ void Calibration()
 
 void softwareReset( uint8_t prescaller) {
   wdt_enable( prescaller);
-  while(1) {}
+  while (1) {}
 }
