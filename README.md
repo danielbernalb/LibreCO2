@@ -19,6 +19,10 @@ Materials:
 
 ![4 digits display TM1687](https://github.com/danielbernalb/LibreCO2/blob/main/images/Display-TM1687.jpg)
 
+3. Jumper hembra - macho.
+
+![Jumper FM](https://github.com/danielbernalb/LibreCO2/blob/main/images/Jumper.jpg)
+
 3. Optional: buzzer.
 
 ![Big and small buzzer](https://github.com/danielbernalb/LibreCO2/blob/main/images/big-small-buzzer.jpg)
