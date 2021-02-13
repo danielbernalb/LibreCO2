@@ -12,7 +12,7 @@ Materials:
 1. Arduino UNO original or chinese version, the difference is the driver installation, both are very easy to find in any country and work well.
 
 ![Arduino original & clone](https://github.com/danielbernalb/LibreCO2/blob/main/images/arduino-uno-original-clone.jpg)
-
+       
    Original at right and clone at left
 
 2. 4 digits display TM1687.
@@ -23,11 +23,11 @@ Materials:
 
 ![Jumper FM](https://github.com/danielbernalb/LibreCO2/blob/main/images/Jumper.jpg)
 
-3. Optional: buzzer.
+4. Optional: buzzer.
 
 ![Big and small buzzer](https://github.com/danielbernalb/LibreCO2/blob/main/images/big-small-buzzer.jpg)
 
-4. Sensor, options:
+5. Sensor, options:
 
 	a. Sensirion SCD30, the most expensive (52 dollars) but in our test the best performance. Sensirion have distributors in USA and Europe. Example:
 	https://www.mouser.com/ProductDetail/Sensirion/SCD30/?qs=rrS6PyfT74fdywu4FxpYjQ%3D%3D
