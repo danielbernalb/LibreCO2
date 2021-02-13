@@ -44,7 +44,7 @@ Materials:
 	
 	Pros: aceptable performance (slow compared with Sensirion, medium reliable), low price (18 dollars from China)
 	
-	Cons: slow shipping with aliexpress standard shipping (20-one month), fake copies (you have to be careful, recommended only buy from official store)
+	Cons: slow shipping with aliexpress standard shipping (20-one month), fake copies (you have to be careful, recommended only buy from official store).
 
 	Only buy MH-Z19 from the Winsen Supplier in Aliexpress, the market is invaded with fake copies, more info in: https://youtu.be/5_QQe75-SZI or in spanish https://emariete.com/sensores-co2-mh-z19b-falsos/
 
