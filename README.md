@@ -116,7 +116,7 @@ RX Pin 2 of connector 5 pins ---> 10
 TX Pin 3 of connector 5 pins ---> 11 
 
 
-![MH-Z19B connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Sensirion%20MHZ19%20connection.jpg)
+![MH-Z19B connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20UNO%20MHZ19%20connection.jpg)
 
 
 ****************************
@@ -130,7 +130,7 @@ Connector pin 4 or 15 pin ---> 5V
 
 Connector pin 4 or 15 pin ---> 5V 
 
-![MH-Z14A connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Sensirion%20MHZ14%20connection.jpg)	
+![MH-Z14A connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20UNO%20MHZ14%20connection.jpg)	
 
 
 ****************************
@@ -144,7 +144,7 @@ R Pin 2 of connector 5 pins ---> 10
 
 T Pin 3 of connector 5 pins ---> 11 
 
-![Cubic CM1106](https://github.com/danielbernalb/LibreCO2/blob/main/images/Sensirion%20CM1106%20connection.jpg)
+![Cubic CM1106](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20UNO%20%20CM1106%20connection.jpg)
 
 ****************************
 **Program the Firmware (code in the Arduino)**
