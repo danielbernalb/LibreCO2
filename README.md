@@ -36,7 +36,7 @@ Materials:
 	
 	Pros: excellent performance (fast, reliable), fast shipping from USA or Europe.
 	
-	Cons: price (52 dollars).
+	Cons: price (52 dollars) requieres a level driver (BSS138 tupe) for secure connection with the Arduino. 
 
 	b. Winsen MH-Z14 or 19, one of the cheapest and most popular, good performance, some slow. Take care with fake clones!!!
 
