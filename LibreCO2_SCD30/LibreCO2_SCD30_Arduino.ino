@@ -15,7 +15,7 @@
   Por: Daniel Bernal
   Fecha: Feb 2, 2021
 
-  Conección de componentes:
+  Conexión de Hardware:
   Sensor SCD30 con pines soldados y conectados a SDA y SCL
   Board TM1637 conectada a los pines A2 y A0
   Chicharra conectada al pin 8
@@ -28,10 +28,10 @@
 #include "SparkFun_SCD30_Arduino_Library.h"
 #include <avr/wdt.h>
 
-const byte PIN_CLK = A2;   // define CLK pin (any digital pin)
-const byte PIN_DIO = A0;   // define DIO pin (any digital pin)
-const byte BUTTON = 12;   // define DIO pin (any digital pin)
-const byte BUZZER = 8;
+const byte PIN_CLK = 9;   // define CLK pin (any digital pin)
+const byte PIN_DIO = 8;   // define DIO pin (any digital pin)
+const byte BUTTON = 2;   // define DIO pin (any digital pin)
+const byte BUZZER = 11;
 unsigned int CO2 = 0;
 unsigned int ConnRetry = 0;
 
@@ -41,6 +41,8 @@ SCD30 airSensor;
 void setup()
 {
   pinMode(BUTTON, INPUT_PULLUP);
+  pinMode(4, OUTPUT);
+  digitalWrite(4, LOW);
   Serial.begin(115200);
   Serial.println("Start SCD30 lecture");
   Wire.begin();
