@@ -1,7 +1,7 @@
 # LibreCO2
 LibreCO2: Simple CO2 meter using Arduino UNO, display, buzzer and CO2 sensor (Sensirion SCD30, Winsen MH-Z14 or MHZ-19 and Cubic CM1106).
 
-  This is a very simple version of a low cost CO2 meter with the most common materials on the market: an Arduino UNO or Leonardo, a 4 digits TM1687 display, a common buzzer and the three most popular low cost real CO2 sensor: Sensirion SCD30, Winsen MH-Z14 or 16 and the Cubic CM1106. LibreCO2 use an Arduino UNO or NANO, that is very popular in schools and frequently used in the "technology class" and the majority of schools have many of them. The code is the simplest posible and the .hex file is published for the programming of the Arduino with Xloader and you don{t have to install Arduino software and compilate the code.
+  This is a very simple version of a low cost CO2 meter with the most common materials on the market: an Arduino UNO or Leonardo, a 4 digits TM1687 display, a common buzzer and the three most popular low cost real CO2 sensor: Sensirion SCD30, Winsen MH-Z14 or 16 and the Cubic CM1106. LibreCO2 uses an Arduino UNO or NANO, that is very popular in schools and frequently used in the "technology class" and the majority of schools have many of them. The code is the simplest possible and the .hex file is published for the programming of the Arduino with Xloader and you don{t have to install Arduino software and compile the code.
 
 All sensors used are NDIR that is the actual standard for real CO2 measurements:
 https://en.wikipedia.org/wiki/Carbon_dioxide_sensor
@@ -29,20 +29,20 @@ Materials:
 
 5. Sensor, options:
 
-	a. Sensirion SCD30, the most expensive (52 dollars) but in our test the best performance. Sensirion have distributors in USA and Europe. Example:
+	a. Sensirion SCD30, the most expensive (52 dollars) but in our test the best performance. Sensirion has distributors in the USA and Europe. Example:
 	https://www.mouser.com/ProductDetail/Sensirion/SCD30/?qs=rrS6PyfT74fdywu4FxpYjQ%3D%3D
 	
 	![SCD30 Sensirion](https://github.com/danielbernalb/LibreCO2/blob/main/images/Sensirion%20SCD30.jpg)
 	
-	Pros: excelent performance (fast, reliable), fast shipping from USA or Europe.
+	Pros: excellent performance (fast, reliable), fast shipping from USA or Europe.
 	
 	Cons: price (52 dollars).
 
-	b. Winsen MH-Z14 or 19, one of the chepears and most popular, good performance, some slow. Take care with fake clones!!!
+	b. Winsen MH-Z14 or 19, one of the cheapest and most popular, good performance, some slow. Take care with fake clones!!!
 
 	![Winsen MH-Z14a](https://github.com/danielbernalb/LibreCO2/blob/main/images/MH-Z14A.jpg)
 	
-	Pros: aceptable performance (slow compared with Sensirion, medium reliable), low price (18 dollars from China)
+	Pros: acceptable performance (slow compared with Sensirion, medium reliable), low price (18 dollars from China)
 	
 	Cons: slow shipping with aliexpress standard shipping (20-one month), fake copies (you have to be careful, recommended only buy from official store).
 
@@ -150,7 +150,7 @@ T Pin 3 of connector 5 pins ---> 7
 ****************************
 **Program the Firmware (code in the Arduino)**
 
-1. Connect the Arduino to your computer. If the driver is not automatly detected you have to identify if your Arduino is original or chinese clone:
+1. Connect the Arduino to your computer. If the driver is not automatically detected you have to identify if your Arduino is original or chinese clone:
 
 1.1. If the Arduino is original, install Arduino with drivers: https://www.arduino.cc/en/Guide/ArduinoUno
 
@@ -192,7 +192,7 @@ When the .hex file has been loaded into the Arduino the right screenshot will sh
 ****************************
 **Contact**
 
-Any doubr, bug, apport or comment please contact me at danielbernalb@gmail.com or twitter account @danielbernalb
+Any doubt, bug, apport or comment please contact me at danielbernalb@gmail.com or twitter account @danielbernalb
 
 
 
