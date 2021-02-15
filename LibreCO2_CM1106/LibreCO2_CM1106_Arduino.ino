@@ -22,12 +22,12 @@
   Boton o cable conectado a pin 12
 */
 
-const byte PIN_TX = A5;   // define CLK pin (any digital pin)
-const byte PIN_RX = A4;   // define DIO pin (any digital pin)
-const byte PIN_CLK = A2;   // define CLK pin (any digital pin)
-const byte PIN_DIO = A0;   // define DIO pin (any digital pin)
-const byte BUTTON = 12;   // define DIO pin (any digital pin)
-const byte BUZZER = 8;
+const byte PIN_TX = 6;   // define CLK pin (any digital pin)
+const byte PIN_RX = 7;   // define DIO pin (any digital pin)
+const byte PIN_CLK = 9;   // define CLK pin (any digital pin)
+const byte PIN_DIO = 8;   // define DIO pin (any digital pin)
+const byte BUTTON = 2;   // define DIO pin (any digital pin)
+const byte BUZZER = 11;
 unsigned int CO2 = 0;
 #define BAUDRATE 9600      // Device to CM1106 Serial baudrate (should not be changed)
 
@@ -41,6 +41,8 @@ SoftwareSerial co2CM(PIN_RX, PIN_TX);
 void setup()
 {
   pinMode(BUTTON, INPUT_PULLUP);
+  pinMode(4, OUTPUT);
+  digitalWrite(4, LOW);
   Serial.begin(115200);
   Serial.println("Start CM1106 lecture");
   display.begin();            // initializes the display
