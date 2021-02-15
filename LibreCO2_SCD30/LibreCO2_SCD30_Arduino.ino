@@ -25,19 +25,21 @@
 #include "SparkFun_SCD30_Arduino_Library.h"
 #include <avr/wdt.h>
 
-const byte PIN_CLK = A2;   // define CLK pin (any digital pin)
-const byte PIN_DIO = A0;   // define DIO pin (any digital pin)
-const byte BUTTON = 12;   // define DIO pin (any digital pin)
-const byte BUZZER = 8;
+const byte PIN_CLK = 9;   // define CLK pin (any digital pin)
+const byte PIN_DIO = 8;   // define DIO pin (any digital pin)
+const byte BUTTON = 2;   // define DIO pin (any digital pin)
+const byte BUZZER = 11;
 unsigned int CO2 = 0;
+unsigned int ConnRetry = 0;
 
 SevenSegmentExtended display(PIN_CLK, PIN_DIO);
 SCD30 airSensor;
 
 void setup()
 {
-  int ConnRetry = 0;
   pinMode(BUTTON, INPUT_PULLUP);
+  pinMode(4, OUTPUT);
+  digitalWrite(4, LOW);
   Serial.begin(115200);
   Serial.println("Start SCD30 lecture");
   Wire.begin();
@@ -47,15 +49,17 @@ void setup()
 
   // Turn off calibration and Sensor connection test
 
-  while ((airSensor.begin(Wire, false) == false) && (ConnRetry < 3))
+  while ((airSensor.begin(Wire, false) == false) && (ConnRetry < 5))
   {
     Serial.println("Air sensor not detected. Please check wiring... Try# " + String(ConnRetry));
+    display.clear();
+    delay(20);
     display.print("bad");
-    delay(5000);
+    delay(2500);
     ConnRetry++;
   }
-  if (ConnRetry == 3)
-    softwareReset( WDTO_60MS);
+  if (ConnRetry == 5)
+    softwareReset(WDTO_60MS);
 
   display.print("good");                   // display loop counter
   Serial.println("SCD30 read OK");
