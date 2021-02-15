@@ -19,7 +19,7 @@ Materials:
 
 ![4 digits display TM1687](https://github.com/danielbernalb/LibreCO2/blob/main/images/Display-TM1687.jpg)
 
-3. Jumper hembra - macho.
+3. Jumper female - male.
 
 ![Jumper FM](https://github.com/danielbernalb/LibreCO2/blob/main/images/Jumper.jpg)
 
