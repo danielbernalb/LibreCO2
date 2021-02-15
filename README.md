@@ -76,7 +76,7 @@ GND    ---> GND
 
 **Buzzer**
 
-"+"    ---> 13
+"+"    ---> 11
 
 other  ---> GND
 
@@ -96,12 +96,12 @@ VIN    ---> 5V
 
 GND    ---> GND
 
-TX/SCL ---> SCL
+TX/SCL ---> Driver 3V/5V ---> SCL
 
-RX/SDA ---> SDA
+RX/SDA ---> Driver 3V/5V ---> SDA
 
 
-![SCD30 connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Sensirion%20SCD30%20connection.jpg)
+![SCD30 connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20UNO%20SCD30%20connection_2.jpg)
 
 
 ****************************
@@ -111,9 +111,9 @@ VIN Pin 1 of connector 4 pins ---> 5V
 
 GND Pin 2 of connector 4 pins ---> GND
 
-RX Pin 2 of connector 5 pins ---> 10
+RX Pin 2 of connector 5 pins ---> 6
 
-TX Pin 3 of connector 5 pins ---> 11 
+TX Pin 3 of connector 5 pins ---> 7 
 
 
 ![MH-Z19B connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20UNO%20MHZ19%20connection.jpg)
@@ -122,13 +122,14 @@ TX Pin 3 of connector 5 pins ---> 11
 ****************************
 **Winsen MH-Z14A sensor**
 
-Connector pin 4 or 15 pin ---> 5V 
+Connector pin 2 or 19 pin ---> 6
 
-Connector pin 4 or 15 pin ---> 5V 
+Connector pin 3 or 18 pin ---> 7
 
-Connector pin 4 or 15 pin ---> 5V 
+Connector pin 4 or 17 pin ---> 5V
 
-Connector pin 4 or 15 pin ---> 5V 
+Connector pin 5 or 16 pin ---> GND 
+
 
 ![MH-Z14A connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20UNO%20MHZ14%20connection.jpg)	
 
@@ -140,9 +141,9 @@ V1 Pin 1 of connector 4 pins ---> 5V
 
 G Pin 2 of connector 4 pins ---> GND
 
-R Pin 2 of connector 5 pins ---> 10
+R Pin 2 of connector 5 pins ---> 6
 
-T Pin 3 of connector 5 pins ---> 11 
+T Pin 3 of connector 5 pins ---> 7 
 
 ![Cubic CM1106](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20UNO%20%20CM1106%20connection.jpg)
 
