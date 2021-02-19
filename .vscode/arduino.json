@@ -1,5 +1,6 @@
 {
     "programmer": "ArduinoISP",
     "port": "COM1",
-    "board": "arduino:avr:uno"
+    "board": "arduino:avr:uno",
+    "sketch": "LibreCO2_SCD30\\LibreCO2_SCD30_Arduino.ino"
 }
