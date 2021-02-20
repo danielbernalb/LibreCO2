@@ -33,7 +33,6 @@ unsigned int CO2 = 0;
 float co2Concentration;
 unsigned long tempU32;
 
-//static byte cmd[8] = {0};
 static byte response[8] = {0};
 
 unsigned char buffer[4];
@@ -59,13 +58,10 @@ void setup()
   co2SCD.begin(BAUDRATE);      // (Uno example) device to CM1106 serial start
   delay(1000);
 
-  // Connection test
-
   //0x61 0x06 0x00 0x36 0x00 0x00 0x60 0x64
   //Trigger continuous measurement with optional ambient pressure compensation
 
   static byte cmd[8] = {0x61, 0x06, 0x00, 0x36, 0x00, 0x00, 0x60, 0x64};
-  //response = {0};
   co2SCD.write(cmd, 8);
   co2SCD.readBytes(response, 8);
 
@@ -76,7 +72,6 @@ void setup()
   delay(1000);
 
   // 0x61 0x06 0x00 0x25 0x00 0x02 0x10 0x60
-
   //Set measurement interval 2 seconds
 
   static byte cmd2[8] = {0x61, 0x06, 0x00, 0x25, 0x00, 0x02, 0x10, 0x60};
@@ -89,7 +84,6 @@ void setup()
   Serial.print(response[4], HEX); Serial.print(" "); Serial.print(response[5], HEX); Serial.print(" "); Serial.print(response[6], HEX); Serial.print(" "); Serial.print(response[7], HEX); Serial.println();
 
   delay(1000);
-
 
   //Deactivate Automatic Self-Calibration
   //  0x61 0x06 0x00 0x3A 0x00 0x00 0xA0 0x67
@@ -116,34 +110,15 @@ void setup()
   Serial.println("Autocalibration");
   Serial.print(response[0], HEX); Serial.print(" "); Serial.print(response[1], HEX); Serial.print(" "); Serial.print(response[2], HEX); Serial.print(" "); Serial.print(response[3], HEX); Serial.print(" ");
   Serial.print(response[4], HEX); Serial.print(" "); Serial.print(response[5], HEX); Serial.print(" "); Serial.print(response[6], HEX); Serial.println();
-//  Serial.print(response[7], HEX);
-//  Serial.println();
-  
+
+  //  Serial.print(response[7], HEX);
+  //  Serial.println();
+
   Serial.print("Autocalibration set to: ");
   if (response[4] == 00) Serial.print(" OFF");
   else Serial.print(" ON");
   Serial.println();
   delay(1000);
-
-
-  /*
-    //0x61 0x03 0x00 0x20 0x00 0x01 0x8C 0x60
-    //Read firmware version
-
-    static byte cmd3[8] = {0x61, 0x03, 0x00, 0x20, 0x00, 0x01, 0x8C, 0x60};
-    static byte response3[7] = {0};
-    co2SCD.write(cmd3, 8);
-    co2SCD.readBytes(response3, 7);
-
-    Serial.println("Read Version");
-    Serial.println(response3[0], HEX);
-    Serial.println(response3[1], HEX);
-    Serial.println(response3[2], HEX);
-    Serial.println(response3[3], HEX);
-    Serial.println(response3[4], HEX);
-    Serial.println(response3[5], HEX);
-    Serial.println(response3[6], HEX);
-  */
 
   while (1) {
     delay(2000);
@@ -154,12 +129,7 @@ void setup()
     co2SCD.readBytes(response2, 17);
 
     Serial.println("Read Sensor");
-    Serial.print(response2[0], HEX);
-    Serial.print(" ");
-    Serial.print(response2[1], HEX);
-    Serial.print(" ");
-    Serial.print(response2[2], HEX);
-    Serial.print(" ");
+    Serial.print(response2[0], HEX); Serial.print(" "); Serial.print(response2[1], HEX); Serial.print(" "); Serial.print(response2[2], HEX); Serial.print(" ");
     Serial.print(response2[3], HEX); //CO2 MMSB
     Serial.print(" ");
     Serial.print(response2[4], HEX); //CO2 MLSB
@@ -168,25 +138,9 @@ void setup()
     Serial.print(" ");
     Serial.print(response2[6], HEX); //CO2 LLSB
     Serial.print(" ");
-    Serial.print(response2[7], HEX);
-    Serial.print(" ");
-    Serial.print(response2[8], HEX);
-    Serial.print(" ");
-    Serial.print(response2[9], HEX);
-    Serial.print(" ");
-    Serial.print(response2[10], HEX);
-    Serial.print(" ");
-    Serial.print(response2[11], HEX);
-    Serial.print(" ");
-    Serial.print(response2[12], HEX);
-    Serial.print(" ");
-    Serial.print(response2[13], HEX);
-    Serial.print(" ");
-    Serial.print(response2[14], HEX);
-    Serial.print(" ");
-    Serial.print(response2[15], HEX);
-    Serial.print(" ");
-    Serial.println(response2[16], HEX);
+    Serial.print(response2[7], HEX); Serial.print(" "); Serial.print(response2[8], HEX); Serial.print(" "); Serial.print(response2[9], HEX); Serial.print(" ");
+    Serial.print(response2[10], HEX); Serial.print(" "); Serial.print(response2[11], HEX); Serial.print(" "); Serial.print(response2[12], HEX); Serial.print(" ");
+    Serial.print(response2[13], HEX); Serial.print(" "); Serial.print(response2[14], HEX); Serial.print(" "); Serial.print(response2[15], HEX); Serial.print(" "); Serial.println(response2[16], HEX);
 
     tempU32 = 0;
     tempU32 = (((response2[3]) << 24) |
@@ -200,26 +154,7 @@ void setup()
 
     Serial.println(co2Concentration);
 
-
-    tempU32 = 0;
-    buffer[0] = 0x43; // MMSB CO2
-    buffer[1] = 0xDB; // MLSB CO2
-    buffer[2] = 0x8C; // LMSB CO2
-    buffer[3] = 0x2E; // LLSB CO2
-    // cast 4 bytes to one unsigned 32 bit integer
-    tempU32 = (((buffer[0]) << 24) |
-               ((buffer[1]) << 16) |
-               ((buffer[2]) << 8) |
-               (buffer[3]));
-
-    // cast unsigned 32 bit integer to 32 bit float
-    co2Concentration = (*(float*)&tempU32); // co2Concentration = 439.09f
-
-    Serial.println("Version2");
-    Serial.println(tempU32);
-    Serial.println(co2Concentration);
-
-}
+  }
 
 
   if (co2SCD30() == 0) {
