@@ -148,10 +148,10 @@ void setup()
                ((response2[5]) << 8) |
                (response2[6]));
 
-    Serial.println("Version1");
+    Serial.print("Conversion ");
     Serial.println(tempU32);
     co2Concentration = (*(float*)&tempU32);
-
+    Serial.print("Value CO2: ");
     Serial.println(co2Concentration);
 
   }
