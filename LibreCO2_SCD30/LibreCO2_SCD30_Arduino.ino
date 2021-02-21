@@ -28,7 +28,11 @@ const byte PIN_CLK = 9;   // define CLK pin (any digital pin)
 const byte PIN_DIO = 8;   // define DIO pin (any digital pin)
 const byte BUTTON = 2;   // define DIO pin (any digital pin)
 const byte BUZZER = 11;
-unsigned int CO2 = 0;
+
+union BYTE_FLOAT_CO2 {
+  byte uByte[4];
+  float uCO2;
+}u;
 
 float co2Concentration;
 unsigned long tempU32;
@@ -142,18 +146,13 @@ void setup()
     Serial.print(response2[10], HEX); Serial.print(" "); Serial.print(response2[11], HEX); Serial.print(" "); Serial.print(response2[12], HEX); Serial.print(" ");
     Serial.print(response2[13], HEX); Serial.print(" "); Serial.print(response2[14], HEX); Serial.print(" "); Serial.print(response2[15], HEX); Serial.print(" "); Serial.println(response2[16], HEX);
 
-    tempU32 = 0;
-    tempU32 = (((response2[3]) << 24) |
-               ((response2[4]) << 16) |
-               ((response2[5]) << 8) |
-               (response2[6]));
+    u.uByte[0]=response2[6];
+    u.uByte[1]=response2[5];
+    u.uByte[2]=response2[4];
+    u.uByte[3]=response2[3];
 
-    Serial.print("Conversion ");
-    Serial.println(tempU32);
-    co2Concentration = (*(float*)&tempU32);
     Serial.print("Value CO2: ");
-    Serial.println(co2Concentration);
-
+    Serial.println(u.uCO2,3);  //3 decimales
   }
 
 
