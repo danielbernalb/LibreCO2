@@ -163,7 +163,7 @@ T Pin 3 of connector 5 pins ---> 7
 
 2. You have two options:
 
-2.1. If you don{t want to install Arduino, only program the code, use Xloader:
+2.1. The easy way if you don't want to install Arduino, load and compile the code, only you need to programming, use Xloader:
 
 How to use Xloader to load a new version of grbl into the Arduino/X-controller.
 
