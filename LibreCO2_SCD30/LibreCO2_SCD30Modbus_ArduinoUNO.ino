@@ -22,12 +22,14 @@
   Boton o cable conectado a pin 4
 */
 
-const byte PIN_TX = 6;   // define CLK pin (any digital pin)
-const byte PIN_RX = 7;   // define DIO pin (any digital pin)
+const byte PIN_TX = 6;    // define CLK pin (any digital pin)
+const byte PIN_RX = 7;    // define DIO pin (any digital pin)
 const byte PIN_CLK = 9;   // define CLK pin (any digital pin)
 const byte PIN_DIO = 8;   // define DIO pin (any digital pin)
-const byte BUTTON = 2;   // define DIO pin (any digital pin)
+const byte BUTTON = 2;    // define DIO pin (any digital pin)
 const byte BUZZER = 11;
+const int MB_PKT_8 = 8;   //MODBUS Packet Sizes
+const int MB_PKT_17 = 17;
 
 unsigned int CO2 = 0;
 unsigned int ConnRetry = 0;
@@ -39,10 +41,10 @@ union BYTE_FLOAT_CO2 {
 
 float co2Concentration;
 
-static byte response[8] = {0};
-static byte responseval[17] = {0};
+static byte response[MB_PKT_8] = {0};
+static byte responseval[MB_PKT_17] = {0};
 unsigned char buffer[4];
-byte cmd [8] = {0x61, 0x06, 0x00, 0x36, 0x00, 0x00, 0x60, 0x64};
+byte cmd [MB_PKT_8] = {0x61, 0x06, 0x00, 0x36, 0x00, 0x00, 0x60, 0x64};
 
 #define BAUDRATE 19200      // Device to SCD30 Serial baudrate (should not be changed)
 
@@ -69,12 +71,12 @@ void setup()
   //0x61 0x06 0x00 0x36 0x00 0x00 0x60 0x64
   //Trigger continuous measurement with no ambient pressure compensation
 
-  co2SCD.write(cmd, 8);
-  co2SCD.readBytes(response, 8);
+  co2SCD.write(cmd, MB_PKT_8);
+  co2SCD.readBytes(response, MB_PKT_8);
 
   Serial.println("Start continious measurement");
-  ShowArray();
-  ReviewQue();
+  Array_print_hex(response,MB_PKT_8);
+  CheckResponse(cmd, response, MB_PKT_8);
   delay(1000);
 
   //0x61 0x06 0x00 0x25 0x00 0x02 0x10 0x60
@@ -83,12 +85,12 @@ void setup()
   cmd [5] = 0x02;
   cmd [6] = 0x10;
   cmd [7] = 0x60;
-  co2SCD.write(cmd, 8);
-  co2SCD.readBytes(response, 8);
+  co2SCD.write(cmd, MB_PKT_8);
+  co2SCD.readBytes(response, MB_PKT_8);
 
   Serial.println("Set measurement interval 2 seconds ");
-  ShowArray();
-  ReviewQue();
+  Array_print_hex(response,MB_PKT_8);
+  CheckResponse(cmd, response, MB_PKT_8);
   delay(1000);
 
   //Deactivate Automatic Self-Calibration
@@ -98,11 +100,11 @@ void setup()
   cmd [6] = 0xA0;
   cmd [7] = 0x67;
 
-  co2SCD.write(cmd, 8);
-  co2SCD.readBytes(response, 8);
+  co2SCD.write(cmd, MB_PKT_8);
+  co2SCD.readBytes(response, MB_PKT_8);
 
   Serial.println("Deactivate Automatic Self-Calibration ");
-  ShowArray();
+  Array_print_hex(response,MB_PKT_8);
 
   //Auto calibration set to
   //0x61 0x03 0x00 0x3A 0x00 0x01 0xAD 0xA7
@@ -111,11 +113,11 @@ void setup()
   cmd [6] = 0xAD;
   cmd [7] = 0xA7;
 
-  co2SCD.write(cmd, 8);
+  co2SCD.write(cmd, MB_PKT_8);
   co2SCD.readBytes(response, 7);
 
   Serial.println("Autocalibration");
-  ShowArray();
+  Array_print_hex(response,MB_PKT_8);
 
   Serial.print("Autocalibration set to: ");
   if (response[4] == 00) {
@@ -229,11 +231,11 @@ void loop()
 
 int co2SCD30() {
 
-  co2SCD.write(cmd, 8);
-  co2SCD.readBytes(responseval, 17);
+  co2SCD.write(cmd, MB_PKT_8);
+  co2SCD.readBytes(responseval, MB_PKT_17);
 
   Serial.println("Read Sensor");
-  ShowValue();
+  Array_print_hex(responseval,MB_PKT_17);
   u.uByte[0] = responseval [6];
   u.uByte[1] = responseval [5];
   u.uByte[2] = responseval [4];
@@ -269,12 +271,12 @@ void Calibration()
   cmd [6] = 0x51;
   cmd [7] = 0xB9;
 
-  co2SCD.write(cmd, 8);
-  co2SCD.readBytes(response, 8);
+  co2SCD.write(cmd, MB_PKT_8);
+  co2SCD.readBytes(response, MB_PKT_8);
 
   Serial.print("Resetting forced calibration factor to 400: ");
-  ShowArray();
-  ReviewQue();
+  Array_print_hex(response,MB_PKT_8);
+  CheckResponse(cmd, response, MB_PKT_8);
   delay(5000);
 
   cmd [1] = 0x03;
@@ -285,41 +287,34 @@ void Calibration()
   cmd [7] = 0x60;
 }
 
-void ReviewQue() {
-  if (response[0] == cmd[0] && response[1] == cmd[1] && response[2] == cmd[2] && response[3] == cmd[3] && response[4] == cmd[4] && response[5] == cmd[5] && response[6] == cmd[6] && response[7] == cmd[7]) {
-    Serial.println("done");
-    display.clear();
-    display.print("done");
-  }
-  else {
-    Serial.println(" failed");
-    display.clear();
-    display.print("fail");
-  }
-}
-
-void ShowArray() {
-  Serial.print(response[0], HEX); Serial.print(" "); Serial.print(response[1], HEX); Serial.print(" "); Serial.print(response[2], HEX); Serial.print(" "); Serial.print(response[3], HEX); Serial.print(" ");
-  Serial.print(response[4], HEX); Serial.print(" "); Serial.print(response[5], HEX); Serial.print(" "); Serial.print(response[6], HEX); Serial.print(" "); Serial.print(response[7], HEX);  Serial.println();
-}
-
-void ShowValue() {
-  Serial.print(responseval[0], HEX); Serial.print(" "); Serial.print(responseval[1], HEX); Serial.print(" "); Serial.print(responseval[2], HEX); Serial.print(" ");
-  Serial.print(responseval[3], HEX); //CO2 MMSB
-  Serial.print(" ");
-  Serial.print(responseval[4], HEX); //CO2 MLSB
-  Serial.print(" ");
-  Serial.print(responseval[5], HEX); //CO2 LMSB
-  Serial.print(" ");
-  Serial.print(responseval[6], HEX); //CO2 LLSB
-  Serial.print(" ");
-  Serial.print(responseval[7], HEX); Serial.print(" "); Serial.print(responseval[8], HEX); Serial.print(" "); Serial.print(responseval[9], HEX); Serial.print(" ");
-  Serial.print(responseval[10], HEX); Serial.print(" "); Serial.print(responseval[11], HEX); Serial.print(" "); Serial.print(responseval[12], HEX); Serial.print(" ");
-  Serial.print(responseval[13], HEX); Serial.print(" "); Serial.print(responseval[14], HEX); Serial.print(" "); Serial.print(responseval[15], HEX); Serial.print(" "); Serial.println(responseval[16], HEX);
-}
-
 void softwareReset( uint8_t prescaller) {
   Serial.println("RESET...");
   wdt_enable( prescaller);
   while (1) {}
+}
+
+void CheckResponse(uint8_t *a, uint8_t *b, uint8_t len_array_cmp)
+{
+     for (int n=0;n<len_array_cmp;n++) 
+     {
+       if (a[n]!=b[n]) 
+       {
+        Serial.println("failed");
+        display.clear();
+        display.print("fail");
+       } else {
+        Serial.println("done");
+        display.clear();
+        display.print("done");
+     }
+} 
+
+void Array_print_hex( uint8_t array_to_print[], int array_to_print_size)
+{
+  for  (int n=0;n<array_to_print_size;n++) 
+        {
+        Serial.print(array_to_print[n], HEX);
+        Serial.print(" ");
+        }
+   Serial.println(" ");
 }
