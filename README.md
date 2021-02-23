@@ -92,7 +92,7 @@ Anyone ---> 4
 ****************************
 **Sensirion SCD30 sensor**
 
-VIN    ---> 5V 
+VIN    ---> 3.3V 
 
 GND    ---> GND
 
@@ -100,8 +100,10 @@ TX/SCL ---> Driver 3V/5V ---> SCL
 
 RX/SDA ---> Driver 3V/5V ---> SDA
 
+SEL    ---> 3.3V
 
-![SCD30 connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20UNO%20SCD30%20connection_2.jpg)
+
+![SCD30 connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20UNO%20SCD30%20connection%20Modbus.jpg)
 
 
 ****************************
