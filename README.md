@@ -57,6 +57,9 @@ Materials:
 	https://www.aliexpress.com/item/4001082699057.html
 	
 	![Cubic CM1106](https://github.com/danielbernalb/LibreCO2/blob/main/images/Cubic%20CM1106.jpg)
+	
+
+****************************
 
 
 **Connections for all sensors:**
@@ -96,9 +99,9 @@ VIN    ---> 3.3V
 
 GND    ---> GND
 
-TX/SCL ---> Driver 3V/5V ---> SCL
+TX/SCL ---> 7
 
-RX/SDA ---> Driver 3V/5V ---> SDA
+RX/SDA ---> 6
 
 SEL    ---> 3.3V
 
