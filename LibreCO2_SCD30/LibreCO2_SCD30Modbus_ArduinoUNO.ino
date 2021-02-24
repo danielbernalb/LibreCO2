@@ -214,6 +214,7 @@ void loop()
         for (int i = 300; i > -1; i--) { // loop from 0 to 300
           display.printNumber(i);
           Serial.print(i);
+          Serial.print(" ");
           CO2 = co2SCD30();
           Serial.print(" CO2(ppm): ");
           Serial.println(CO2);
@@ -273,16 +274,13 @@ void Calibration()
   uint16_t crc_cmd = crcx::crc16(cmd, 6);
   Serial.println("cmd_crc16 = 0x");
   Serial.println(crc_cmd, HEX);
-  cmd [6] = highByte(crc_cmd);
-  cmd [7] = lowByte(crc_cmd); 
+  cmd [7] = highByte(crc_cmd);
+  cmd [6] = lowByte(crc_cmd); 
   
-  Serial.print("cmd_crc16_lowByte = 0x");
-  Serial.println(cmd [7], HEX);
   Serial.print("cmd_crc16_highByte = 0x");
+  Serial.println(cmd [7], HEX);
+  Serial.print("cmd_crc16_lowByte = 0x");
   Serial.println(cmd [6], HEX);
-  
-// cmd [6] = 0x51;
-// cmd [7] = 0xB9;
 
   co2SCD.write(cmd, MB_PKT_8);
   co2SCD.readBytes(response, MB_PKT_8);
