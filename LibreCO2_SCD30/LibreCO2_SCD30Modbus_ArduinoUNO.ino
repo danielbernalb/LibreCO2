@@ -21,6 +21,7 @@
   Chicharra conectada al pin 11
   Boton o cable conectado a pin 4
 */
+#include <CRCx.h>         //https://github.com/hideakitai/CRCx, install it from Library Manager as CRCx
 
 const byte PIN_TX = 6;    // define CLK pin (any digital pin)
 const byte PIN_RX = 7;    // define DIO pin (any digital pin)
@@ -268,8 +269,20 @@ void Calibration()
   cmd [3] = 0x39;
   cmd [4] = 0x01;
   cmd [5] = 0x90;
-  cmd [6] = 0x51;
-  cmd [7] = 0xB9;
+  
+  uint16_t crc_cmd = crcx::crc16(cmd, 6);
+  Serial.println("cmd_crc16 = 0x");
+  Serial.println(crc_cmd, HEX);
+  cmd [6] = highByte(crc_cmd);
+  cmd [7] = lowByte(crc_cmd); 
+  
+  Serial.print("cmd_crc16_lowByte = 0x");
+  Serial.println(cmd [7], HEX);
+  Serial.print("cmd_crc16_highByte = 0x");
+  Serial.println(cmd [6], HEX);
+  
+// cmd [6] = 0x51;
+// cmd [7] = 0xB9;
 
   co2SCD.write(cmd, MB_PKT_8);
   co2SCD.readBytes(response, MB_PKT_8);
@@ -295,19 +308,26 @@ void softwareReset( uint8_t prescaller) {
 
 void CheckResponse(uint8_t *a, uint8_t *b, uint8_t len_array_cmp)
 {
-     for (int n=0;n<len_array_cmp;n++) 
-     {
-       if (a[n]!=b[n]) 
-       {
-        Serial.println("failed");
-        display.clear();
-        display.print("fail");
-       } else {
+  bool check_match = false;
+     for (int n=0;n<len_array_cmp;n++) {
+       if (a[n]!=b[n]) {
+        check_match = false;
+        break;
+       } 
+       else check_match = true;
+     }
+      
+     if (check_match) {
         Serial.println("done");
         display.clear();
-        display.print("done");
+        display.print("done");   
+     } else {
+        Serial.println("failed");
+        display.clear();
+        display.print("fail");  
      }
 } 
+  
 
 void Array_print_hex( uint8_t array_to_print[], int array_to_print_size)
 {
