@@ -21,7 +21,11 @@
   Chicharra conectada al pin 11
   Boton o cable conectado a pin 4
 */
-#include <CRCx.h>         //https://github.com/hideakitai/CRCx, install it from Library Manager as CRCx
+#include <CRCx.h>                         //https://github.com/hideakitai/CRCx, install it from Library Manager as CRCx
+#include <SoftwareSerial.h>
+#include "SevenSegmentTM1637.h"
+#include "SevenSegmentExtended.h"
+#include <avr/wdt.h>
 
 const byte PIN_TX = 6;    // define CLK pin (any digital pin)
 const byte PIN_RX = 7;    // define DIO pin (any digital pin)
@@ -34,28 +38,23 @@ const int MB_PKT_17 = 17;
 
 unsigned int CO2 = 0;
 unsigned int ConnRetry = 0;
-
 union BYTE_FLOAT_CO2 {
   byte uByte[4];
   float uCO2;
 } u;
 
-float co2Concentration;
-
 static byte response[MB_PKT_8] = {0};
 static byte responseval[MB_PKT_17] = {0};
-unsigned char buffer[4];
 byte cmd [MB_PKT_8] = {0x61, 0x06, 0x00, 0x36, 0x00, 0x00, 0x60, 0x64};
+
+unsigned long LongPress_ms = 5000; // 5s button timeout
+unsigned long StartPress_ms = 0;
+bool isLongPress = false;
 
 #define BAUDRATE 19200      // Device to SCD30 Serial baudrate (should not be changed)
 
-#include <SoftwareSerial.h>
-#include "SevenSegmentTM1637.h"
-#include "SevenSegmentExtended.h"
-#include <avr/wdt.h>
 SevenSegmentExtended display(PIN_CLK, PIN_DIO);
 SoftwareSerial co2SCD(PIN_RX, PIN_TX);
-
 
 void setup()
 {
@@ -158,7 +157,6 @@ void setup()
   display.clear();
   display.print("HEAT");
   Serial.print("Preheat: ");
-  delay (3000);
   for (int i = 30; i > -1; i--) { // Preheat from 0 to 30
     display.printNumber(i);
     Serial.println(i);
@@ -195,34 +193,11 @@ void loop()
   // Open and push the button more than 5 seconds
   // Close the box and the sensor enter to the calibration process
   // At the end the sensor receives the order of calibration to 400ppm
+  
+check_calmode_active();
+Serial.println("Waiting for new data");
+delay(2000);
 
-  if (digitalRead(BUTTON) == LOW) {
-    delay (2500);
-    if (digitalRead(BUTTON) == LOW) {
-      delay (2500);
-      if (digitalRead(BUTTON) == LOW) {
-        Serial.println("Start calibration process: 300 seconds of 400 ppm stable");
-        display.clear();
-        display.print("CAL-");
-        delay(5000);
-        for (int i = 300; i > -1; i--) { // loop from 0 to 300
-          display.printNumber(i);
-          Serial.print(i);
-          Serial.print(" ");
-          CO2 = co2SCD30();
-          Serial.print("CO2(ppm): ");
-          Serial.println(CO2);
-          delay(1000);
-        }
-        Calibration();
-      }
-    }
-  }
-
-  else {
-    Serial.println("Waiting for new data");
-    delay(2000);
-  }
 }
 
 int co2SCD30() {
@@ -239,7 +214,6 @@ int co2SCD30() {
   return (u.uCO2);
 
 }
-
 
 // Beep 900Hhz
 void Beep()
@@ -314,4 +288,36 @@ void CheckResponse(uint8_t *a, uint8_t *b, uint8_t len_array_cmp)
         display.clear();
         display.print("fail");  
      }
+}
+
+void check_calmode_active() {
+unsigned long currentTime_ms = millis();
+
+  if (digitalRead(BUTTON) == LOW) {
+   if (isLongPress) {
+      if (currentTime_ms > (StartPress_ms + LongPress_ms)) {
+        Serial.println("Start calibration process: 300 seconds of 400 ppm stable");
+        display.clear();
+        display.print("CAL-");
+        delay(100);
+          for (int i = 300; i > -1; i--) { // loop from 0 to 300
+            display.printNumber(i);
+            Serial.print(i);
+            Serial.print(" ");
+            CO2 = co2SCD30();
+            Serial.print("CO2(ppm): ");
+            Serial.println(CO2);
+            delay(1000);
+          }
+        Calibration();
+        isLongPress = false;
+      }
+   } else {
+      StartPress_ms=millis();
+      isLongPress = true;
+      Serial.println("Button has been pressed, hold 5s more to start calibration");
+    }
+  } else {
+    isLongPress = false;
+    }
 }
