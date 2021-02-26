@@ -155,12 +155,13 @@ void setup()
 
   // Preheat routine: min 30 seconds for SCD30
   display.clear();
-  display.print("HEAT");
   Serial.print("Preheat: ");
   for (int i = 30; i > -1; i--) { // Preheat from 0 to 30
+    display.print("HEAT");
+    delay(500);
     display.printNumber(i);
     Serial.println(i);
-    delay(1000);
+    delay(500);
   }
   display.clear();
   display.print("CO2-");
@@ -237,16 +238,6 @@ void Calibration()
   cmd [5] = 0x90;
   
   uint16_t crc_cmd = crcx::crc16(cmd, 6);
-  Serial.println("cmd_crc16 = 0x");
-  Serial.println(crc_cmd, HEX);
-  cmd [7] = highByte(crc_cmd);
-  cmd [6] = lowByte(crc_cmd); 
-  
-  Serial.print("cmd_crc16_highByte = 0x");
-  Serial.println(cmd [7], HEX);
-  Serial.print("cmd_crc16_lowByte = 0x");
-  Serial.println(cmd [6], HEX);
-
   co2SCD.write(cmd, MB_PKT_8);
   co2SCD.readBytes(response, MB_PKT_8);
 
@@ -298,15 +289,16 @@ unsigned long currentTime_ms = millis();
       if (currentTime_ms > (StartPress_ms + LongPress_ms)) {
         Serial.println("Start calibration process: 300 seconds of 400 ppm stable");
         display.clear();
-        display.print("CAL-");
         delay(100);
-          for (int i = 300; i > -1; i--) { // loop from 0 to 300
-            display.printNumber(i);
+          for (int i = 150; i == 0; i--) { // loop from 0 to 150
+            display.print("CAL-");
+            delay(1000);
             Serial.print(i);
             Serial.print(" ");
             CO2 = co2SCD30();
             Serial.print("CO2(ppm): ");
             Serial.println(CO2);
+            if ((x % 2) !=0)  display.printNumber(i);
             delay(1000);
           }
         Calibration();
@@ -320,4 +312,16 @@ unsigned long currentTime_ms = millis();
   } else {
     isLongPress = false;
     }
+}
+
+void crc_print() {
+  Serial.println("cmd_crc16 = 0x");
+  Serial.println(crc_cmd, HEX);
+  cmd [7] = highByte(crc_cmd);
+  cmd [6] = lowByte(crc_cmd); 
+  
+  Serial.print("cmd_crc16_highByte = 0x");
+  Serial.println(cmd [7], HEX);
+  Serial.print("cmd_crc16_lowByte = 0x");
+  Serial.println(cmd [6], HEX);
 }
