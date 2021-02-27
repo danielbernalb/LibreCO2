@@ -39,6 +39,8 @@ const int MB_PKT_17 = 17;
 
 unsigned int CO2 = 0;
 unsigned int ConnRetry = 0;
+uint16_t crc_cmd;
+
 union BYTE_FLOAT_CO2
 {
   byte uByte[4];
@@ -47,7 +49,13 @@ union BYTE_FLOAT_CO2
 
 static byte response[MB_PKT_8] = {0};
 static byte responseval[MB_PKT_17] = {0};
-byte cmd[MB_PKT_8] = {0x61, 0x06, 0x00, 0x36, 0x00, 0x00, 0x60, 0x64};
+const byte cmd1[MB_PKT_8] = {0x61, 0x06, 0x00, 0x36, 0x00, 0x00, 0x60, 0x64};     //Trigger continuous measurement with no ambient pressure compensation
+const byte cmd2[MB_PKT_8] = {0x61, 0x06, 0x00, 0x25, 0x00, 0x02, 0x10, 0x60};     //Set measurement interval 2 seconds
+const byte cmd3[MB_PKT_8] = {0x61, 0x06, 0x00, 0x3A, 0x00, 0x00, 0xA0, 0x67};     //Deactivate Automatic Self-Calibration
+const byte cmd4[MB_PKT_8] = {0x61, 0x03, 0x00, 0x3A, 0x00, 0x01, 0xAD, 0xA7};     //Request Auto calibration status
+const byte cmdRead[MB_PKT_8] = {0x61, 0x03, 0x00, 0x28, 0x00, 0x06, 0x4C, 0x60};  //Read CO2
+const byte cmdCal[MB_PKT_8] = {0x61, 0x06, 0x00, 0x39, 0x01, 0x90, 0x51, 0x9B};  //Calibrate to 400pm
+
 
 unsigned long LongPress_ms = 5000; // 5s button timeout
 unsigned long StartPress_ms = 0;
@@ -70,49 +78,31 @@ void setup()
   co2SCD.begin(BAUDRATE);    // (Uno example) device to SCD30 serial start
   delay(1000);
 
-  //0x61 0x06 0x00 0x36 0x00 0x00 0x60 0x64
   //Trigger continuous measurement with no ambient pressure compensation
 
-  co2SCD.write(cmd, MB_PKT_8);
+  co2SCD.write(cmd1, MB_PKT_8);
   co2SCD.readBytes(response, MB_PKT_8);
 
   Serial.println("Start continious measurement");
-  CheckResponse(cmd, response, MB_PKT_8);
+  CheckResponse(cmd1, response, MB_PKT_8);
   delay(1000);
 
-  //0x61 0x06 0x00 0x25 0x00 0x02 0x10 0x60
   //Set measurement interval 2 seconds
-  cmd[3] = 0x25;
-  cmd[5] = 0x02;
-  cmd[6] = 0x10;
-  cmd[7] = 0x60;
-  co2SCD.write(cmd, MB_PKT_8);
+  co2SCD.write(cmd2, MB_PKT_8);
   co2SCD.readBytes(response, MB_PKT_8);
 
   Serial.println("Set measurement interval 2 seconds ");
-  CheckResponse(cmd, response, MB_PKT_8);
+  CheckResponse(cmd2, response, MB_PKT_8);
   delay(1000);
 
   //Deactivate Automatic Self-Calibration
-  //  0x61 0x06 0x00 0x3A 0x00 0x00 0xA0 0x67
-  cmd[3] = 0x3A;
-  cmd[5] = 0x00;
-  cmd[6] = 0xA0;
-  cmd[7] = 0x67;
-
-  co2SCD.write(cmd, MB_PKT_8);
+  co2SCD.write(cmd3, MB_PKT_8);
   co2SCD.readBytes(response, MB_PKT_8);
 
   Serial.println("Deactivate Automatic Self-Calibration ");
 
-  //Auto calibration set to
-  //0x61 0x03 0x00 0x3A 0x00 0x01 0xAD 0xA7
-  cmd[1] = 0x03;
-  cmd[5] = 0x01;
-  cmd[6] = 0xAD;
-  cmd[7] = 0xA7;
-
-  co2SCD.write(cmd, MB_PKT_8);
+  //Request Auto calibration status
+  co2SCD.write(cmd4, MB_PKT_8);
   co2SCD.readBytes(response, 7);
 
   Serial.print("Autocalibration set to: ");
@@ -131,11 +121,6 @@ void setup()
   }
 
   Serial.println();
-  //{0x61, 0x03, 0x00, 0x28, 0x00, 0x06, 0x4C, 0x60}
-  cmd[3] = 0x28;
-  cmd[5] = 0x06;
-  cmd[6] = 0x4C;
-  cmd[7] = 0x60;
   delay(1000);
 
   while (co2SCD30() == 0 && (ConnRetry < 5))
@@ -214,17 +199,28 @@ void loop()
 // CO2 lecture
 int co2SCD30()
 {
-
-  co2SCD.write(cmd, MB_PKT_8);
+  co2SCD.write(cmdRead, MB_PKT_8);
   co2SCD.readBytes(responseval, MB_PKT_17);
 
-  Serial.println("Read Sensor");
-  u.uByte[0] = responseval[6];
-  u.uByte[1] = responseval[5];
-  u.uByte[2] = responseval[4];
-  u.uByte[3] = responseval[3];
+  Serial.print("Read Sensor: ");
 
-  return (u.uCO2);
+  // CRC Routine
+  crc_cmd = crcx::crc16(responseval, 15);
+  if (responseval[15] == lowByte(crc_cmd) && responseval[16] == highByte(crc_cmd))
+  {
+    Serial.println("OK");
+    u.uByte[0] = responseval[6];
+    u.uByte[1] = responseval[5];
+    u.uByte[2] = responseval[4];
+    u.uByte[3] = responseval[3];
+    return (u.uCO2);
+  }
+  else
+  {
+    Serial.println("FAIL");
+    display.clear();
+    display.print("fail");
+  }
 }
 
 // Beep 900Hhz
@@ -310,49 +306,18 @@ void check_calmode_active()
   }
 }
 
-// CRC Routine
-void crc_print()
-{
-  uint16_t crc_cmd = crcx::crc16(cmd, 6);
-  Serial.println("cmd_crc16 = 0x");
-  Serial.println(crc_cmd, HEX);
-  cmd[7] = highByte(crc_cmd);
-  cmd[6] = lowByte(crc_cmd);
-
-  Serial.print("cmd_crc16_highByte = 0x");
-  Serial.println(cmd[7], HEX);
-  Serial.print("cmd_crc16_lowByte = 0x");
-  Serial.println(cmd[6], HEX);
-}
-
 // Calibration routine
 void Calibration()
 {
   delay(100);
 
   //Calibration set to 400ppm
-  //0x61 0x06 0x00 0x39 0x01 0x90 0x51 0xB9
-
-  cmd[1] = 0x06;
-  cmd[3] = 0x39;
-  cmd[4] = 0x01;
-  cmd[5] = 0x90;
-  cmd[6] = 0x51;
-  cmd[7] = 0x9B;
-
-  co2SCD.write(cmd, MB_PKT_8);
+  co2SCD.write(cmdCal, MB_PKT_8);
   co2SCD.readBytes(response, MB_PKT_8);
-
+  
   Serial.print("Resetting forced calibration factor to 400: ");
-  CheckResponse(cmd, response, MB_PKT_8);
+  CheckResponse(cmdCal, response, MB_PKT_8);
   delay(4000);
-
-  cmd[1] = 0x03;
-  cmd[3] = 0x28;
-  cmd[4] = 0x00;
-  cmd[5] = 0x06;
-  cmd[6] = 0x4C;
-  cmd[7] = 0x60;
 }
 
 //Software RESET
