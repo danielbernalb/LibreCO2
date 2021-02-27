@@ -21,6 +21,7 @@
   Chicharra conectada al pin 11
   Boton o cable conectado a pin 4
 */
+
 #include <CRCx.h> //https://github.com/hideakitai/CRCx, install it from Library Manager as CRCx
 #include <SoftwareSerial.h>
 #include "SevenSegmentTM1637.h"
