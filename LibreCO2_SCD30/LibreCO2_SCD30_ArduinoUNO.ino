@@ -21,37 +21,38 @@
   Chicharra conectada al pin 11
   Boton o cable conectado a pin 4
 */
-#include <CRCx.h>                         //https://github.com/hideakitai/CRCx, install it from Library Manager as CRCx
+#include <CRCx.h> //https://github.com/hideakitai/CRCx, install it from Library Manager as CRCx
 #include <SoftwareSerial.h>
 #include "SevenSegmentTM1637.h"
 #include "SevenSegmentExtended.h"
 #include <avr/wdt.h>
 
-const byte PIN_TX = 6;    // define CLK pin (any digital pin)
-const byte PIN_RX = 7;    // define DIO pin (any digital pin)
-const byte PIN_CLK = 9;   // define CLK pin (any digital pin)
-const byte PIN_DIO = 8;   // define DIO pin (any digital pin)
-const byte BUTTON = 2;    // define DIO pin (any digital pin)
+const byte PIN_TX = 6;  // define CLK pin (any digital pin)
+const byte PIN_RX = 7;  // define DIO pin (any digital pin)
+const byte PIN_CLK = 9; // define CLK pin (any digital pin)
+const byte PIN_DIO = 8; // define DIO pin (any digital pin)
+const byte BUTTON = 2;  // define DIO pin (any digital pin)
 const byte BUZZER = 11;
-const int MB_PKT_8 = 8;   //MODBUS Packet Sizes
+const int MB_PKT_8 = 8; //MODBUS Packet Sizes
 const int MB_PKT_17 = 17;
 
 unsigned int CO2 = 0;
 unsigned int ConnRetry = 0;
-union BYTE_FLOAT_CO2 {
+union BYTE_FLOAT_CO2
+{
   byte uByte[4];
   float uCO2;
 } u;
 
 static byte response[MB_PKT_8] = {0};
 static byte responseval[MB_PKT_17] = {0};
-byte cmd [MB_PKT_8] = {0x61, 0x06, 0x00, 0x36, 0x00, 0x00, 0x60, 0x64};
+byte cmd[MB_PKT_8] = {0x61, 0x06, 0x00, 0x36, 0x00, 0x00, 0x60, 0x64};
 
 unsigned long LongPress_ms = 5000; // 5s button timeout
 unsigned long StartPress_ms = 0;
 bool isLongPress = false;
 
-#define BAUDRATE 19200      // Device to SCD30 Serial baudrate (should not be changed)
+#define BAUDRATE 19200 // Device to SCD30 Serial baudrate (should not be changed)
 
 SevenSegmentExtended display(PIN_CLK, PIN_DIO);
 SoftwareSerial co2SCD(PIN_RX, PIN_TX);
@@ -63,9 +64,9 @@ void setup()
   digitalWrite(4, LOW);
   Serial.begin(115200);
   Serial.println("Start SCD30 Modbus lecture");
-  display.begin();            // initializes the display
-  display.setBacklight(100);  // set the brightness to 100 %
-  co2SCD.begin(BAUDRATE);      // (Uno example) device to SCD30 serial start
+  display.begin();           // initializes the display
+  display.setBacklight(100); // set the brightness to 100 %
+  co2SCD.begin(BAUDRATE);    // (Uno example) device to SCD30 serial start
   delay(1000);
 
   //0x61 0x06 0x00 0x36 0x00 0x00 0x60 0x64
@@ -80,10 +81,10 @@ void setup()
 
   //0x61 0x06 0x00 0x25 0x00 0x02 0x10 0x60
   //Set measurement interval 2 seconds
-  cmd [3] = 0x25;
-  cmd [5] = 0x02;
-  cmd [6] = 0x10;
-  cmd [7] = 0x60;
+  cmd[3] = 0x25;
+  cmd[5] = 0x02;
+  cmd[6] = 0x10;
+  cmd[7] = 0x60;
   co2SCD.write(cmd, MB_PKT_8);
   co2SCD.readBytes(response, MB_PKT_8);
 
@@ -93,10 +94,10 @@ void setup()
 
   //Deactivate Automatic Self-Calibration
   //  0x61 0x06 0x00 0x3A 0x00 0x00 0xA0 0x67
-  cmd [3] = 0x3A;
-  cmd [5] = 0x00;
-  cmd [6] = 0xA0;
-  cmd [7] = 0x67;
+  cmd[3] = 0x3A;
+  cmd[5] = 0x00;
+  cmd[6] = 0xA0;
+  cmd[7] = 0x67;
 
   co2SCD.write(cmd, MB_PKT_8);
   co2SCD.readBytes(response, MB_PKT_8);
@@ -105,22 +106,24 @@ void setup()
 
   //Auto calibration set to
   //0x61 0x03 0x00 0x3A 0x00 0x01 0xAD 0xA7
-  cmd [1] = 0x03;
-  cmd [5] = 0x01;
-  cmd [6] = 0xAD;
-  cmd [7] = 0xA7;
+  cmd[1] = 0x03;
+  cmd[5] = 0x01;
+  cmd[6] = 0xAD;
+  cmd[7] = 0xA7;
 
   co2SCD.write(cmd, MB_PKT_8);
   co2SCD.readBytes(response, 7);
 
   Serial.print("Autocalibration set to: ");
-  if (response[4] == 00) {
+  if (response[4] == 00)
+  {
     Serial.print(" OFF");
     display.clear();
     delay(15);
     display.print("done");
   }
-  else {
+  else
+  {
     Serial.print(" ON");
     display.clear();
     display.print("fail");
@@ -128,13 +131,14 @@ void setup()
 
   Serial.println();
   //{0x61, 0x03, 0x00, 0x28, 0x00, 0x06, 0x4C, 0x60}
-  cmd [3] = 0x28;
-  cmd [5] = 0x06;
-  cmd [6] = 0x4C;
-  cmd [7] = 0x60;
+  cmd[3] = 0x28;
+  cmd[5] = 0x06;
+  cmd[6] = 0x4C;
+  cmd[7] = 0x60;
   delay(1000);
 
-  while (co2SCD30() == 0 && (ConnRetry < 5)) {
+  while (co2SCD30() == 0 && (ConnRetry < 5))
+  {
     Serial.println("Air sensor not detected. Please check wiring... Try# " + String(ConnRetry));
     display.clear();
     delay(20);
@@ -150,18 +154,21 @@ void setup()
   display.clear();
   display.print("good");
   Serial.println("SCD30 read OK");
-  delay(5000);
-
+  delay(4000);
 
   // Preheat routine: min 30 seconds for SCD30
   display.clear();
   Serial.print("Preheat: ");
-  for (int i = 30; i > -1; i--) { // Preheat from 0 to 30
+  for (int i = 30; i > -1; i--)
+  { // Preheat from 0 to 30
+    display.clear();
     display.print("HEAT");
-    delay(500);
+    delay(1000);
+    display.clear();
     display.printNumber(i);
     Serial.println(i);
-    delay(500);
+    delay(1000);
+    i--;
   }
   display.clear();
   display.print("CO2-");
@@ -172,7 +179,8 @@ void loop()
 {
   CO2 = co2SCD30();
 
-  if (CO2 > 0) {
+  if (CO2 > 0)
+  {
     Serial.print("CO2(ppm): ");
     Serial.println(CO2);
 
@@ -180,13 +188,15 @@ void loop()
     delay(10);
     display.printNumber(CO2);
   }
-  else {
+  else
+  {
     delay(10);
   }
 
   // Alarm if CO2 is greater than 1000
 
-  if (CO2 > 1000) {
+  if (CO2 > 1000)
+  {
     Beep();
   }
 
@@ -194,26 +204,26 @@ void loop()
   // Open and push the button more than 5 seconds
   // Close the box and the sensor enter to the calibration process
   // At the end the sensor receives the order of calibration to 400ppm
-  
-check_calmode_active();
-Serial.println("Waiting for new data");
-delay(2000);
 
+  check_calmode_active();
+  Serial.println("Waiting for new data");
+  delay(2000);
 }
 
-int co2SCD30() {
+// CO2 lecture
+int co2SCD30()
+{
 
   co2SCD.write(cmd, MB_PKT_8);
   co2SCD.readBytes(responseval, MB_PKT_17);
 
   Serial.println("Read Sensor");
-  u.uByte[0] = responseval [6];
-  u.uByte[1] = responseval [5];
-  u.uByte[2] = responseval [4];
-  u.uByte[3] = responseval [3];
-  
-  return (u.uCO2);
+  u.uByte[0] = responseval[6];
+  u.uByte[1] = responseval[5];
+  u.uByte[2] = responseval[4];
+  u.uByte[3] = responseval[3];
 
+  return (u.uCO2);
 }
 
 // Beep 900Hhz
@@ -224,6 +234,96 @@ void Beep()
   noTone(BUZZER);
 }
 
+//Done or failed revision routine
+void CheckResponse(uint8_t *a, uint8_t *b, uint8_t len_array_cmp)
+{
+  bool check_match = false;
+  for (int n = 0; n < len_array_cmp; n++)
+  {
+    if (a[n] != b[n])
+    {
+      check_match = false;
+      break;
+    }
+    else
+      check_match = true;
+  }
+
+  if (check_match)
+  {
+    Serial.println("done");
+    display.clear();
+    display.print("done");
+  }
+  else
+  {
+    Serial.println("failed");
+    display.clear();
+    display.print("fail");
+  }
+}
+
+// Press button routine for Calibration
+void check_calmode_active()
+{
+  unsigned long currentTime_ms = millis();
+
+  if (digitalRead(BUTTON) == LOW)
+  {
+    if (isLongPress)
+    {
+      if (currentTime_ms > (StartPress_ms + LongPress_ms))
+      {
+        Serial.println("Start calibration process: 300 seconds of 400 ppm stable");
+        display.clear();
+        delay(100);
+        for (int i = 300; i > -1; i--)
+        { // loop from 0 to 300
+          display.clear();
+          display.print("CAL-");
+          delay(1000);
+          Serial.print(i);
+          Serial.print(" ");
+          CO2 = co2SCD30();
+          Serial.print("CO2(ppm): ");
+          Serial.println(CO2);
+          display.clear();
+          display.printNumber(i);
+          delay(1000);
+          i--;
+        }
+        Calibration();
+        isLongPress = false;
+      }
+    }
+    else
+    {
+      StartPress_ms = millis();
+      isLongPress = true;
+      Serial.println("Button has been pressed, hold 5s more to start calibration");
+    }
+  }
+  else
+  {
+    isLongPress = false;
+  }
+}
+
+// CRC Routine
+void crc_print()
+{
+  uint16_t crc_cmd = crcx::crc16(cmd, 6);
+  Serial.println("cmd_crc16 = 0x");
+  Serial.println(crc_cmd, HEX);
+  cmd[7] = highByte(crc_cmd);
+  cmd[6] = lowByte(crc_cmd);
+
+  Serial.print("cmd_crc16_highByte = 0x");
+  Serial.println(cmd[7], HEX);
+  Serial.print("cmd_crc16_lowByte = 0x");
+  Serial.println(cmd[6], HEX);
+}
+
 // Calibration routine
 void Calibration()
 {
@@ -232,96 +332,35 @@ void Calibration()
   //Calibration set to 400ppm
   //0x61 0x06 0x00 0x39 0x01 0x90 0x51 0xB9
 
-  cmd [1] = 0x06;
-  cmd [3] = 0x39;
-  cmd [4] = 0x01;
-  cmd [5] = 0x90;
-  
-  uint16_t crc_cmd = crcx::crc16(cmd, 6);
+  cmd[1] = 0x06;
+  cmd[3] = 0x39;
+  cmd[4] = 0x01;
+  cmd[5] = 0x90;
+  cmd[6] = 0x51;
+  cmd[7] = 0x9B;
+
   co2SCD.write(cmd, MB_PKT_8);
   co2SCD.readBytes(response, MB_PKT_8);
 
   Serial.print("Resetting forced calibration factor to 400: ");
   CheckResponse(cmd, response, MB_PKT_8);
-  delay(5000);
+  delay(4000);
 
-  cmd [1] = 0x03;
-  cmd [3] = 0x28;
-  cmd [4] = 0x00;
-  cmd [5] = 0x06;
-  cmd [6] = 0x4C;
-  cmd [7] = 0x60;
+  cmd[1] = 0x03;
+  cmd[3] = 0x28;
+  cmd[4] = 0x00;
+  cmd[5] = 0x06;
+  cmd[6] = 0x4C;
+  cmd[7] = 0x60;
 }
 
-void softwareReset( uint8_t prescaller) {
-  Serial.println("RESET...");
-  wdt_enable( prescaller);
-  while (1) {}
-}
+//Software RESET
 
-void CheckResponse(uint8_t *a, uint8_t *b, uint8_t len_array_cmp)
+void softwareReset(uint8_t prescaller)
 {
-  bool check_match = false;
-     for (int n=0;n<len_array_cmp;n++) {
-       if (a[n]!=b[n]) {
-        check_match = false;
-        break;
-       } 
-       else check_match = true;
-     }
-      
-     if (check_match) {
-        Serial.println("done");
-        display.clear();
-        display.print("done");   
-     } else {
-        Serial.println("failed");
-        display.clear();
-        display.print("fail");  
-     }
-}
-
-void check_calmode_active() {
-unsigned long currentTime_ms = millis();
-
-  if (digitalRead(BUTTON) == LOW) {
-   if (isLongPress) {
-      if (currentTime_ms > (StartPress_ms + LongPress_ms)) {
-        Serial.println("Start calibration process: 300 seconds of 400 ppm stable");
-        display.clear();
-        delay(100);
-          for (int i = 150; i == 0; i--) { // loop from 0 to 150
-            display.print("CAL-");
-            delay(1000);
-            Serial.print(i);
-            Serial.print(" ");
-            CO2 = co2SCD30();
-            Serial.print("CO2(ppm): ");
-            Serial.println(CO2);
-            if ((x % 2) !=0)  display.printNumber(i);
-            delay(1000);
-          }
-        Calibration();
-        isLongPress = false;
-      }
-   } else {
-      StartPress_ms=millis();
-      isLongPress = true;
-      Serial.println("Button has been pressed, hold 5s more to start calibration");
-    }
-  } else {
-    isLongPress = false;
-    }
-}
-
-void crc_print() {
-  Serial.println("cmd_crc16 = 0x");
-  Serial.println(crc_cmd, HEX);
-  cmd [7] = highByte(crc_cmd);
-  cmd [6] = lowByte(crc_cmd); 
-  
-  Serial.print("cmd_crc16_highByte = 0x");
-  Serial.println(cmd [7], HEX);
-  Serial.print("cmd_crc16_lowByte = 0x");
-  Serial.println(cmd [6], HEX);
+  Serial.println("RESET...");
+  wdt_enable(prescaller);
+  while (1)
+  {
+  }
 }
