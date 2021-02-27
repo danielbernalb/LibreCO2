@@ -49,13 +49,12 @@ union BYTE_FLOAT_CO2
 
 static byte response[MB_PKT_8] = {0};
 static byte responseval[MB_PKT_17] = {0};
-const byte cmd1[MB_PKT_8] = {0x61, 0x06, 0x00, 0x36, 0x00, 0x00, 0x60, 0x64};     //Trigger continuous measurement with no ambient pressure compensation
-const byte cmd2[MB_PKT_8] = {0x61, 0x06, 0x00, 0x25, 0x00, 0x02, 0x10, 0x60};     //Set measurement interval 2 seconds
-const byte cmd3[MB_PKT_8] = {0x61, 0x06, 0x00, 0x3A, 0x00, 0x00, 0xA0, 0x67};     //Deactivate Automatic Self-Calibration
-const byte cmd4[MB_PKT_8] = {0x61, 0x03, 0x00, 0x3A, 0x00, 0x01, 0xAD, 0xA7};     //Request Auto calibration status
-const byte cmdRead[MB_PKT_8] = {0x61, 0x03, 0x00, 0x28, 0x00, 0x06, 0x4C, 0x60};  //Read CO2
+const byte cmd1[MB_PKT_8] = {0x61, 0x06, 0x00, 0x36, 0x00, 0x00, 0x60, 0x64};    //Trigger continuous measurement with no ambient pressure compensation
+const byte cmd2[MB_PKT_8] = {0x61, 0x06, 0x00, 0x25, 0x00, 0x02, 0x10, 0x60};    //Set measurement interval 2 seconds
+const byte cmd3[MB_PKT_8] = {0x61, 0x06, 0x00, 0x3A, 0x00, 0x00, 0xA0, 0x67};    //Deactivate Automatic Self-Calibration
+const byte cmd4[MB_PKT_8] = {0x61, 0x03, 0x00, 0x3A, 0x00, 0x01, 0xAD, 0xA7};    //Request Auto calibration status
+const byte cmdRead[MB_PKT_8] = {0x61, 0x03, 0x00, 0x28, 0x00, 0x06, 0x4C, 0x60}; //Read CO2
 const byte cmdCal[MB_PKT_8] = {0x61, 0x06, 0x00, 0x39, 0x01, 0x90, 0x51, 0x9B};  //Calibrate to 400pm
-
 
 unsigned long LongPress_ms = 5000; // 5s button timeout
 unsigned long StartPress_ms = 0;
@@ -314,7 +313,7 @@ void Calibration()
   //Calibration set to 400ppm
   co2SCD.write(cmdCal, MB_PKT_8);
   co2SCD.readBytes(response, MB_PKT_8);
-  
+
   Serial.print("Resetting forced calibration factor to 400: ");
   CheckResponse(cmdCal, response, MB_PKT_8);
   delay(4000);
