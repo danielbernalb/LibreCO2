@@ -198,7 +198,7 @@ Cuando el archivo .hex file se carga en el Arduino, foto a la derecha, sale el m
 ****************************
 **Contacto**
 
-Si tienes alguna duda, bug, aporte o comentario escríbeme al correo eléctronico danielbernalb@gmail.com o la cuenta de twitter @danielbernalb
+Si tienes alguna duda, bug, aporte o comentario escríbeme al correo eléctronico danielbernalb@gmail.com o la cuenta de twitter [@danielbernalb](https://twitter.com/danielbernalb)
 
 
 
