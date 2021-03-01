@@ -171,7 +171,7 @@ How to use Xloader to load a new version of grbl into the Arduino/X-controller.
 
 The left screenshot shows the window that Xloader displays when it starts.
 
-Enter the file path or browse to the .hex file that you would like to load into the Arduino. The files are available in each directory of the Sensor version of CanAirIO.
+Enter the file path or browse to the .hex file that you would like to load into the Arduino. The files are available in each directory of the Sensor version used (Sensirion, Winsen or Cubic).
 
 Select the device type you are going to load into (Uno/ATmega328).
 
