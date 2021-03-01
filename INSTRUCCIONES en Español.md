@@ -203,7 +203,7 @@ A la izquierda se muestra la ventana del Xloader cuando se inicia.
 ****************************
 **Contacto**
 
-Si tienes alguna duda, bug, aporte o comentario escríbeme al correo eléctronico danielbernalb@gmail.com o la cuenta de twitter [@danielbernalb](https://twitter.com/danielbernalb)
+Si tienes alguna duda, bug, aporte o comentario escríbeme al correo eléctronico danielbernalb@gmail.com o la cuenta de twitter [@danielbernalb](https://twitter.com/danielbernalb) 
 
 
 
