@@ -26,11 +26,15 @@ Materiales:
 
 ![Jumper FM](https://github.com/danielbernalb/LibreCO2/blob/main/images/Jumper.jpg)
 
-4. Opcional: buzzer o chicharra.
+4. Opcional: Pulsador o cable.
+
+![Pulsador](https://github.com/danielbernalb/LibreCO2/blob/main/images/Pulsador%20largo.jpg)
+
+5. Opcional: buzzer o chicharra.
 
 ![Big and small buzzer](https://github.com/danielbernalb/LibreCO2/blob/main/images/big-small-buzzer.jpg)
 
-5. Sensor, opciones:
+6. Sensor, opciones:
 
 	a. Sensirion SCD30, el más costoso (52 dollars) pero en nuestras pruebas el de mejor performance. Sensirion tiene distribuidores en USA y Europa que envían a Latinoamérica.. Ejemplo:
 	https://www.mouser.com/ProductDetail/Sensirion/SCD30/?qs=rrS6PyfT74fdywu4FxpYjQ%3D%3D
