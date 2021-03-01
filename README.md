@@ -36,7 +36,9 @@ Materials:
 	
 	Pros: excellent performance (fast, reliable), fast shipping from USA or Europe.
 	
-	Cons: price (52 dollars) requieres a level driver (BSS138 type) for secure connection with the Arduino. 
+	Cons: price (52 dollars). 
+	
+	The Arduino uses the Modbus protocol to connect to the sensor, this allow the direct conecction between the Arduino and the sensor withput the use of data driver. You must connect the SEL pin with the VIN pin of the sensor.
 
 	b. Winsen MH-Z14 or 19, one of the cheapest and most popular, good performance, some slow. Take care with fake clones!!!
 
