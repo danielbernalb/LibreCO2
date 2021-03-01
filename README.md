@@ -167,7 +167,7 @@ T Pin 3 of connector 5 pins ---> 7
 
 2.1. The easy way if you don't want to install Arduino, load and compile the code, only you need to programming, use Xloader:
 
-![Xloader](https://github.com/danielbernalb/LibreCO2/blob/main/images/Xloader1.png)
+![Xloader](https://github.com/danielbernalb/LibreCO2/blob/main/images/Xloader1.jpg)
 
 The left screenshot shows the window that Xloader displays when it starts.
 
