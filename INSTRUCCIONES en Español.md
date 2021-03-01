@@ -44,6 +44,8 @@ Materiales:
 	A favor: excelente performance (rápido y fiel), rápido envío en USA y Europa y envíos a Latinoamérica.
 	
 	En contra: precio (52 dólares). 
+	
+	Para la conexión del Arduino al sensor Sensirion se usa el protocolo Modbus ya que este nos permite conectar directamente el Arduino al SCD30 sin necesidad de drivers externos que complicarían mucho el montaje. Sólo debes conectar el pin SEL al VIN del sensor como se vé en el gráfico  para habilitar el modo Modbus.
 
 	b. Winsen MH-Z14 o 19, el más barato y popular, buen performance, algo lento. Ten cuidado con las falsas copias del sensor!!!
 
