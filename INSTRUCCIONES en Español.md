@@ -176,18 +176,17 @@ T Pin 3 de la regleta de 5 pines ---> 7
 
 A la izquierda se muestra la ventana del Xloader cuando se inicia.
 
-Explora hasta encontrar el achivo .hex que vas a cargar en el Arduino. El archivo .hex se encuentra en los directorios de este repositorio de cada modelo de sensor (Sensirion, Winsen or Cubic).
+2.1.1. Explora hasta encontrar el achivo .hex que vas a cargar en el Arduino. El archivo .hex se encuentra en los directorios de este repositorio de cada modelo de sensor (Sensirion, Winsen or Cubic).
 
-Selecciona la tarjeta Arduino que estas usando (Uno/ATmega328).
+2.1.2. Selecciona la tarjeta Arduino que estas usando (Uno/ATmega328).
 
-Selecciona el puerto de comunicaciones COM al que está conectado el Arduino.
+2.1.3. Selecciona el puerto de comunicaciones COM al que está conectado el Arduino.
 
-Selecciona la velocidad Baud rate a 115200.
+2.1.4. Selecciona la velocidad Baud rate a 115200.
 
-Presiona el boton “Upload”.
+2.1.5. Presiona el boton “Upload”.
 
-Cuando el archivo .hex file se carga en el Arduino, foto a la derecha, sale el mensaje de "xxxxx bytes uploaded", si falla te saldrá el mensaje de "upload fails".
-
+2.1.6. Cuando el archivo .hex file se carga en el Arduino, foto a la derecha, sale el mensaje de "xxxxx bytes uploaded", si falla te saldrá el mensaje de "upload fails".
 
 2.2. Si quieres editar y compilar el código instala el software Arduino:
   
