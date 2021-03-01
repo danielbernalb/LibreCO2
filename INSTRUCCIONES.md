@@ -168,7 +168,7 @@ T Pin 3 de la regleta de 5 pines ---> 7
 
 2.1. Si lo único que quieres es programar el Arduino sin tener que ver el código, compilarlo y luego programarlo, usa Xloader:
 
-![Xloader](https://github.com/danielbernalb/LibreCO2/blob/main/images/Xloader1.png)
+![Xloader](https://github.com/danielbernalb/LibreCO2/blob/main/images/Xloader1.jpg)
 
 A la izquierda se muestra la ventana del Xloader cuando se inicia.
 
