@@ -18,13 +18,12 @@ Materiales:
        
    Original a la derecha y copia a la izquierda
 
-2. Display TM1687 ------------- 3. Jumper hembra - macho --- 4. Opcional: Pulsador o cable ----- 5. Opcional: Buzzer
+2. Display TM1687
+3. Jumper hembra - macho
+4. Opcional: Pulsador o cable
+5. Opcional: Buzzer
 
 ![Materiales](https://github.com/danielbernalb/LibreCO2/blob/main/images/Materials%20all%20text.jpg)
-
-5. Opcional: buzzer o chicharra.
-
-![Big and small buzzer](https://github.com/danielbernalb/LibreCO2/blob/main/images/big-small-buzzer.jpg)
 
 6. Sensor, opciones:
 
