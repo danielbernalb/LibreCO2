@@ -22,6 +22,10 @@ Materiales:
 
 ![4 digits display TM1687](https://github.com/danielbernalb/LibreCO2/blob/main/images/Display-TM1687.jpg)
 
+Prueba
+
+![Materiales](https://github.com/danielbernalb/LibreCO2/blob/main/images/Materiales1.jpg)
+
 3. Jumper hembra - macho.
 
 ![Jumper FM](https://github.com/danielbernalb/LibreCO2/blob/main/images/Jumper.jpg)
