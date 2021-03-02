@@ -24,7 +24,7 @@ Materiales:
 
 Prueba
 
-![Materiales](https://github.com/danielbernalb/LibreCO2/blob/main/images/Materiales1.jpg)
+![Materiales](https://github.com/danielbernalb/LibreCO2/blob/main/images/Materiales.jpg)
 
 3. Jumper hembra - macho.
 
