@@ -18,21 +18,9 @@ Materiales:
        
    Original a la derecha y copia a la izquierda
 
-2. Display TM1687 de 4 dígitos.
+2. Display TM1687 ------------- 3. Jumper hembra - macho --- 4. Opcional: Pulsador o cable ----- 5. Opcional: Buzzer
 
-![4 digits display TM1687](https://github.com/danielbernalb/LibreCO2/blob/main/images/Display-TM1687.jpg)
-
-Prueba
-
-![Materiales](https://github.com/danielbernalb/LibreCO2/blob/main/images/Materiales.jpg)
-
-3. Jumper hembra - macho.
-
-![Jumper FM](https://github.com/danielbernalb/LibreCO2/blob/main/images/Jumper.jpg)
-
-4. Opcional: Pulsador o cable.
-
-![Pulsador](https://github.com/danielbernalb/LibreCO2/blob/main/images/Pulsador%20largo.jpg)
+![Materiales](https://github.com/danielbernalb/LibreCO2/blob/main/images/Materials%20all%20text.jpg)
 
 5. Opcional: buzzer o chicharra.
 
