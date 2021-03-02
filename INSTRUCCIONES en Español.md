@@ -12,11 +12,9 @@ https://www.co2meter.com/blogs/news/6010192-how-does-an-ndir-co2-sensor-work
 
 Materiales:
 
-1. Arduino UNO original o versión china, la diferencia entre los 2 está en la instalación del driver, ambos son populares en cualquier país y trabajan bien.
+1. Arduino UNO original o versión china, la diferencia entre los 2 está en la instalación del driver, ambos son populares en cualquier país y trabajan bien.  Original a la derecha y copia a la izquierda:
 
 ![Arduino original & clone](https://github.com/danielbernalb/LibreCO2/blob/main/images/arduino-uno-original-clone.jpg)
-       
-   Original a la derecha y copia a la izquierda
 
 2. Display TM1687
 3. Jumper hembra - macho
