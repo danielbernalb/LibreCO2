@@ -323,8 +323,6 @@ int co2SCD30()
   u.uByte[1] = responseval[5];
   u.uByte[2] = responseval[4];
   u.uByte[3] = responseval[3];
-  //     Serial.print(" num0 ");
-  //    Serial.print(u.uCO2);
 
   if (u.uCO2 != 0) {
     crc_cmd = crcx::crc16(responseval, 15);
@@ -438,8 +436,8 @@ void check_calmode_active()
 //        for (int i = 12; i > -1; i--)
 #else
         Serial.println("Start calibration process: 300 seconds of 400 ppm stable");
-//        for (int i = 300; i > -1; i--)
-        for (int i = 30; i > -1; i--)
+        for (int i = 300; i > -1; i--)
+//        for (int i = 30; i > -1; i--)
 #endif
         { // loop from 0 to 300
           display.clear();
