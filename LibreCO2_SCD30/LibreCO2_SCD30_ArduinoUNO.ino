@@ -22,16 +22,16 @@
   Boton o cable conectado a pin 4
 */
 
-// Quita al comentario respecto al sensor de CO2 que usas
-//#define SCD30
-//#define MHZ14_9       // uncomment on the supported CO2 sensors
-#define CM1106
+// Uncomment your CO2 sensor
+#define SCD30
+//#define MHZ14_9
+//#define CM1106
 
-#include <CRCx.h> //https://github.com/hideakitai/CRCx, install it from Library Manager as CRCx
+#include <CRCx.h> //https://github.com/hideakitai/CRCx
 #include <SoftwareSerial.h>
 #include "SevenSegmentTM1637.h"
 #include "SevenSegmentExtended.h"
-#include "MHZ19.h"
+#include "MHZ19.h" //https://github.com/WifWaf/MH-Z19
 #include <avr/wdt.h>
 
 const byte PIN_TX = 6;  // define CLK pin (any digital pin)
@@ -40,11 +40,11 @@ const byte PIN_CLK = 9; // define CLK pin (any digital pin)
 const byte PIN_DIO = 8; // define DIO pin (any digital pin)
 const byte BUTTON = 2;  // define DIO pin (any digital pin)
 const byte BUZZER = 11;
-const int MB_PKT_8 = 8; //MODBUS Packet Size
+const int MB_PKT_8 = 8;   //MODBUS Packet Size
 const int MB_PKT_17 = 17; // MODBUS Packet Size
 const int MB_PKT_10 = 10; //CM1106 send Packet Size
-const int MB_PKT_6 = 6; //CM1106 receive Packet Size
-const int MB_PKT_4 = 4; //CM1106 receive Packet Size
+const int MB_PKT_6 = 6;   //CM1106 receive Packet Size
+const int MB_PKT_4 = 4;   //CM1106 receive Packet Size
 
 unsigned int CO2 = 0;
 unsigned int ConnRetry = 0;
@@ -60,17 +60,16 @@ union BYTE_FLOAT_CO2
 static byte response[MB_PKT_8] = {0};
 static byte responseval[MB_PKT_17] = {0};
 static byte responseCM[MB_PKT_4] = {0};
-const byte cmdConM[MB_PKT_8] = {0x61, 0x06, 0x00, 0x36, 0x00, 0x00, 0x60, 0x64}; // SCD30 Trigger continuous measurement with no ambient pressure compensation
-const byte cmdSetM[MB_PKT_8] = {0x61, 0x06, 0x00, 0x25, 0x00, 0x02, 0x10, 0x60}; // SCD30 Set measurement interval 2 seconds
-const byte cmdAuto[MB_PKT_8] = {0x61, 0x06, 0x00, 0x3A, 0x00, 0x00, 0xA0, 0x67}; // SCD30 Deactivate Automatic Self-Calibration
-//const byte cmdRaut[MB_PKT_8] = {0x61, 0x03, 0x00, 0x3A, 0x00, 0x01, 0xAD, 0xA7}; // SCD30 Request Auto calibration status
-const byte cmdRead[MB_PKT_8] = {0x61, 0x03, 0x00, 0x28, 0x00, 0x06, 0x4C, 0x60}; // SCD30 Read CO2
-const byte cmdCali[MB_PKT_8] = {0x61, 0x06, 0x00, 0x39, 0x01, 0x90, 0x51, 0x9B}; // SCD30 Calibrate to 400pm
-const byte cmdReCM[MB_PKT_4] = {0x11, 0x01, 0x01, 0xED}; // CM1106 Read
+const byte cmdConM[MB_PKT_8] = {0x61, 0x06, 0x00, 0x36, 0x00, 0x00, 0x60, 0x64};              // SCD30 Trigger continuous measurement with no ambient pressure compensation
+const byte cmdSetM[MB_PKT_8] = {0x61, 0x06, 0x00, 0x25, 0x00, 0x02, 0x10, 0x60};              // SCD30 Set measurement interval 2 seconds
+const byte cmdAuto[MB_PKT_8] = {0x61, 0x06, 0x00, 0x3A, 0x00, 0x00, 0xA0, 0x67};              // SCD30 Deactivate Automatic Self-Calibration
+const byte cmdRead[MB_PKT_8] = {0x61, 0x03, 0x00, 0x28, 0x00, 0x06, 0x4C, 0x60};              // SCD30 Read CO2
+const byte cmdCali[MB_PKT_8] = {0x61, 0x06, 0x00, 0x39, 0x01, 0x90, 0x51, 0x9B};              // SCD30 Calibrate to 400pm
+const byte cmdReCM[MB_PKT_4] = {0x11, 0x01, 0x01, 0xED};                                      // CM1106 Read
 const byte cmdOFFa[MB_PKT_10] = {0x11, 0x07, 0x10, 0x64, 0x02, 0x07, 0x01, 0x90, 0x64, 0x76}; // CM1106 Command Close ABC
-const byte cmdCalC[MB_PKT_6] = {0x11, 0x03, 0x03, 0x01, 0x90, 0x58}; // CM1106 Command Calibration of CO2 Concentration to 400ppm
-const byte cmdOKqu[MB_PKT_4] = {0x16, 0x01, 0x10, 0xD9}; // CM1106 response OK
-const byte cmdOKca[MB_PKT_4] = {0x16, 0x01, 0x03, 0xE6}; // CM1106 response OK
+const byte cmdCalC[MB_PKT_6] = {0x11, 0x03, 0x03, 0x01, 0x90, 0x58};                          // CM1106 Command Calibration of CO2 Concentration to 400ppm
+const byte cmdOKqu[MB_PKT_4] = {0x16, 0x01, 0x10, 0xD9};                                      // CM1106 response OK
+const byte cmdOKca[MB_PKT_4] = {0x16, 0x01, 0x03, 0xE6};                                      // CM1106 response OK
 
 unsigned long LongPress_ms = 5000; // 5s button timeout
 unsigned long StartPress_ms = 0;
@@ -130,7 +129,6 @@ void setup()
   Serial.print("Preheat: ");
 #ifdef MHZ14_9
   for (int i = 180; i > -1; i--)
-//  for (int i = 18; i > -1; i--)
 #else
   for (int i = 30; i > -1; i--)
 #endif
@@ -156,7 +154,7 @@ void loop()
   CO2 = co2SCD30();
 #endif
 #ifdef MHZ14_9
-  CO2 = co2MHZ.getCO2();
+  CO2 = co2MHZ14_9();
 #endif
 #ifdef CM1106
   CO2 = co2CM1106();
@@ -305,7 +303,6 @@ void CO2iniCM1106()
 
   Serial.println("CM1106 read OK");
   delay(4000);
-
 }
 #endif
 
@@ -313,7 +310,7 @@ void CO2iniCM1106()
 #ifdef SCD30
 int co2SCD30()
 {
-  responseval[MB_PKT_17] = {0};
+  memset(responseval, 0, MB_PKT_17);
   co2sensor.write(cmdRead, MB_PKT_8);
   co2sensor.readBytes(responseval, MB_PKT_17);
   Serial.print("Read Sensor: ");
@@ -324,15 +321,12 @@ int co2SCD30()
   u.uByte[2] = responseval[4];
   u.uByte[3] = responseval[3];
 
-  if (u.uCO2 != 0) {
+  if (u.uCO2 != 0)
+  {
     crc_cmd = crcx::crc16(responseval, 15);
     if (responseval[15] == lowByte(crc_cmd) && responseval[16] == highByte(crc_cmd))
     {
       Serial.println(" OK");
-      u.uByte[0] = responseval[6];
-      u.uByte[1] = responseval[5];
-      u.uByte[2] = responseval[4];
-      u.uByte[3] = responseval[3];
       return (u.uCO2);
     }
     else
@@ -353,21 +347,56 @@ int co2SCD30()
 }
 #endif
 
+#ifdef MHZ14_9
+//Read MHZ14 or 19
+int co2MHZ14_9()
+{
+  CO2 = co2MHZ.getCO2();
+  if (CO2 != 0)
+  {
+    return CO2;
+  }
+  else
+  {
+    Serial.println("FAIL");
+    display.clear();
+    display.print("fail");
+    return (CO2);
+  }
+}
+#endif
+
 //Read CM1106
 #ifdef CM1106
-int co2CM1106() {
+int co2CM1106()
+{
+  memset(response, 0, MB_PKT_8);
   co2sensor.write(cmdReCM, MB_PKT_4);
   co2sensor.readBytes(response, MB_PKT_8);
-  int crc = 0;
-  for (int i = 0; i < 7; i++) crc += response[i];
-  crc = 256 - crc % 256;
-  if (((int) response[0] == 0x16) && ((int)response[7] == crc)) {
-    unsigned int responseHigh = (unsigned int) response[3];
-    unsigned int responseLow = (unsigned int) response[4];
-    return (256 * responseHigh) + responseLow;
-  } else {
-    while (co2sensor.available() > 0)  char t = co2sensor.read(); // Clear serial input buffer;
-    return 0;
+  CO2 = (256 * response[3]) + response[4];
+  if (CO2 != 0)
+  {
+    int crc = 0;
+    for (int i = 0; i < 7; i++)
+      crc += response[i];
+    crc = 256 - crc % 256;
+    if ((response[0] == 0x16) && (response[7] == crc))
+    {
+      return CO2;
+    }
+    else
+    {
+      while (co2sensor.available() > 0)
+        char t = co2sensor.read(); // Clear serial input buffer;
+      return 0;
+    }
+  }
+  else
+  {
+    Serial.println("FAIL");
+    display.clear();
+    display.print("fail");
+    return (CO2);
   }
 }
 #endif
@@ -433,11 +462,9 @@ void check_calmode_active()
 #ifdef MHZ14_9
         Serial.println("Start calibration process: 1200 seconds of 400 ppm stable");
         for (int i = 1200; i > -1; i--)
-//        for (int i = 12; i > -1; i--)
 #else
         Serial.println("Start calibration process: 300 seconds of 400 ppm stable");
         for (int i = 300; i > -1; i--)
-//        for (int i = 30; i > -1; i--)
 #endif
         { // loop from 0 to 300
           display.clear();
@@ -509,7 +536,7 @@ void CalibrationMHZ19()
 {
   delay(100);
   Serial.print("Resetting forced calibration factor to 400: ");
-  co2MHZ.calibrate();    // Take a reading which be used as the zero point for 400 ppm
+  co2MHZ.calibrate(); // Take a reading which be used as the zero point for 400 ppm
   Serial.println("done");
   display.clear();
   display.print("done");
