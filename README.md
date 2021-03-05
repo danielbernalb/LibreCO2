@@ -9,27 +9,19 @@ https://www.co2meter.com/blogs/news/6010192-how-does-an-ndir-co2-sensor-work
 
 Materials:
 
-1. Arduino UNO original or chinese version, the difference is the driver installation, both are very easy to find in any country and work well.
+1. Arduino UNO original or chinese version, the difference is the driver installation, both are very easy to find in any country and work well. Original at right and clone at left:
 
 ![Arduino original & clone](https://github.com/danielbernalb/LibreCO2/blob/main/images/arduino-uno-original-clone.jpg)
-       
-   Original at right and clone at left
 
 2. 4 digits display TM1687.
 
-![4 digits display TM1687](https://github.com/danielbernalb/LibreCO2/blob/main/images/Display-TM1687.jpg)
-
 3. Jumper female - male.
-
-![Jumper FM](https://github.com/danielbernalb/LibreCO2/blob/main/images/Jumper.jpg)
 
 4. Optional: Push-button or cable.
 
-![Push-button](https://github.com/danielbernalb/LibreCO2/blob/main/images/Pulsador%20largo.jpg)
-
 5. Optional: buzzer.
 
-![Big and small buzzer](https://github.com/danielbernalb/LibreCO2/blob/main/images/big-small-buzzer.jpg)
+![Materials](https://github.com/danielbernalb/LibreCO2/blob/main/images/Materials%20all%20text.jpg)
 
 6. Sensor, options:
 
@@ -202,6 +194,3 @@ The left screenshot shows the window that Xloader displays when it starts.
 **Contact**
 
 Any doubt, bug, apport or comment please contact me at danielbernalb@gmail.com or twitter account twitter [@danielbernalb](https://twitter.com/danielbernalb)
-
-
-
