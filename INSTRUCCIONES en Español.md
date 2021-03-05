@@ -167,7 +167,7 @@ T Pin 3 de la regleta de 5 pines ---> 7
 
 A la izquierda se muestra la ventana del Xloader cuando se inicia.
 
-2.1.1. Explora hasta encontrar el achivo .hex que vas a cargar en el Arduino. El archivo .hex se encuentra en los directorios de este repositorio de cada modelo de sensor (Sensirion, Winsen or Cubic).
+2.1.1. Explora hasta encontrar el achivo .hex que vas a cargar en el Arduino. Cad versión de sensor (Sensirion, Winsen o Cubic) se encuentra disponible en el directorio "hex files". Ejemplo: "LibreCO2_Winsen_MHZ14_9.hex" es el archivo para el MH-Z14 o MH-Z19.
 
 2.1.2. Selecciona la tarjeta Arduino que estas usando (Uno/ATmega328).
 
