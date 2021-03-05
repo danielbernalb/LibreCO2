@@ -94,11 +94,13 @@ bool isLongPressBEEP = false;
 SevenSegmentExtended display(PIN_CLK, PIN_DIO);
 
 #ifdef MHZ14_9
-SoftwareSerial mySerial(PIN_RX, PIN_TX);
+//SoftwareSerial mySerial(PIN_RX, PIN_TX);
 MHZ19 co2MHZ;
-#else
-SoftwareSerial co2sensor(PIN_RX, PIN_TX);
+//#else
+//SoftwareSerial co2sensor(PIN_RX, PIN_TX);
 #endif
+SoftwareSerial co2sensor(PIN_RX, PIN_TX);
+
 
 void setup()
 {
@@ -115,8 +117,8 @@ void setup()
 #endif
 #ifdef MHZ14_9
   Serial.println("Start MH-Z14 or MH-Z19 lecture");
-  mySerial.begin(BAUDRATE);
-  co2MHZ.begin(mySerial);
+  co2sensor.begin(BAUDRATE);
+  co2MHZ.begin(co2sensor);
 #endif
 #ifdef CM1106
   Serial.println("Start CM1106 lecture");
