@@ -175,7 +175,7 @@ T Pin 3 of connector 5 pins ---> 7
 
 The left screenshot shows the window that Xloader displays when it starts.
 
-2.1.1. Browse in your PC the .hex file that you would like to load into the Arduino. The files are available in each directory of the Sensor version used (Sensirion, Winsen or Cubic).
+2.1.1. Browse in your PC the .hex file that you would like to load into the Arduino. Each version of the sensor (Sensirion, Winsen or Cubic) are available in the "hex files" directory. Example: "LibreCO2_Winsen_MHZ14_9.hex" is the file for MH-Z14 or MH-Z19.
 
 2.1.2. Select the device type you are going to load into (Uno/ATmega328).
 
