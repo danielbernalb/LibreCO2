@@ -25,9 +25,9 @@
 */
 
 // Uncomment your CO2 sensor
-//#define SCD30
+#define SCD30
 //#define MHZ14_9
-#define CM1106
+//#define CM1106
 
 #include <CRCx.h> //https://github.com/hideakitai/CRCx
 #include <SoftwareSerial.h>
@@ -44,30 +44,13 @@ const byte PIN_DIO = 8; // define DIO pin (any digital pin)
 const byte BUTTON = 2;  // define DIO pin (any digital pin)
 const byte BUZZER = 11;
 const byte BUTTON_BEEP = A3;
-const int MB_PKT_8 = 8;   //MODBUS Packet Size
-const int MB_PKT_17 = 17; // MODBUS Packet Size
-const int MB_PKT_10 = 10; //CM1106 send Packet Size
-const int MB_PKT_6 = 6;   //CM1106 receive Packet Size
-const int MB_PKT_4 = 4;   //CM1106 receive Packet Size
-const int address = 0;    // EEPROM address 0
+const byte MB_PKT_8 = 8;   //MODBUS Packet Size
+const byte MB_PKT_17 = 17; // MODBUS Packet Size
+const byte MB_PKT_10 = 10; //CM1106 send Packet Size
+const byte MB_PKT_6 = 6;   //CM1106 receive Packet Size
+const byte MB_PKT_4 = 4;   //CM1106 receive Packet Size
+const byte address = 0;    // EEPROM address 0
 
-unsigned int CO2 = 0;
-unsigned int ConnRetry = 0;
-uint16_t crc_cmd;
-unsigned int DelayVal = 0;
-unsigned int CalibVal = 0;         // start reading from the first byte (address 0) of the EEPROM
-byte VALbeep = 0;
-unsigned int VALDIS = 0;
-
-union BYTE_FLOAT_CO2
-{
-  byte uByte[4];
-  float uCO2;
-} u;
-
-static byte response[MB_PKT_8] = {0};
-static byte responseval[MB_PKT_17] = {0};
-static byte responseCM[MB_PKT_4] = {0};
 const byte cmdConM[MB_PKT_8] = {0x61, 0x06, 0x00, 0x36, 0x00, 0x00, 0x60, 0x64};              // SCD30 Trigger continuous measurement with no ambient pressure compensation
 const byte cmdSetM[MB_PKT_8] = {0x61, 0x06, 0x00, 0x25, 0x00, 0x02, 0x10, 0x60};              // SCD30 Set measurement interval 2 seconds
 const byte cmdAuto[MB_PKT_8] = {0x61, 0x06, 0x00, 0x3A, 0x00, 0x00, 0xA0, 0x67};              // SCD30 Deactivate Automatic Self-Calibration
@@ -78,29 +61,39 @@ const byte cmdOFFa[MB_PKT_10] = {0x11, 0x07, 0x10, 0x64, 0x02, 0x07, 0x01, 0x90,
 const byte cmdCalC[MB_PKT_6] = {0x11, 0x03, 0x03, 0x01, 0x90, 0x58};                          // CM1106 Command Calibration of CO2 Concentration to 400ppm
 const byte cmdOKqu[MB_PKT_4] = {0x16, 0x01, 0x10, 0xD9};                                      // CM1106 response OK
 const byte cmdOKca[MB_PKT_4] = {0x16, 0x01, 0x03, 0xE6};                                      // CM1106 response OK
+static byte response[MB_PKT_8] = {0};
+static byte responseval[MB_PKT_17] = {0};
+static byte responseCM[MB_PKT_4] = {0};
 
-unsigned long LongPress_ms = 5000; // 5s button timeout
-unsigned long StartPress_ms = 0;
 bool isLongPress = false;
 bool isLongPressBEEP = false;
 
+byte VALbeep = 0;
+unsigned int CO2 = 0;
+unsigned int ConnRetry = 0;
+unsigned int crc_cmd;
+unsigned int DelayVal = 0;
+unsigned int CalibVal = 0; // start reading from the first byte (address 0) of the EEPROM
+unsigned int VALDIS = 0;
+unsigned long LongPress_ms = 5000; // 5s button timeout
+unsigned long StartPress_ms = 0;
 
+union BYTE_FLOAT_CO2
+{
+  byte uByte[4];
+  float uCO2;
+} u;
+
+SevenSegmentExtended display(PIN_CLK, PIN_DIO);
+SoftwareSerial co2sensor(PIN_RX, PIN_TX);
 #ifdef SCD30
 #define BAUDRATE 19200 // Device to SCD30 Serial baudrate (should not be changed)
 #else
 #define BAUDRATE 9600 // Device to MHZ19 and CM1106 Serial baudrate (should not be changed)
 #endif
-
-SevenSegmentExtended display(PIN_CLK, PIN_DIO);
-
 #ifdef MHZ14_9
-//SoftwareSerial mySerial(PIN_RX, PIN_TX);
 MHZ19 co2MHZ;
-//#else
-//SoftwareSerial co2sensor(PIN_RX, PIN_TX);
 #endif
-SoftwareSerial co2sensor(PIN_RX, PIN_TX);
-
 
 void setup()
 {
@@ -149,8 +142,7 @@ void setup()
 #ifdef MHZ14_9
   for (int i = 180; i > -1; i--)
 #else
-  //  for (int i = 30; i > -1; i--)
-  for (int i = 4; i > -1; i--)
+  for (int i = 30; i > -1; i--)
 #endif
   { // Preheat from 0 to 30 or to 180
     display.clear();
@@ -483,12 +475,10 @@ void check_calmode_active()
         delay(100);
 #ifdef MHZ14_9
         Serial.println("Start calibration process: 1200 seconds of 400 ppm stable");
-        //        for (int i = 1200; i > -1; i--)
-        for (int i = 12; i > -1; i--)
+        for (int i = 1200; i > -1; i--)
 #else
         Serial.println("Start calibration process: 300 seconds of 400 ppm stable");
-        //        for (int i = 300; i > -1; i--)
-        for (int i = 30; i > -1; i--)
+        for (int i = 300; i > -1; i--)
 #endif
         { // loop from 0 to 300
           display.clear();
@@ -549,31 +539,36 @@ void check_calmode_active()
         Serial.println("Routine BEEP");
         displayVALbeep();
 
-        while (digitalRead(BUTTON) == HIGH) {
+        while (digitalRead(BUTTON) == HIGH)
+        {
           delay(10);
 
-          if (digitalRead(BUTTON_BEEP) == LOW) {
-            delay (50);
-            if (digitalRead(BUTTON_BEEP) == LOW) {
+          if (digitalRead(BUTTON_BEEP) == LOW)
+          {
+            delay(50);
+            if (digitalRead(BUTTON_BEEP) == LOW)
+            {
               VALbeep++;
-              if (VALbeep > 7 || VALbeep == 0xFF) VALbeep = 0;
+              if (VALbeep > 7 || VALbeep == 0xFF)
+                VALbeep = 0;
               displayVALbeep();
               delay(200);
             }
           }
         }
         delay(50);
-        if (digitalRead(BUTTON) == LOW) {
+        if (digitalRead(BUTTON) == LOW)
+        {
           EEPROM.write(address, VALbeep);
           isLongPressBEEP = false;
           Serial.print("New Beep Value: ");
           Serial.println(VALDIS);
         }
-        else {
+        else
+        {
           Serial.println("no change in BEEP value");
         }
       }
-
     }
     else
     {
@@ -588,10 +583,13 @@ void check_calmode_active()
   }
 }
 
-void displayVALbeep() {
-  if (VALbeep == 0xFF) VALbeep = 0;
+void displayVALbeep()
+{
+  if (VALbeep == 0xFF)
+    VALbeep = 0;
   VALDIS = 1000 + (VALbeep * 100);
-  if (VALDIS > 1400) {
+  if (VALDIS > 1400)
+  {
     VALDIS = VALDIS - 800;
   }
   Serial.print("BEEP level: ");
