@@ -17,7 +17,7 @@ Materials:
 
 3. Jumper female - male.
 
-4. Optional: Push-button or cable.
+4. One or two Push-buttons or cables (one for calibration, one for choose the beep level).
 
 5. Optional: buzzer.
 
@@ -82,11 +82,18 @@ GND    ---> GND
 other  ---> GND
 
 
-**Button**
+**Button Calibration**
 
 Anyone ---> 2
 
 Anyone ---> 4
+
+
+**Optional Button Beep Level**
+
+Anyone ---> A5
+
+Anyone ---> A3
 
 
 
