@@ -195,7 +195,7 @@ void loop()
 
   // Alarm if CO2 is greater than 1000
 
-  if (CO2 > VALDIS)
+  if (CO2 >= VALDIS)
   {
     Beep();
   }
