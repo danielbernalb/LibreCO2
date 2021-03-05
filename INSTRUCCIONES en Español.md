@@ -18,7 +18,7 @@ Materiales:
 
 2. Display TM1687
 3. Jumper hembra - macho
-4. Opcional: Pulsador o cable
+4. Uno o dos Pulsadores o cables (uno para la calibración, otro para el nivel del Beep).
 5. Opcional: Buzzer
 
 ![Materiales](https://github.com/danielbernalb/LibreCO2/blob/main/images/Materials%20all%20text.jpg)
@@ -82,11 +82,18 @@ GND    ---> GND
 otro  ---> GND
 
 
-**Button**
+**Pulsador de calibración**
 
 Cualquiera ---> 2
 
 Cualquiera ---> 4
+
+
+**Pulsador de nivel del Beep**
+
+Cualquiera ---> A5
+
+Cualquiera ---> A3
 
 
 
