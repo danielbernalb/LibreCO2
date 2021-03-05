@@ -21,7 +21,7 @@ Materials:
 
 5. Optional: buzzer.
 
-![Materials](https://github.com/danielbernalb/LibreCO2/blob/main/images/Materials%20all%20text.jpg)
+![Materials](https://github.com/danielbernalb/LibreCO2/blob/main/images/Materials%20all%20text_eng.jpg)
 
 6. Sensor, options:
 
