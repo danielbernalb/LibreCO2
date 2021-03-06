@@ -37,11 +37,11 @@
 #include <EEPROM.h>
 #include <avr/wdt.h>
 
-const byte PIN_TX = 6;  // define CLK pin (any digital pin)
-const byte PIN_RX = 7;  // define DIO pin (any digital pin)
-const byte PIN_CLK = 9; // define CLK pin (any digital pin)
-const byte PIN_DIO = 8; // define DIO pin (any digital pin)
-const byte BUTTON = 2;  // define DIO pin (any digital pin)
+const byte PIN_TX = 6;  // define TX pin to Sensor
+const byte PIN_RX = 7;  // define RX pin to Sensor
+const byte PIN_CLK = 9;
+const byte PIN_DIO = 8;
+const byte BUTTON = 2;
 const byte BUZZER = 11;
 const byte BUTTON_BEEP = A3;
 const byte MB_PKT_8 = 8;   //MODBUS Packet Size
