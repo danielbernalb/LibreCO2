@@ -196,9 +196,7 @@ A la izquierda se muestra la ventana del Xloader cuando se inicia.
   La siguiente guía explica como instalar Arduino en Windows, Mac o Linux y es muy completa:
   https://learn.sparkfun.com/tutorials/installing-arduino-ide/all  
   
-  Instrucciones para compilar y programar el código:
-  
-  https://youtu.be/fJWR7dBuc18
+  En Youtube existen cientos de tutoriales para instalar Arduino en diferentes sistemas operativos y aprender su programación, además puedes colaborar mejorando este código o crear tu propia versión.  
   
   
 ****************************
