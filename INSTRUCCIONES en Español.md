@@ -168,13 +168,16 @@ T Pin 3 de la regleta de 5 pines ---> 7
 
 2. Después de instalado el driver, tienes 2 opciones:
 
-2.1. Si lo único que quieres es programar el Arduino sin tener que ver el código, compilarlo y luego programarlo, usa Xloader:
+2.1. Si lo único que quieres es programar el Arduino desde Windows sin tener que ver el código, compilarlo y luego programarlo, usa el software Xloader que se encuentra en la carpeta del mismo nombre:
 
 ![Xloader](https://github.com/danielbernalb/LibreCO2/blob/main/images/Xloader1.jpg)
 
 A la izquierda se muestra la ventana del Xloader cuando se inicia.
 
-2.1.1. Explora hasta encontrar el achivo .hex que vas a cargar en el Arduino. Cad versión de sensor (Sensirion, Winsen o Cubic) se encuentra disponible en el directorio "hex files". Ejemplo: "LibreCO2_Winsen_MHZ14_9.hex" es el archivo para el MH-Z14 o MH-Z19.
+2.1.1. Explora hasta encontrar el achivo .hex que vas a cargar en el Arduino. Cada versión de sensor (Sensirion, Winsen o Cubic) se encuentra disponible en el directorio "hex files". Ejemplo: "LibreCO2_Winsen_MHZ14_9.hex" es el archivo para el MH-Z14 o MH-Z19. No lo bajes directamente de la página con la opción "Guardar como", eso arruina el archivo .hex. Usa estos links:
+ Para el Sensirion: https://github.com/danielbernalb/LibreCO2/blob/main/hex%20files/LibreCO2_Sensirion_SCD30.hex
+ Para el Winsen: https://github.com/danielbernalb/LibreCO2/blob/main/hex%20files/LibreCO2_Winsen_MHZ14_9.hex
+ Para el Cubic: https://github.com/danielbernalb/LibreCO2/blob/main/hex%20files/LibreCO2_Cubic_CM1106.hex
 
 2.1.2. Selecciona la tarjeta Arduino que estas usando (Uno/ATmega328).
 
@@ -186,16 +189,18 @@ A la izquierda se muestra la ventana del Xloader cuando se inicia.
 
 2.1.6. Cuando el archivo .hex file se carga en el Arduino, foto a la derecha, sale el mensaje de "xxxxx bytes uploaded", si falla te saldrá el mensaje de "upload fails".
 
-2.2. Si quieres editar y compilar el código instala el software Arduino:
+2.2. Si quieres editar y compilar el código instala el software Arduino en Windows, Mac o Linux:
   
   https://www.arduino.cc/en/software
+  
+  La siguiente guía explica como instalar Arduino en Windows, Mac o Linux y es muy completa:
+  https://learn.sparkfun.com/tutorials/installing-arduino-ide/all  
   
   Instrucciones para compilar y programar el código:
   
   https://youtu.be/fJWR7dBuc18
   
   
-
 ****************************
 **Contacto**
 
