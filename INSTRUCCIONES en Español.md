@@ -123,7 +123,7 @@ GND ---> G Pin 2 de la regleta de 4 pines
 
 Video explicativo:
 
-[![Video youtube](https://github.com/danielbernalb/LibreCO2/blob/main/images/Materiales2.jpg)](https://youtu.be/KYHC06xhUu4)
+[![](http://img.youtube.com/vi/KYHC06xhUu4/0.jpg)](http://www.youtube.com/watch?v=KYHC06xhUu4 "VideoLibreCO2")
 
 # Opción por partes:
 
