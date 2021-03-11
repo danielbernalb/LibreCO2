@@ -67,11 +67,11 @@ PIN del Escudo ---> Sensor
 
 GND ---> GND
 
-+5 &nbsp; ---> VIN
++5 &nbsp; &nbsp; ---> VIN
 
-5 &nbsp; &nbsp;  ---> RX/SDA
+5 &nbsp; &nbsp; &nbsp; ---> RX/SDA
 
-6 &nbsp; &nbsp;  ---> TX/SCL
+6 &nbsp; &nbsp; &nbsp; ---> TX/SCL
 
 ![SCD30 connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20Shield%20SCD30%20connection.jpg)
 
@@ -79,13 +79,13 @@ GND ---> GND
 ****************************
 **Winsen MH-Z19B sensor**
 
-GND ---> 3.3V 
+GND ---> GND
 
-+5  ---> GND
++5 &nbsp; &nbsp; ---> VIN
 
-5   ---> RX
+5 &nbsp; &nbsp; &nbsp; ---> RX
 
-6   ---> TX
+6 &nbsp; &nbsp; &nbsp; ---> TX
 
 ![MH-Z19B connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20Shield%20MHZ19%20connection.jpg)
 
@@ -97,12 +97,11 @@ PIN del Escudo ---> Sensor
 
 GND ---> Pin 5 or 16 del conector
 
-+5  ---> Pin 4 o 17 del conector
++5 &nbsp; &nbsp; ---> Pin 4 o 17 del conector
 
-5   ---> Pin 3 o 18 del conector
+5 &nbsp; &nbsp; &nbsp; ---> Pin 3 o 18 del conector
 
-6   ---> Pin 2 o 19 del conector
-
+6 &nbsp; &nbsp; &nbsp; ---> Pin 2 o 19 del conector
 
 ![MH-Z14A connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20Shield%20MHZ14%20connection.jpg)	
 
@@ -114,11 +113,11 @@ PIN del Escudo ---> Sensor
 
 GND ---> G Pin 2 de la regleta de 4 pines
 
-+5  ---> V1 Pin 1 de la regleta de 4 pines
++5 &nbsp; &nbsp; ---> V1 Pin 1 de la regleta de 4 pines
 
-5   ---> R Pin 2 de la regleta de 5 pines
+5 &nbsp; &nbsp; &nbsp; ---> R Pin 2 de la regleta de 5 pines
 
-6   ---> T Pin 3 de la regleta de 5 pines
+6 &nbsp; &nbsp; &nbsp; ---> T Pin 3 de la regleta de 5 pines
 
 ![Cubic CM1106](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20Shield%20Cubic%20connection.jpg)
 
