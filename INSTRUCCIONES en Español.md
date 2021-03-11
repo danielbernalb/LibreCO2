@@ -67,7 +67,7 @@ PIN del Escudo ---> Sensor
 
 GND ---> GND
 
-+5 &nbsp ---> VIN
++5 &nbsp; ---> VIN
 
 5 &nbsp; &nbsp;  ---> RX/SDA
 
