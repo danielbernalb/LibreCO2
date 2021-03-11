@@ -14,13 +14,19 @@ Materiales: existen dos opciones de armado de sensor, la más sencilla es usando
 
 # Opción con Escudo multifución:
 
+![Materiales](https://github.com/danielbernalb/LibreCO2/blob/main/images/Materiales%20sensor.jpg)
+
 1. Arduino UNO original o versión china, la diferencia entre los 2 está en la instalación del driver, ambos son populares en cualquier país y trabajan bien.  Original a la derecha y copia a la izquierda:
 
 ![Arduino original & clone](https://github.com/danielbernalb/LibreCO2/blob/main/images/arduino-uno-original-clone.jpg)
 
 2. Escudo multifución (Arduino UNO Shield multifunction).
 
+![ShieldMF](https://github.com/danielbernalb/LibreCO2/blob/main/images/ShieldMF.jpg)
+
 3. 4 cables jumper hembra hembra.
+
+
 
 4. Sensor, opciones:
 
