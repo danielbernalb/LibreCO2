@@ -12,7 +12,7 @@ https://www.co2meter.com/blogs/news/6010192-how-does-an-ndir-co2-sensor-work
 
 Materiales: existen dos opciones de armado de sensor, la más sencilla es usando un Escudo Multifución (Shield) de Arduino el cual ya incluye el Display de 4 digitos, el buzzer y los botones, con lo cual se facilita mucho más el montaje. La segunda usando las partes por individual.
 
-# Opción con Escudo multifución:
+# 1. Opción con Escudo multifución:
 
 ![Materiales](https://github.com/danielbernalb/LibreCO2/blob/main/images/Materiales%20sensor.jpg)
 
@@ -125,7 +125,7 @@ Video explicativo:
 
 [![](http://img.youtube.com/vi/KYHC06xhUu4/0.jpg)](http://www.youtube.com/watch?v=KYHC06xhUu4 "VideoLibreCO2")
 
-# Opción por partes:
+# 2. Opción por partes:
 
 1. Arduino UNO original o versión china.
 2. Display TM1687
@@ -238,7 +238,7 @@ T Pin 3 de la regleta de 5 pines ---> 7
 ![Cubic CM1106](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20UNO%20%20CM1106%20connection.jpg)
 
 ****************************
-**Programar el Firmware (codigo en el Arduino)**
+# 3. Programar el Firmware (codigo en el Arduino)
 
 1. Conecta el Arduino a tu computador y espera a que el driver se instale automáticamente. Si el driver no se instala automáticamente debes identificar si tu Arduino es original o una copia:
 
