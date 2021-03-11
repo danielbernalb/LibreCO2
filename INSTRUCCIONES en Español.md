@@ -286,15 +286,15 @@ Si tienes alguna duda, bug, aporte o comentario escríbeme al correo eléctronic
 
 
 Otros proyectos interesantes:
-Codos
-Anaire
-eMariete
-TTNMAD CO2 Free & this
-co2meter
-Medición de CO2
-M5Stack ESP32 Core Ink + SCD30
-CanAirIO Citizen network for monitoring air quality
-Medidor CO2 DYI. WemosD1-Wifi. Sensor NDIR. Oled. HA
-Air Particules Monitor
+- Codos
+- Anaire
+- eMariete
+- TTNMAD CO2 Free & this
+- co2meter
+- Medición de CO2
+- M5Stack ESP32 Core Ink + SCD30
+- CanAirIO Citizen network for monitoring air quality
+- Medidor CO2 DYI. WemosD1-Wifi. Sensor NDIR. Oled. HA
+- Air Particules Monitor
 
 
