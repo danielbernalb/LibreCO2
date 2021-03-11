@@ -25,7 +25,7 @@ Existen dos opciones para el armado de sensor, la más sencilla es usando un Esc
 
 4. Sensor, opciones:
 
-	a. Sensirion SCD30, el más costoso (52 dollars) pero en nuestras pruebas el de mejor performance. Sensirion tiene distribuidores en USA y Europa que envían a Latinoamérica.. Ejemplo:
+	a. Sensirion SCD30, el más costoso (52 dólares) pero en nuestras pruebas el de mejor performance. Sensirion tiene distribuidores en USA y Europa que envían a Latinoamérica. Ejemplo:
 	https://www.mouser.com/ProductDetail/Sensirion/SCD30/?qs=rrS6PyfT74fdywu4FxpYjQ%3D%3D
 	
 	![SCD30 Sensirion](https://github.com/danielbernalb/LibreCO2/blob/main/images/Sensirion%20SCD30.jpg)
@@ -34,7 +34,7 @@ Existen dos opciones para el armado de sensor, la más sencilla es usando un Esc
 	
 	En contra: precio (52 dólares). 
 	
-	Para la conexión del Arduino al sensor Sensirion se usa el protocolo Modbus ya que este nos permite conectar directamente el Arduino al SCD30 sin necesidad de drivers de datos ya que complicaría mucho el montaje. Sólo debes conectar el pin SEL al VIN del sensor por medio de una resistencia de 100 kilo ohmnios como se vé en el gráfico para habilitar el modo Modbus.
+	Para la conexión del Arduino al sensor Sensirion se usa el protocolo Modbus ya que este nos permite conectar directamente el Arduino al SCD30 sin necesidad de drivers de datos ya que complicaría mucho el montaje. Sólo debes conectar el pin SEL al VIN del sensor por medio de una resistencia de 100 kΩ (kilo ohmnios) como se vé en el gráfico para habilitar el modo Modbus.
 
 	b. Winsen MH-Z14 o 19, el más barato y popular, buen performance, algo lento. Ten cuidado con las falsas copias del sensor!!!
 
@@ -66,11 +66,11 @@ PIN del Escudo ---> Sensor
 
 GND ---> GND
 
-+5 &nbsp; &nbsp; ---> VIN
++5 &nbsp;  ---> VIN
 
-5 &nbsp; &nbsp; &nbsp; ---> RX/SDA
+5 &nbsp; &nbsp; ---> RX/SDA
 
-6 &nbsp; &nbsp; &nbsp; ---> TX/SCL
+6 &nbsp; &nbsp; ---> TX/SCL
 
 ![SCD30 connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20Shield%20SCD30%20connection.jpg)
 
@@ -80,11 +80,11 @@ GND ---> GND
 
 GND ---> GND
 
-+5 &nbsp; &nbsp; ---> VIN
++5 &nbsp; ---> VIN
 
-5 &nbsp; &nbsp; &nbsp; ---> RX
+5 &nbsp; &nbsp; ---> RX
 
-6 &nbsp; &nbsp; &nbsp; ---> TX
+6 &nbsp; &nbsp; ---> TX
 
 ![MH-Z19B connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20Shield%20MHZ19%20connection.jpg)
 
@@ -96,11 +96,11 @@ PIN del Escudo ---> Sensor
 
 GND ---> Pin 5 or 16 del conector
 
-+5 &nbsp; &nbsp; ---> Pin 4 o 17 del conector
++5 &nbsp; ---> Pin 4 o 17 del conector
 
-5 &nbsp; &nbsp; &nbsp; ---> Pin 3 o 18 del conector
+5 &nbsp; &nbsp; ---> Pin 3 o 18 del conector
 
-6 &nbsp; &nbsp; &nbsp; ---> Pin 2 o 19 del conector
+6 &nbsp; &nbsp; ---> Pin 2 o 19 del conector
 
 ![MH-Z14A connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20Shield%20MHZ14%20connection.jpg)	
 
@@ -112,11 +112,11 @@ PIN del Escudo ---> Sensor
 
 GND ---> G Pin 2 de la regleta de 4 pines
 
-+5 &nbsp; &nbsp; ---> V1 Pin 1 de la regleta de 4 pines
++5 &nbsp; ---> V1 Pin 1 de la regleta de 4 pines
 
-5 &nbsp; &nbsp; &nbsp; ---> R Pin 2 de la regleta de 5 pines
+5 &nbsp; &nbsp; ---> R Pin 2 de la regleta de 5 pines
 
-6 &nbsp; &nbsp; &nbsp; ---> T Pin 3 de la regleta de 5 pines
+6 &nbsp; &nbsp; ---> T Pin 3 de la regleta de 5 pines
 
 ![Cubic CM1106](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20Shield%20Cubic%20connection.jpg)
 
@@ -284,7 +284,7 @@ A la izquierda se muestra la ventana del Xloader cuando se inicia.
 Si tienes alguna duda, bug, aporte o comentario escríbeme al correo eléctronico danielbernalb@gmail.com o la cuenta de twitter [@danielbernalb](https://twitter.com/danielbernalb) 
 
 
-Otros proyectos de sensores de CO2 o que incluyen sensores de CO2:
+**Otros proyectos de sensores de CO2 o que incluyen sensores de CO2:**
 - [CanAirIO Citizen network for monitoring air quality](https://canair.io/es/index.html).
 - [M5Stack ESP32 Core Ink + SCD30](https://github.com/hpsaturn/co2_m5coreink).
 - [Codos](https://github.com/miguelangelcasanova/codos).
