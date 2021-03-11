@@ -254,6 +254,11 @@ T Pin 3 de la regleta de 5 pines ---> 7
 A la izquierda se muestra la ventana del Xloader cuando se inicia.
 
 2.1.1. Explora hasta encontrar el achivo .hex que vas a cargar en el Arduino. Cada versión de sensor (Sensirion, Winsen o Cubic) se encuentra disponible en el directorio "hex files". Ejemplo: "LibreCO2_Winsen_MHZ14_9.hex" es el archivo para el MH-Z14 o MH-Z19. No lo bajes directamente de la página con la opción "Guardar como", eso arruina el archivo. Usa los siguientes links para bajarlos y guarda el archivo como .hex (no como .txt):
+**Para la opción con Escudo Multifunción:**
+ Para el Sensirion: https://raw.githubusercontent.com/danielbernalb/LibreCO2/main/hex%20files/LibreCO2_Shield_Sensirion.hex
+ Para el Winsen: https://raw.githubusercontent.com/danielbernalb/LibreCO2/main/hex%20files/LibreCO2_Shield_Winsen.hex
+ Para el Cubic: https://raw.githubusercontent.com/danielbernalb/LibreCO2/main/hex%20files/LibreCO2_Shield_Cubic.hex
+**Para la opción por partes: Sensirion:**
  Para el Sensirion: https://raw.githubusercontent.com/danielbernalb/LibreCO2/main/hex%20files/LibreCO2_Sensirion_SCD30.hex
  Para el Winsen: https://raw.githubusercontent.com/danielbernalb/LibreCO2/main/hex%20files/LibreCO2_Winsen_MHZ14_9.hex
  Para el Cubic: https://raw.githubusercontent.com/danielbernalb/LibreCO2/main/hex%20files/LibreCO2_Cubic_CM1106.hex
