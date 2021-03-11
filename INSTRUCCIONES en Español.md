@@ -22,11 +22,7 @@ Materiales: existen dos opciones de armado de sensor, la más sencilla es usando
 
 2. Escudo multifución (Arduino UNO Shield multifunction).
 
-![ShieldMF](https://github.com/danielbernalb/LibreCO2/blob/main/images/ShieldMF.jpg)
-
 3. 4 cables jumper hembra hembra.
-
-
 
 4. Sensor, opciones:
 
@@ -63,12 +59,11 @@ Materiales: existen dos opciones de armado de sensor, la más sencilla es usando
 	
 ****************************
 
-
-**Conexiones para todos los sensores:**
-
-PIN del Escudo ---> Sensor
+**Conexiones para cada sensores:**
 
 **Sensirion SCD30**
+
+PIN del Escudo ---> Sensor
 
 GND ---> GND
 
@@ -78,7 +73,7 @@ GND ---> GND
 
 6   ---> TX/SCL
 
-![SCD30 connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20UNO%20SCD30%20connection%20Modbus.jpg)
+![SCD30 connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20Shield%20SCD30%20connection.jpg)
 
 
 ****************************
@@ -92,7 +87,7 @@ GND ---> 3.3V
 
 6   ---> TX
 
-![MH-Z19B connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20UNO%20MHZ19%20connection.jpg)
+![MH-Z19B connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20Shield%20MHZ19%20connection.jpg)
 
 
 ****************************
@@ -109,7 +104,7 @@ GND ---> Pin 5 or 16 del conector
 6   ---> Pin 2 o 19 del conector
 
 
-![MH-Z14A connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20UNO%20MHZ14%20connection.jpg)	
+![MH-Z14A connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20Shield%20MHZ14%20connection.jpg)	
 
 
 ****************************
@@ -125,11 +120,11 @@ GND ---> G Pin 2 de la regleta de 4 pines
 
 6   ---> T Pin 3 de la regleta de 5 pines
 
-![Cubic CM1106](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20UNO%20%20CM1106%20connection.jpg)
+![Cubic CM1106](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20Shield%20Cubic%20connection.jpg)
 
 Video explicativo:
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
+[![Video youtube](https://github.com/danielbernalb/LibreCO2/blob/main/images/Materiales2.jpg)](https://youtu.be/KYHC06xhUu4)
 
 # Opción por partes:
 
