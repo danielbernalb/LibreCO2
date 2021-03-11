@@ -286,9 +286,9 @@ Si tienes alguna duda, bug, aporte o comentario escríbeme al correo eléctronic
 
 
 Otros proyectos interesantes:
-- Codos
-- Anaire
-- eMariete
+- Codos *[Codos](https://github.com/miguelangelcasanova/codos)*.
+- Anaire *[Anaire](https://github.com/anaireorg/anaire-devices)*.
+- eMariete *[eMariete]https://emariete.com/en/home-co2-meter/*.
 - TTNMAD CO2 Free & this
 - co2meter
 - Medición de CO2
