@@ -285,11 +285,11 @@ A la izquierda se muestra la ventana del Xloader cuando se inicia.
 
  2. Modo Calibración: [Explicado en el video anexo](#video-explicativo).
 La calibración del sensor se recomienda después de armar el sensor y cuando se aprecien mediciones muy diferentes al aire libre del rango aproximado de 400 ppm. Todos estos sensores de bajo costo se calibran al aire libre, colocandolos en un espacio exterior por unos minutos sin que reciban viento fuerte pues afecta la medición, por ello se recomienda colocarlos dentro de una caja que evite el viento directo.
-Luego de cumplir con estas condiciones, debes presionar el botón S1-A1 en la versión con escudo, o el switch en la versión por partes, , durante más de 5 segundos, y aparecerá en pantalla el "cal-" y un conteo regresivo de 300 segundos para el Sensirion y el Cubic y 20 minutos para el Winsen.
-Al finalizar este tiempo el sensor recibe la orden de calibración y queda listo para usarse de nuevo.
+Luego de cumplir con estas condiciones, debes presionar el botón S1-A1 en la versión con escudo, o el "switch" en la versión por partes, durante más de 5 segundos, y aparecerá en pantalla el "cal-" haciendo un conteo regresivo de 300 segundos para el Sensirion y Cubic y 20 minutos para el Winsen.
+Al finalizar este tiempo el sensor recibe la orden de calibración y queda listo para usarse de nuevo. Si quieres interrumpir el proceso de calibración presiona el botón S3-A3.
 
 3. Modo cambio de nivel del umbral de alarma BEEP: [Explicado en el video anexo](#video-explicativo).
-Para cambiar el nivel de la alarma de 1000 ppm, por defecto, a otro valor entre 700 y 1400 ppm debes presionar el botón S2-A2 en la versión con escudo, o colocar un cable o switch adicional en el pin A3 a A5 en la versión por partes, durante más de 5 segundos y aparecerá el mensaje "BEEP" y luego el valor al que esta programado. Luego debes presionar de nuveo el botoón para modeficar el valor, cuando lo encuentres presiona el botón S3-A3 para programar el nuevo valor.
+Para cambiar el nivel de la alarma de 1000 ppm, por defecto, a otro valor entre 700 y 1400 ppm debes presionar el botón S2-A2 en la versión con escudo, o colocar un cable o switch adicional del pin A3 a A5 en la versión por partes, durante más de 5 segundos y aparecerá el mensaje "BEEP" y luego el valor al que esta programado. Luego debes presionar de nuveo el botoón para modificar el valor, cuando lo encuentres presiona el botón S3-A3 para programar el nuevo valor.
   
   
 ****************************
