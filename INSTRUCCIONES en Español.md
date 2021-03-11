@@ -299,7 +299,7 @@ Si tienes alguna duda, bug, aporte o comentario escríbeme al correo eléctronic
 
 ****************************
 
-### Otros proyectos de sensores de CO2 o que incluyen sensores de CO2:
+### Otros proyectos abiertos recomendados de sensores de CO2 o que incluyen sensores de CO2:
 - [CanAirIO Citizen network for monitoring air quality](https://canair.io/es/index.html).
 - [M5Stack ESP32 Core Ink + SCD30](https://github.com/hpsaturn/co2_m5coreink).
 - [Codos](https://github.com/miguelangelcasanova/codos).
