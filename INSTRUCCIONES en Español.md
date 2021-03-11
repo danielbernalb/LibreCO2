@@ -1,26 +1,25 @@
 # LibreCO2
-LibreCO2: Medidor de CO2 simple usando Arduino UNO - MEGA o nano y un sensor de CO2 comercial (Sensirion SCD30, Winsen MH-Z14 o MHZ-19 y Cubic CM1106).
+LibreCO2: Medidor de CO2 simple usando Arduino UNO y un sensor de CO2 comercial (Sensirion SCD30, Winsen MH-Z14 o MHZ-19 o Cubic CM1106).
 
-Esta es una versión básica de un medidor de bajo costo de CO2 con los materiales más comúnmente encontrados en el mercado: Arduino UNO y los 3 sensores de bajo costo de CO2 más populares: Sensirion SCD30, Winsen MH-Z14 o 19 y el Cubic CM1106. LibreCO2 usa un Arduino UNO pero puede extenderse a un NANO o MEGA, que son muy populares en escuelas y frecuentemente usados en las clases de tecnología o electrónica. El código del Arduino es lo más sencillo posible y puede programarse cargando el archivo .hex con el programa Xloader y así no necesitarías instalar el software Arduino para compilar el código. Si buscas conectividad por Bluetooth o por Wifi puedes encontrar un listado interesante al final con varias versiones que incluye CanAirIO [CanAirIO](https://github.com/kike-canaries/canairio_firmware) con conectividad Bluetooth y Wifi. El medidor LibreCO2 usa los componentes más populares del mercado, así no sean los más avanzados, y el armado más sencillo posible sin necesitar del uso de cautín y soldadura de estaño.
+Esta es una versión básica de un medidor de CO2 de bajo costo con los materiales más comúnmente encontrados en el mercado: Arduino UNO y los 3 sensores de bajo costo de CO2 más populares: Sensirion SCD30, Winsen MH-Z14 o 19 y Cubic CM1106. LibreCO2 usa un Arduino UNO, pero puede extenderse a MEGA o  nano, por ser muy popular en escuelas y frecuentemente usado en las clases de tecnología o electrónica. El código del Arduino es lo más sencillo posible y puede programarse cargando el archivo .hex con el programa Xloader y así no necesitarías instalar el software Arduino para compilar el código. Si buscas un sensor más avanzado y con conectividad por Bluetooth o por Wifi puedes encontrar un listado interesante al final con varias iniciativas abiertas que incluye CanAirIO [CanAirIO](https://github.com/kike-canaries/canairio_firmware) con conectividad Bluetooth y Wifi. LibreCO2 usa los componentes más populares del mercado, así no sean los más avanzados, y el armado más sencillo posible sin necesitar del uso de cautín y soldadura de estaño.
 
 Todos los sensores usados aquí son NDIR que es el actual estándar para mediciones reales de CO2: 
-
-https://en.wikipedia.org/wiki/Carbon_dioxide_sensor
 
 https://www.co2meter.com/blogs/news/6010192-how-does-an-ndir-co2-sensor-work
 
 
-Materiales: existen dos opciones de armado de sensor, la más sencilla es usando un Escudo Multifución (Shield) de Arduino el cual ya incluye el Display de 4 digitos, el buzzer y los botones, con lo cual se facilita mucho más el montaje. La segunda usando las partes por individual.
+**Materiales:**
+Existen dos opciones para el armado de sensor, la más sencilla es usando un Escudo Multifución (Shield) de Arduino el cual ya incluye el Display de 4 digitos, el buzzer y los botones, con lo cual se facilita mucho más el montaje. La segunda armando las partes por individual.
 
 # 1. Opción con Escudo multifución:
 
 ![Materiales](https://github.com/danielbernalb/LibreCO2/blob/main/images/Materiales%20sensor.jpg)
 
-1. Arduino UNO original o versión china, la diferencia entre los 2 está en la instalación del driver, ambos son populares en cualquier país y trabajan bien.  Original a la derecha y copia a la izquierda:
+1. Arduino UNO cualquier versión. Sirve el original o las versiones chinas, la diferencia entre los 2 está en la instalación del driver, ambos trabajan bien.  Original a la derecha y copia a la izquierda:
 
 ![Arduino original & clone](https://github.com/danielbernalb/LibreCO2/blob/main/images/arduino-uno-original-clone.jpg)
 
-2. Escudo multifución (Arduino UNO Shield multifunction).
+2. Escudo multifunción (Arduino UNO Shield multifunction).
 
 3. 4 cables jumper hembra hembra.
 
@@ -35,7 +34,7 @@ Materiales: existen dos opciones de armado de sensor, la más sencilla es usando
 	
 	En contra: precio (52 dólares). 
 	
-	Para la conexión del Arduino al sensor Sensirion se usa el protocolo Modbus ya que este nos permite conectar directamente el Arduino al SCD30 sin necesidad de drivers externos que complicarían mucho el montaje. Sólo debes conectar el pin SEL al VIN del sensor como se vé en el gráfico  para habilitar el modo Modbus.
+	Para la conexión del Arduino al sensor Sensirion se usa el protocolo Modbus ya que este nos permite conectar directamente el Arduino al SCD30 sin necesidad de drivers de datos ya que complicaría mucho el montaje. Sólo debes conectar el pin SEL al VIN del sensor por medio de una resistencia de 100 kilo ohmnios como se vé en el gráfico para habilitar el modo Modbus.
 
 	b. Winsen MH-Z14 o 19, el más barato y popular, buen performance, algo lento. Ten cuidado con las falsas copias del sensor!!!
 
@@ -49,7 +48,7 @@ Materiales: existen dos opciones de armado de sensor, la más sencilla es usando
 
 	![Original Winsen MH-Z19b](https://github.com/danielbernalb/LibreCO2/blob/main/images/MH-Z19B.jpg)
 
-	Originales en Aliexpress:
+	Venta de versiones originales en la página de fabricante en Aliexpress:
 	https://es.aliexpress.com/item/1005001865093513.html
 
 	c. Cubic CM1106, la última opción porque el distribuidor de China vende sólo unidades recuperadas de segunda mano y de vez en cuando están agotados, son muy baratos y su performance es aceptable. 
