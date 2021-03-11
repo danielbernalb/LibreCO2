@@ -277,6 +277,18 @@ A la izquierda se muestra la ventana del Xloader cuando se inicia.
   
   En Youtube existen cientos de tutoriales para instalar Arduino en diferentes sistemas operativos y aprender su programación, además puedes colaborar mejorando este código o crear tu propia versión.  
   
+ # 4. Funcionamiento del sensor.
+ 
+ Cuando se haya realizado la programación del Arduino tenemos varios modeos y opciones de funcionamiento del sensor:
+ 
+ 1. Modo normal: Al encender el sensor aparece el aviso BEEP y un número entre 700 y 1400 quemuestra el nivel de la alarma que tenemos programado. En el numeral 3 se explicará cómo modificarlo. Luego de ello el medidor verifica la conexión al sensor de bajo costo. Si aparece el mensaje "good" la conexión está bien hecha y se continuará con el proceso de calentamiento del sensor ("heat") que dura 30 segundos para los sensores Sensirion y Cubic, y 3 minutos para los Winsen. Si el mensaje es "fail" la conexión ha fallado y debemos verificar la conexión entre el Arduino y el sensor. Después de el calentamiento el valor de CO2 en partes por millón, ppm, aparece en pantalla. Cuando el valor es superior al nivel Beep la alarma suena y los leds del escudo titilan.
+ 2. Modo Calibración: Explicado en el video anexo.
+La calibración del sensor se recomienda después de armar el sensor y cuando se aprecien mediciones muy diferentes al aire libre del rango aproximado de 400 ppm. Todos estos sensores de bajo costo se calibran al aire libre, colocandolos en un espacio exterior por unos minutos sin que reciban viento fuerte pues afecta la medición, por ello se recomienda colocarlos dentro de una caja que evite el viento directo.
+Luego de cumplir con estas condiciones, debes presionar el botón S1-A1 en la versión con escudo, o el switch en la versión por partes, , durante más de 5 segundos, y aparecerá en pantalla el "cal-" y un conteo regresivo de 300 segundos para el Sensirion y el Cubic y 20 minutos para el Winsen.
+Al finalizar este tiempo el sensor recibe la orden de calibración y queda listo para usarse de nuevo.
+3. Modo cambio de nivel del umbral de alarma BEEP: Explicado en el video anexo..
+Para cambiar el nivel de la alarma de 1000 ppm, por defecto, a otro valor entre 700 y 1400 ppm debes presionar el botón S2-A2 en la versión con escudo, o colocar un cable o switch adicional en el pin A3 a A5 en la versión por partes, durante más de 5 segundos y aparecerá el mensaje "BEEP" y luego el valor al que esta programado. Luego debes presionar de nuveo el botoón para modeficar el valor, cuando lo encuentres presiona el botón S3-A3 para programar el nuevo valor.
+  
   
 ****************************
 **Contacto**
