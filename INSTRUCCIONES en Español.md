@@ -1,7 +1,7 @@
 # LibreCO2
 LibreCO2: Medidor de CO2 simple usando Arduino UNO - MEGA o nano y un sensor de CO2 comercial (Sensirion SCD30, Winsen MH-Z14 o MHZ-19 y Cubic CM1106).
 
-Esta es una versión básica de un medidor de bajo costo de CO2 con los materiales más comúnmente encontrados en el mercado: Arduino UNO y los 3 sensores de bajo costo de CO2 más populares: Sensirion SCD30, Winsen MH-Z14 o 19 y el Cubic CM1106. LibreCO2 usa un Arduino UNO pero puede extenderse a un NANO o MEGA, que son muy populares en escuelas y frecuentemente usados en las clases de tecnología o electrónica. El código del Arduino es lo más sencillo posible y puede programarse cargando el archivo .hex con el programa Xloader y así no necesitarías instalar el software Arduino para compilar el código. Si buscas conectividad por Bluetooth o por Wifi puedes encontrar un listado interesante al final con varias versiones que incluye CanAirIO con Bluettoh y Wifi. El medidor LibreCO2 usa los componentes más populares del mercado, así no sean los más avanzados, y el armado más sencillo posible sin necesitar del uso de cautín y soldadura de estaño.
+Esta es una versión básica de un medidor de bajo costo de CO2 con los materiales más comúnmente encontrados en el mercado: Arduino UNO y los 3 sensores de bajo costo de CO2 más populares: Sensirion SCD30, Winsen MH-Z14 o 19 y el Cubic CM1106. LibreCO2 usa un Arduino UNO pero puede extenderse a un NANO o MEGA, que son muy populares en escuelas y frecuentemente usados en las clases de tecnología o electrónica. El código del Arduino es lo más sencillo posible y puede programarse cargando el archivo .hex con el programa Xloader y así no necesitarías instalar el software Arduino para compilar el código. Si buscas conectividad por Bluetooth o por Wifi puedes encontrar un listado interesante al final con varias versiones que incluye CanAirIO [CanAirIO](https://github.com/kike-canaries/canairio_firmware) con conectividad Bluetooth y Wifi. El medidor LibreCO2 usa los componentes más populares del mercado, así no sean los más avanzados, y el armado más sencillo posible sin necesitar del uso de cautín y soldadura de estaño.
 
 Todos los sensores usados aquí son NDIR que es el actual estándar para mediciones reales de CO2: 
 
@@ -285,16 +285,10 @@ A la izquierda se muestra la ventana del Xloader cuando se inicia.
 Si tienes alguna duda, bug, aporte o comentario escríbeme al correo eléctronico danielbernalb@gmail.com o la cuenta de twitter [@danielbernalb](https://twitter.com/danielbernalb) 
 
 
-Otros proyectos interesantes:
-- [Codos](https://github.com/miguelangelcasanova/codos)
-- Anaire [Anaire](https://github.com/anaireorg/anaire-devices)
-- eMariete [eMariete](https://emariete.com/en/home-co2-meter/)
-- TTNMAD CO2 Free & this
-- co2meter
-- Medición de CO2
-- M5Stack ESP32 Core Ink + SCD30
-- CanAirIO Citizen network for monitoring air quality
-- Medidor CO2 DYI. WemosD1-Wifi. Sensor NDIR. Oled. HA
-- Air Particules Monitor
-
-
+Otros proyectos de sensores de CO2 o que incluyen sensores de CO2:
+- [CanAirIO Citizen network for monitoring air quality](https://canair.io/es/index.html).
+- [M5Stack ESP32 Core Ink + SCD30](https://github.com/hpsaturn/co2_m5coreink).
+- [Codos](https://github.com/miguelangelcasanova/codos).
+- [Anaire](https://github.com/anaireorg/anaire-devices).
+- [eMariete](https://emariete.com/en/home-co2-meter/).
+- [Medición de CO2](http://www.jorgealiaga.com.ar/?page_id=2864).
