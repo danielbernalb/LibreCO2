@@ -25,22 +25,22 @@ Existen dos opciones para el armado de sensor, la más sencilla es usando un Esc
 
 4. Sensor, opciones:
 
-	a. Sensirion SCD30, el más costoso (52 dólares) pero en nuestras pruebas el de mejor performance. Sensirion tiene distribuidores en USA y Europa que envían a Latinoamérica. Ejemplo:
+	a. Sensirion SCD30, el más costoso (52 dólares) pero en nuestras pruebas el de mejor desempeño. Sensirion tiene distribuidores en USA y Europa que envían a Latinoamérica. Ejemplo:
 	https://www.mouser.com/ProductDetail/Sensirion/SCD30/?qs=rrS6PyfT74fdywu4FxpYjQ%3D%3D
 	
 	![SCD30 Sensirion](https://github.com/danielbernalb/LibreCO2/blob/main/images/Sensirion%20SCD30.jpg)
 	
-	A favor: excelente performance (rápido y fiel), rápido envío en USA y Europa y envíos a Latinoamérica.
+	A favor: excelente desempeño (rápido y fiel), rápido envío en USA y Europa y envíos a Latinoamérica.
 	
 	En contra: precio (52 dólares). 
 	
 	Para la conexión del Arduino al sensor Sensirion se usa el protocolo Modbus ya que este nos permite conectar directamente el Arduino al SCD30 sin necesidad de drivers de datos ya que complicaría mucho el montaje. Sólo debes conectar el pin SEL al VIN del sensor por medio de una resistencia de 100 kΩ (kilo ohmnios) como se vé en el gráfico para habilitar el modo Modbus.
 
-	b. Winsen MH-Z14 o 19, el más barato y popular, buen performance, algo lento. Ten cuidado con las falsas copias del sensor!!!
+	b. Winsen MH-Z14 o 19, el más barato y popular, buen desempeño, algo lento. Ten cuidado con las falsas copias del sensor!!!
 
 	![Winsen MH-Z14a](https://github.com/danielbernalb/LibreCO2/blob/main/images/MH-Z14A.jpg)
 	
-	A favor: performance aceptable (lento comparado al Sensirion, fiabilidad media), bajo costo (18 dolares con envío incluido desde China por Aliexpress).
+	A favor: desempeño aceptable (lento comparado al Sensirion, fiabilidad media), bajo costo (18 dolares con envío incluido desde China por Aliexpress).
 	
 	En contra: tiempo de envío variable con Aliexpress desde China (20 días a mes y medio), falsificaciones (ten cuidado, sólo compra de la tienda Oficial de Aliexpress).
 
@@ -51,7 +51,7 @@ Existen dos opciones para el armado de sensor, la más sencilla es usando un Esc
 	Venta de versiones originales en la página de fabricante en Aliexpress:
 	https://es.aliexpress.com/item/1005001865093513.html
 
-	c. Cubic CM1106, la última opción porque el distribuidor de China vende sólo unidades recuperadas de segunda mano y de vez en cuando están agotados, son muy baratos y su performance es aceptable. 
+	c. Cubic CM1106, la última opción porque el distribuidor de China vende sólo unidades recuperadas de segunda mano y de vez en cuando están agotados, son muy baratos y su desempeño es aceptable. 
 	https://www.aliexpress.com/item/4001082699057.html
 	
 	![Cubic CM1106](https://github.com/danielbernalb/LibreCO2/blob/main/images/Cubic%20CM1106.jpg)
