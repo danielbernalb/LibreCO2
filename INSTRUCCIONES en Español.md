@@ -1,7 +1,7 @@
 # LibreCO2
 LibreCO2: Medidor de CO2 simple usando Arduino UNO y un sensor de CO2 comercial (Sensirion SCD30, Winsen MH-Z14 o MHZ-19 o Cubic CM1106).
 
-Esta es una versión básica de un medidor de CO2 de bajo costo con los materiales más comúnmente encontrados en el mercado: Arduino UNO y los 3 sensores de bajo costo de CO2 más populares: Sensirion SCD30, Winsen MH-Z14 o 19 y Cubic CM1106. LibreCO2 usa un Arduino UNO, pero puede extenderse a MEGA o  nano, por ser muy popular en escuelas y frecuentemente usado en las clases de tecnología o electrónica. El código del Arduino es lo más sencillo posible y puede programarse cargando el archivo .hex con el programa Xloader y así no necesitarías instalar el software Arduino para compilar el código. Si buscas un sensor más avanzado y con conectividad por Bluetooth o por Wifi puedes encontrar un listado interesante al final con varias iniciativas abiertas que incluye CanAirIO [CanAirIO](https://github.com/kike-canaries/canairio_firmware) con conectividad Bluetooth y Wifi. LibreCO2 usa los componentes más populares del mercado, así no sean los más avanzados, y el armado más sencillo posible sin necesitar del uso de cautín y soldadura de estaño.
+Esta es una versión básica de un medidor de CO2 de bajo costo con los materiales más comúnmente encontrados en el mercado: Arduino UNO y los 3 sensores de bajo costo de CO2 más populares: Sensirion SCD30, Winsen MH-Z14 o 19 y Cubic CM1106. LibreCO2 usa un Arduino UNO, pero puede extenderse a MEGA o  nano, por ser muy popular en escuelas y frecuentemente usado en las clases de tecnología o electrónica. El código del Arduino es lo más sencillo posible y puede programarse cargando el archivo .hex con el programa Xloader y así no necesitarías instalar el software Arduino para compilar el código. Si buscas un sensor más avanzado y con conectividad por Bluetooth o por Wifi puedes encontrar un listado interesante al final con varias iniciativas abiertas que incluye [CanAirIO](https://github.com/kike-canaries/canairio_firmware) con conectividad Bluetooth y Wifi. LibreCO2 usa los componentes más populares del mercado, así no sean los más avanzados, y el armado más sencillo posible sin necesitar del uso de cautín y soldadura de estaño.
 
 Todos los sensores usados aquí son NDIR que es el actual estándar para mediciones reales de CO2: 
 
@@ -9,9 +9,9 @@ https://www.co2meter.com/blogs/news/6010192-how-does-an-ndir-co2-sensor-work
 
 
 **Materiales:**
-Existen dos opciones para el armado de sensor, la más sencilla es usando un Escudo Multifución (Shield) de Arduino el cual ya incluye el Display de 4 digitos, el buzzer y los botones, con lo cual se facilita mucho más el montaje. La segunda armando las partes por individual.
+Existen dos opciones para el armado de sensor, la más sencilla es usando un Escudo Multifunción (Shield) de Arduino el cual ya incluye el Display de 4 dígitos, el buzzer y los botones, con lo cual se facilita mucho más el montaje. La segunda armando las partes por individual.
 
-# 1. Opción con Escudo multifución:
+# 1. Opción con Escudo multifunción:
 
 ![Materiales](https://github.com/danielbernalb/LibreCO2/blob/main/images/Materiales%20sensor.jpg)
 
