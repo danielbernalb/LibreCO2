@@ -59,7 +59,7 @@ Materiales: existen dos opciones de armado de sensor, la más sencilla es usando
 	
 ****************************
 
-**Conexiones para cada sensores:**
+**Conexiones para cada sensor:**
 
 **Sensirion SCD30**
 
@@ -67,11 +67,11 @@ PIN del Escudo ---> Sensor
 
 GND ---> GND
 
-+5  ---> VIN
++5 &nbsp ---> VIN
 
-5   ---> RX/SDA
+5 &nbsp &nbsp  ---> RX/SDA
 
-6   ---> TX/SCL
+6 &nbsp &nbsp  ---> TX/SCL
 
 ![SCD30 connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20Shield%20SCD30%20connection.jpg)
 
