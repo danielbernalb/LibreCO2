@@ -69,9 +69,9 @@ GND ---> GND
 
 +5 &nbsp ---> VIN
 
-5 &nbsp &nbsp  ---> RX/SDA
+5 &nbsp; &nbsp;  ---> RX/SDA
 
-6 &nbsp &nbsp  ---> TX/SCL
+6 &nbsp; &nbsp;  ---> TX/SCL
 
 ![SCD30 connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20Shield%20SCD30%20connection.jpg)
 
