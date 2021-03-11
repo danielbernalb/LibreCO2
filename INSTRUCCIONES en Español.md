@@ -10,20 +10,19 @@ https://en.wikipedia.org/wiki/Carbon_dioxide_sensor
 https://www.co2meter.com/blogs/news/6010192-how-does-an-ndir-co2-sensor-work
 
 
-Materiales:
+Materiales: existen dos opciones de armado de sensor, la más sencilla es usando un Escudo Multifución (Shield) de Arduino el cual ya incluye el Display de 4 digitos, el buzzer y los botones, con lo cual se facilita mucho más el montaje. La segunda usando las partes por individual.
+
+# Opción con Escudo multifución:
 
 1. Arduino UNO original o versión china, la diferencia entre los 2 está en la instalación del driver, ambos son populares en cualquier país y trabajan bien.  Original a la derecha y copia a la izquierda:
 
 ![Arduino original & clone](https://github.com/danielbernalb/LibreCO2/blob/main/images/arduino-uno-original-clone.jpg)
 
-2. Display TM1687
-3. Jumper hembra - macho
-4. Uno o dos Pulsadores o cables (uno para la calibración, otro para el nivel del Beep).
-5. Opcional: Buzzer
+2. Escudo multifución (Arduino UNO Shield multifunction).
 
-![Materiales](https://github.com/danielbernalb/LibreCO2/blob/main/images/Materials%20all%20text.jpg)
+3. 4 cables jumper hembra hembra.
 
-6. Sensor, opciones:
+4. Sensor, opciones:
 
 	a. Sensirion SCD30, el más costoso (52 dollars) pero en nuestras pruebas el de mejor performance. Sensirion tiene distribuidores en USA y Europa que envían a Latinoamérica.. Ejemplo:
 	https://www.mouser.com/ProductDetail/Sensirion/SCD30/?qs=rrS6PyfT74fdywu4FxpYjQ%3D%3D
@@ -56,6 +55,87 @@ Materiales:
 	
 	![Cubic CM1106](https://github.com/danielbernalb/LibreCO2/blob/main/images/Cubic%20CM1106.jpg)
 	
+****************************
+
+
+**Conexiones para todos los sensores:**
+
+PIN del Escudo ---> Sensor
+
+**Sensirion SCD30**
+
+GND ---> GND
+
++5  ---> VIN
+
+5   ---> RX/SDA
+
+6   ---> TX/SCL
+
+![SCD30 connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20UNO%20SCD30%20connection%20Modbus.jpg)
+
+
+****************************
+**Winsen MH-Z19B sensor**
+
+GND ---> 3.3V 
+
++5  ---> GND
+
+5   ---> RX
+
+6   ---> TX
+
+![MH-Z19B connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20UNO%20MHZ19%20connection.jpg)
+
+
+****************************
+**Winsen MH-Z14A sensor**
+
+PIN del Escudo ---> Sensor
+
+GND ---> Pin 5 or 16 del conector
+
++5  ---> Pin 4 o 17 del conector
+
+5   ---> Pin 3 o 18 del conector
+
+6   ---> Pin 2 o 19 del conector
+
+
+![MH-Z14A connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20UNO%20MHZ14%20connection.jpg)	
+
+
+****************************
+**Cubic CM1106 sensor**
+
+PIN del Escudo ---> Sensor
+
+GND ---> G Pin 2 de la regleta de 4 pines
+
++5  ---> V1 Pin 1 de la regleta de 4 pines
+
+5   ---> R Pin 2 de la regleta de 5 pines
+
+6   ---> T Pin 3 de la regleta de 5 pines
+
+![Cubic CM1106](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20UNO%20%20CM1106%20connection.jpg)
+
+Video explicativo:
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
+
+# Opción por partes:
+
+1. Arduino UNO original o versión china.
+2. Display TM1687
+3. Jumper hembra - macho
+4. Uno o dos Pulsadores o cables (uno para la calibración, otro para el nivel del Beep).
+5. Opcional: Buzzer
+
+![Materiales](https://github.com/danielbernalb/LibreCO2/blob/main/images/Materials%20all%20text.jpg)
+
+6. Sensor, iguales opciones que la opción multifunción.
 
 ****************************
 
