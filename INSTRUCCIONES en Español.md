@@ -293,10 +293,11 @@ Para cambiar el nivel de la alarma de 1000 ppm, por defecto, a otro valor entre 
   
   
 ****************************
-**Contacto**
+### Contacto
 
 Si tienes alguna duda, bug, aporte o comentario escríbeme al correo eléctronico danielbernalb@gmail.com o la cuenta de twitter [@danielbernalb](https://twitter.com/danielbernalb) 
 
+****************************
 
 ### Otros proyectos de sensores de CO2 o que incluyen sensores de CO2:
 - [CanAirIO Citizen network for monitoring air quality](https://canair.io/es/index.html).
