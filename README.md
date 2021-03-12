@@ -15,11 +15,11 @@ There are two options for the assembly of the sensor, the simplest is using an A
 
 ![Materials](https://github.com/danielbernalb/LibreCO2/blob/main/images/Materiales%20sensor.jpg)
 
-1. Arduino UNO original or chinese version, the difference is the driver installation, both are very easy to find in any country and work well. Original at right and clone at left:
+1. Arduino Multifunction Shield.
+
+2. Arduino UNO original or chinese version, the difference is the driver installation, both are very easy to find in any country and work well. Original at right and clone at left:
 
 ![Arduino original & clone](https://github.com/danielbernalb/LibreCO2/blob/main/images/arduino-uno-original-clone.jpg)
-
-2. Arduino Multifunction Shield.
 
 3. 4 jumper cables female female.
 
