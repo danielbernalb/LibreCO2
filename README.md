@@ -293,12 +293,12 @@ Explore until you find the .hex file that you are going to load into the Arduino
  
  1. Normal mode: When the sensor is turned on, the BEEP message appears and a number between 700 and 1300 shows the level of the alarm that we have programmed. In number 3 it will be explained how to modify it. After that the meter verifies the connection to the low cost sensor. If the "good" message appears, the connection is well made and the sensor heating process ("heat") will continue, which is 30 seconds for the Sensirion and Cubic sensors, and 3 minutes for the Winsen sensors. If the message is "fail" the connection fails and we must verify the connection between the Arduino and the sensor. After heating the CO2 value in parts per million ppm, appears on the screen. When the value is higher than the Beep level, the alarm sounds and the shield LEDs flash.
 
- 2. Calibration Mode: [Explained in the attached video] (#assembly-video).
+ 2. Calibration Mode: [Explained in the attached video](#assembly-video).
 Sensor calibration is recommended after sensor assembly and when widely differing measurements are observed outdoors in the 400 ppm range. All these low-cost sensors are calibrated outdoors, placing them in an outdoor space for a few minutes without receiving strong wind because it affects the measurement, so it is recommended to place them inside a box that avoids direct wind.
 After fulfilling these conditions, you must press the S1-A1 button in the version with shield, or the "switch" in the version by parts, for more than 5 seconds, and the "cal-" message will appear on the screen, counting down 5 minutes for the Sensirion and Cubic and 20 minutes for the Winsen.
 At the end of this time, the sensor receives the calibration order and is ready to be used again. If you want to interrupt the calibration process, press the S3-A3 button.
 
-3. BEEP alarm threshold level change mode: [Explained in the attached video] (#assembly-video).
+3. BEEP alarm threshold level change mode: [Explained in the attached video](#assembly-video).
 To change the alarm level from 1000 ppm, by default, to another value between 700 and 1300 ppm you must press button S2-A2 in the version with shield, or place an additional cable or switch from pin A3 to A5 in the version in parts, for more than 5 seconds and the message "BEEP" will appear and then the value to which it is programmed. Then you must press the button again to modify the value, when you find it press the S3-A3 button to program this new BEEP level value.
   
 
