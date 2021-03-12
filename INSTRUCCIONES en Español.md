@@ -1,25 +1,26 @@
 # LibreCO2
-LibreCO2: Medidor de CO2 simple usando Arduino UNO y un sensor de CO2 comercial (Sensirion SCD30, Winsen MH-Z14 o MHZ-19 o Cubic CM1106).
+LibreCO2: Medidor de CO2 usando Arduino UNO y un sensor de CO2 comercial (Sensirion SCD30, Winsen MH-Z14 o MHZ-19 o Cubic CM1106).
 
-Esta es una versión básica de un medidor de CO2 de bajo costo con los materiales más comúnmente encontrados en el mercado: Arduino UNO y los 3 sensores de bajo costo de CO2 más populares: Sensirion SCD30, Winsen MH-Z14 o 19 y Cubic CM1106. LibreCO2 usa un Arduino UNO, pero puede extenderse a MEGA o  nano, por ser muy popular en escuelas y frecuentemente usado en las clases de tecnología o electrónica. El código del Arduino es lo más sencillo posible y puede programarse cargando el archivo .hex con el programa Xloader y así no necesitarías instalar el software Arduino para compilar el código. Si buscas un sensor más avanzado y con conectividad por Bluetooth o por Wifi puedes encontrar un listado interesante al final con varias iniciativas abiertas que incluye [CanAirIO](https://github.com/kike-canaries/canairio_firmware) con conectividad Bluetooth y Wifi. LibreCO2 usa los componentes más populares del mercado, así no sean los más avanzados, y el armado más sencillo posible sin necesitar del uso de cautín y soldadura de estaño.
+Esta es una versión básica de un medidor de CO2 de bajo costo con los materiales más comúnmente encontrados en el mercado: Arduino UNO y los 3 sensores de bajo costo de CO2 más populares: Sensirion SCD30, Winsen MH-Z14 o 19 y Cubic CM1106. LibreCO2 usa un Arduino UNO, pero puede extenderse al MEGA o nano, por ser muy popular en escuelas y frecuentemente usado en las clases de tecnología o electrónica y la mayoría de escuelas tienen muchos de ellos. El código del Arduino es lo más sencillo posible y puede programarse cargando el archivo .hex con el programa Xloader y así no necesitarías instalar el software Arduino para compilar y programar el código. Si buscas un sensor más avanzado y con conectividad por Bluetooth o por Wifi puedes encontrar un listado interesante al final de esta guía con varias iniciativas abiertas que incluye [CanAirIO](https://github.com/kike-canaries/canairio_firmware) con conectividad Bluetooth y Wifi. LibreCO2 usa los componentes más populares del mercado, así no sean los más avanzados, y el armado más sencillo posible sin necesitar el uso de cautín y soldadura de estaño.
 
-Todos los sensores usados aquí son NDIR que es el actual estándar para mediciones reales de CO2: 
+Todos los sensores usados aquí son NDIR que es el estándar actuales para mediciones reales de CO2: 
 
 https://www.co2meter.com/blogs/news/6010192-how-does-an-ndir-co2-sensor-work
 
 
 **Materiales:**
+
 Existen dos opciones para el armado de sensor, la más sencilla es usando un Escudo Multifunción (Shield) de Arduino el cual ya incluye el Display de 4 dígitos, el buzzer y los botones, con lo cual se facilita mucho más el montaje. La segunda armando las partes por individual.
 
 # 1. Opción con Escudo multifunción:
 
 ![Materiales](https://github.com/danielbernalb/LibreCO2/blob/main/images/Materiales%20sensor.jpg)
 
-1. Arduino UNO cualquier versión. Sirve el original o las versiones chinas, la diferencia entre los 2 está en la instalación del driver, ambos trabajan bien.  Original a la derecha y copia a la izquierda:
+1. Arduino UNO cualquier versión. Sirve el original o las versiones chinas, la diferencia entre los 2 está en la instalación del driver, ambos trabajan bien. Original a la derecha y copia a la izquierda:
 
 ![Arduino original & clone](https://github.com/danielbernalb/LibreCO2/blob/main/images/arduino-uno-original-clone.jpg)
 
-2. Escudo multifunción (Arduino UNO Shield multifunction).
+2. Escudo multifunción (Arduino Shield multifunction).
 
 3. 4 cables jumper hembra hembra.
 
@@ -34,7 +35,7 @@ Existen dos opciones para el armado de sensor, la más sencilla es usando un Esc
 	
 	En contra: precio (52 dólares). 
 	
-	Para la conexión del Arduino al sensor Sensirion se usa el protocolo Modbus ya que este nos permite conectar directamente el Arduino al SCD30 sin necesidad de drivers de datos ya que complicaría mucho el montaje. Sólo debes conectar el pin SEL al VIN del sensor por medio de una resistencia de 100 kΩ (kilo ohmnios) como se vé en el gráfico para habilitar el modo Modbus.
+	Para la conexión del Arduino al sensor Sensirion se usa el protocolo Modbus ya que este nos permite conectar directamente el Arduino al SCD30 sin necesidad de drivers de datos que complicarían mucho el montaje. Sólo debes conectar el pin SEL al VIN del sensor usando una resistencia de 100 kΩ (kilo ohmnios) como se vé en las fotos y video para habilitar el modo Modbus.
 
 	b. Winsen MH-Z14 o 19, el más barato y popular, buen desempeño, algo lento. Ten cuidado con las falsas copias del sensor!!!
 
@@ -48,7 +49,7 @@ Existen dos opciones para el armado de sensor, la más sencilla es usando un Esc
 
 	![Original Winsen MH-Z19b](https://github.com/danielbernalb/LibreCO2/blob/main/images/MH-Z19B.jpg)
 
-	Venta de versiones originales en la página de fabricante en Aliexpress:
+	Venta de versiones originales en la página del fabricante en Aliexpress:
 	https://es.aliexpress.com/item/1005001865093513.html
 
 	c. Cubic CM1106, la última opción porque el distribuidor de China vende sólo unidades recuperadas de segunda mano y de vez en cuando están agotados, son muy baratos y su desempeño es aceptable. 
@@ -92,8 +93,6 @@ GND ---> GND
 ****************************
 **Winsen MH-Z14A sensor**
 
-PIN del Escudo ---> Sensor
-
 GND ---> Pin 5 or 16 del conector
 
 +5 &nbsp; ---> Pin 4 o 17 del conector
@@ -107,8 +106,6 @@ GND ---> Pin 5 or 16 del conector
 
 ****************************
 **Cubic CM1106 sensor**
-
-PIN del Escudo ---> Sensor
 
 GND ---> G Pin 2 de la regleta de 4 pines
 
@@ -124,17 +121,17 @@ GND ---> G Pin 2 de la regleta de 4 pines
 
 [![](http://img.youtube.com/vi/KYHC06xhUu4/0.jpg)](http://www.youtube.com/watch?v=KYHC06xhUu4 "VideoLibreCO2")
 
-# 2. Opción por partes:
+# 2. Opción por partes individuales:
 
 1. Arduino UNO original o versión china.
-2. Display TM1687
-3. Jumper hembra - macho
-4. Uno o dos Pulsadores o cables (uno para la calibración, otro para el nivel del Beep).
-5. Opcional: Buzzer
+2. Display TM1687.
+3. Jumper hembra - macho.
+4. Uno o dos Pulsadores o cables (uno para la calibración, otro para el nivel de Beep).
+5. Opcional: Buzzer.
 
 ![Materiales](https://github.com/danielbernalb/LibreCO2/blob/main/images/Materials%20all%20text.jpg)
 
-6. Sensor, iguales opciones que la opción multifunción.
+6. Sensor, iguales opciones que la opción con Escudo multifunción.
 
 ****************************
 
@@ -243,17 +240,17 @@ T Pin 3 de la regleta de 5 pines ---> 7
 
 1.1. Si el Arduino es original, instala el paquete Arduino con drivers: https://www.arduino.cc/en/Guide/ArduinoUno
 
-1.2. Si el Arduino es copia sigue las instrucciones de esta página web: https://learn.sparkfun.com/tutorials/how-to-install-ch340-drivers
+1.2. Si el Arduino es copia china sigue las instrucciones de esta página web: https://learn.sparkfun.com/tutorials/how-to-install-ch340-drivers
 
 2. Después de instalado el driver, tienes 2 opciones:
 
-2.1. Si lo único que quieres es programar el Arduino desde Windows sin tener que ver el código, compilarlo y luego programarlo, usa el software Xloader que se encuentra en la carpeta del mismo nombre:
+2.1. Si lo único que quieres es programar el Arduino desde Windows sin tener que ver el código y compilarlo, usa el software Xloader que se encuentra en la carpeta del mismo nombre:
 
 ![Xloader](https://github.com/danielbernalb/LibreCO2/blob/main/images/Xloader1.jpg)
 
 A la izquierda se muestra la ventana del Xloader cuando se inicia.
 
-2.1.1. Explora hasta encontrar el achivo .hex que vas a cargar en el Arduino. Cada versión de sensor (Sensirion, Winsen o Cubic) se encuentra disponible en el directorio "hex files". Ejemplo: "LibreCO2_Winsen_MHZ14_9.hex" es el archivo para el MH-Z14 o MH-Z19. No lo bajes directamente de la página con la opción "Guardar como", eso arruina el archivo. Usa los siguientes links para bajarlos y guarda el archivo como .hex (no como .txt):
+2.1.1. Explora hasta encontrar el achivo .hex que vas a cargar en el Arduino. Cada versión de sensor (Sensirion, Winsen o Cubic) se encuentra disponible en el directorio "hex files". Ejemplo: "LibreCO2_Shield_Sensirion.hex" es el archivo para el sensor Sensirion con el uso del Escudo Multifunción (shield). No lo bajes directamente de la página con la opción "Guardar como", eso arruina el archivo. Usa los siguientes links para bajarlos y guarda el archivo como .hex, no como .txt:
 
 **Para la opción con Escudo Multifunción:**
  
@@ -273,7 +270,7 @@ A la izquierda se muestra la ventana del Xloader cuando se inicia.
 
 2.1.2. Selecciona la tarjeta Arduino que estas usando (Uno/ATmega328).
 
-2.1.3. Selecciona el puerto de comunicaciones COM al que está conectado el Arduino.
+2.1.3. Selecciona el puerto de comunicaciones COM al que está conectado el Arduino, si no lo sabes buscalo en el Admnistrador de dispositivos "Puertos COM y LPT".
 
 2.1.4. Selecciona la velocidad Baud rate a 115200.
 
@@ -294,15 +291,15 @@ A la izquierda se muestra la ventana del Xloader cuando se inicia.
  
  Cuando se haya realizado la programación del Arduino tenemos varios modos y opciones de funcionamiento del sensor:
  
- 1. Modo normal: Al encender el sensor aparece el aviso BEEP y un número entre 700 y 1400 que muestra el nivel de la alarma que tenemos programado. En el numeral 3 se explicará cómo modificarlo. Luego de ello el medidor verifica la conexión al sensor de bajo costo. Si aparece el mensaje "good" la conexión está bien hecha y se continuará con el proceso de calentamiento del sensor ("heat") que dura 30 segundos para los sensores Sensirion y Cubic, y 3 minutos para los Winsen. Si el mensaje es "fail" la conexión ha fallado y debemos verificar la conexión entre el Arduino y el sensor. Después de el calentamiento el valor de CO2 en partes por millón, ppm, aparece en pantalla. Cuando el valor es superior al nivel Beep la alarma suena y los leds del escudo titilan.
+ 1. Modo normal: Al encender el sensor aparece el aviso BEEP y un número entre 700 y 1300 que muestra el nivel de la alarma que tenemos programado. En el numeral 3 se explicará cómo modificarlo. Luego de ello el medidor verifica la conexión al sensor de bajo costo. Si aparece el mensaje "good" la conexión está bien hecha y se continuará con el proceso de calentamiento del sensor ("heat") que dura 30 segundos para los sensores Sensirion y Cubic, y 3 minutos para los Winsen. Si el mensaje es "fail" la conexión ha fallado y debemos verificar la conexión entre el Arduino y el sensor. Después de el calentamiento el valor de CO2 en partes por millón ppm, aparece en pantalla. Cuando el valor es superior al nivel Beep la alarma suena y los leds del escudo titilan.
 
  2. Modo Calibración: [Explicado en el video anexo](#video-explicativo).
-La calibración del sensor se recomienda después de armar el sensor y cuando se aprecien mediciones muy diferentes al aire libre del rango aproximado de 400 ppm. Todos estos sensores de bajo costo se calibran al aire libre, colocándolos en un espacio exterior por unos minutos sin que reciban viento fuerte pues afecta la medición, por ello se recomienda colocarlos dentro de una caja que evite el viento directo.
-Luego de cumplir con estas condiciones, debes presionar el botón S1-A1 en la versión con escudo, o el "switch" en la versión por partes, durante más de 5 segundos, y aparecerá en pantalla el "cal-" haciendo un conteo regresivo de 300 segundos para el Sensirion y Cubic y 20 minutos para el Winsen.
+La calibración del sensor se recomienda después de armado el sensor y cuando se aprecien mediciones muy diferentes al aire libre del rango estimado de 400 ppm. Todos estos sensores de bajo costo se calibran al aire libre, colocándolos en un espacio exterior por unos minutos sin que reciban viento fuerte pues esto afecta la medición, por ello se recomienda colocarlos dentro de una caja que evite el viento directo.
+Luego de cumplir con estas condiciones, debes presionar el botón S1-A1 en la versión con escudo, o el "switch" en la versión por partes, durante más de 5 segundos, y aparecerá en pantalla el mensaje "cal-" y comenzando un conteo regresivo de 5 minutos para el Sensirion y Cubic y 20 minutos para el Winsen.
 Al finalizar este tiempo el sensor recibe la orden de calibración y queda listo para usarse de nuevo. Si quieres interrumpir el proceso de calibración presiona el botón S3-A3.
 
 3. Modo cambio de nivel del umbral de alarma BEEP: [Explicado en el video anexo](#video-explicativo).
-Para cambiar el nivel de la alarma de 1000 ppm, por defecto, a otro valor entre 700 y 1400 ppm debes presionar el botón S2-A2 en la versión con escudo, o colocar un cable o switch adicional del pin A3 a A5 en la versión por partes, durante más de 5 segundos y aparecerá el mensaje "BEEP" y luego el valor al que esta programado. Luego debes presionar de nuevo el botón para modificar el valor, cuando lo encuentres presiona el botón S3-A3 para programar el nuevo valor.
+Para cambiar el nivel de la alarma de 1000 ppm, por defecto, a otro valor entre 700 y 1300 ppm debes presionar el botón S2-A2 en la versión con escudo, o colocar un cable o switch adicional del pin A3 a A5 en la versión por partes, durante más de 5 segundos y aparecerá el mensaje "BEEP" y luego el valor al que esta programado. Luego debes presionar de nuevo el botón para modificar el valor, cuando lo encuentres presiona el botón S3-A3 para programar este nuevo valor de nivel del BEEP.
   
   
 ****************************
@@ -313,6 +310,7 @@ Si tienes alguna duda, bug, aporte o comentario escríbeme al correo electrónic
 ****************************
 
 ### Otros proyectos abiertos recomendados de sensores de CO2 o que incluyen sensores de CO2:
+
 - [CanAirIO Citizen network for monitoring air quality](https://canair.io/es/index.html).
 - [M5Stack ESP32 Core Ink + SCD30](https://github.com/hpsaturn/co2_m5coreink).
 - [Codos](https://github.com/miguelangelcasanova/codos).
