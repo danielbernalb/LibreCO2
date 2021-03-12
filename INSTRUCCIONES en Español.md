@@ -16,11 +16,11 @@ Existen dos opciones para el armado de sensor, la más sencilla es usando un Esc
 
 ![Materiales](https://github.com/danielbernalb/LibreCO2/blob/main/images/Materiales%20sensor.jpg)
 
-1. Arduino UNO cualquier versión. Sirve el original o las versiones chinas, la diferencia entre los 2 está en la instalación del driver, ambos trabajan bien. Original a la derecha y copia a la izquierda:
+1. Escudo multifunción (Arduino Shield multifunction).
+
+2. Arduino UNO cualquier versión. Sirve el original o las versiones chinas, la diferencia entre los 2 está en la instalación del driver, ambos trabajan bien. Original a la derecha y copia a la izquierda:
 
 ![Arduino original & clone](https://github.com/danielbernalb/LibreCO2/blob/main/images/arduino-uno-original-clone.jpg)
-
-2. Escudo multifunción (Arduino Shield multifunction).
 
 3. 4 cables jumper hembra hembra.
 
