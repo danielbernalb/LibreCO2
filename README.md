@@ -251,23 +251,9 @@ T Pin 3 of connector 5 pins ---> 7
 
 The left screenshot shows the window that Xloader displays when it starts.
 
-Explore until you find the .hex file that you are going to load into the Arduino. Each sensor version (Sensirion, Winsen or Cubic) is available in the "hex files" directory. Example: "LibreCO2_Shield_Sensirion.hex" is the file for the Sensirion sensor with the Multifuntion Shiedl version. Don't download it directly from the page with the "Save As" option, that ruins the file. Use the following links to download them and save the file as .hex, not .txt:
+Explore until you find the .hex file that you are going to load into the Arduino. Each sensor version (Sensirion, Winsen or Cubic) is available in the "hex files" directory. Example: "LibreCO2_Shield_Sensirion.hex" is the file for the Sensirion sensor with the Multifuntion Shiedl version. Don't download it directly from the page with the "Save As" option, that ruins the file. Use the following link to Google Drive to download your version of Sensor (SCD30, MHZ14_9 or CM1106) and build (with Shield or Parts):
  
- ** With the Multifunction shield option:**
- 
- Sensirion: https://raw.githubusercontent.com/danielbernalb/LibreCO2/main/hex%20files/LibreCO2_Shield_Sensirion.hex
- 
- Winsen: https://raw.githubusercontent.com/danielbernalb/LibreCO2/main/hex%20files/LibreCO2_Shield_Winsen.hex
- 
- Cubic: https://raw.githubusercontent.com/danielbernalb/LibreCO2/main/hex%20files/LibreCO2_Shield_Cubic.hex
- 
- ** With the Individual parts option:**
- 
- Sensirion: https://raw.githubusercontent.com/danielbernalb/LibreCO2/main/hex%20files/LibreCO2_Sensirion_SCD30.hex
- 
- Winsen: https://raw.githubusercontent.com/danielbernalb/LibreCO2/main/hex%20files/LibreCO2_Winsen_MHZ14_9.hex
- 
- Cubic: https://raw.githubusercontent.com/danielbernalb/LibreCO2/main/hex%20files/LibreCO2_Cubic_CM1106.hex
+https://drive.google.com/drive/folders/1FxXLVhaGF6UCVObQlh8cVLddyWyQqUT0
 
 2.1.2. Select the device type you are going to load into (Uno/ATmega328).
 
