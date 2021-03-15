@@ -252,23 +252,9 @@ T Pin 3 de la regleta de 5 pines ---> 7
 
 A la izquierda se muestra la ventana del Xloader cuando se inicia.
 
-2.1.1. Explora hasta encontrar el achivo .hex que vas a cargar en el Arduino. Cada versión de sensor (Sensirion, Winsen o Cubic) se encuentra disponible en el directorio "hex files". Ejemplo: "LibreCO2_Shield_Sensirion.hex" es el archivo para el sensor Sensirion con el uso del Escudo Multifunción (shield). No lo bajes directamente de la página con la opción "Guardar como", eso arruina el archivo. Usa los siguientes links para bajarlos y guarda el archivo como .hex, no como .txt:
-
-**Para la opción con Escudo Multifunción:**
+2.1.1. Explora hasta encontrar el achivo .hex que vas a cargar en el Arduino. Cada versión de sensor (Sensirion, Winsen o Cubic) se encuentra disponible en el directorio "hex files". Ejemplo: "LibreCO2_Shield_Sensirion.hex" es el archivo para el sensor Sensirion con el uso del Escudo Multifunción (shield). No lo bajes directamente de la página con la opción "Guardar como", eso arruina el archivo.  Usa el siguiente enlace de Google Drive para bajar el archivo .hex bucando tu versión de Sensor (SCD30, MHZ14_9 or CM1106) y construcción (con Shield o por Partes):
  
- Sensirion: https://raw.githubusercontent.com/danielbernalb/LibreCO2/main/hex%20files/LibreCO2_Shield_Sensirion.hex
- 
- Winsen: https://raw.githubusercontent.com/danielbernalb/LibreCO2/main/hex%20files/LibreCO2_Shield_Winsen.hex
- 
- Cubic: https://raw.githubusercontent.com/danielbernalb/LibreCO2/main/hex%20files/LibreCO2_Shield_Cubic.hex
- 
-**Para la opción por partes: Sensirion:**
- 
- Sensirion: https://raw.githubusercontent.com/danielbernalb/LibreCO2/main/hex%20files/LibreCO2_Sensirion_SCD30.hex
- 
- Winsen: https://raw.githubusercontent.com/danielbernalb/LibreCO2/main/hex%20files/LibreCO2_Winsen_MHZ14_9.hex
- 
- Cubic: https://raw.githubusercontent.com/danielbernalb/LibreCO2/main/hex%20files/LibreCO2_Cubic_CM1106.hex
+https://drive.google.com/drive/folders/1FxXLVhaGF6UCVObQlh8cVLddyWyQqUT0
 
 2.1.2. Selecciona la tarjeta Arduino que estas usando (Uno/ATmega328).
 
