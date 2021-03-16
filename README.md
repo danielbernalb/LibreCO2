@@ -245,7 +245,7 @@ There are three options for the program of the Arduino: the easiest is using an 
 
  - Connect the USB OTG cable to the cell phone.
  - Install the Android app ["Arduino Hex Uploader-Firmware Bin Upload"](https://play.google.com/store/apps/details?id=xyz.vidieukhien.embedded.arduinohexupload&hl=en_US&gl=US)
- - Dowload the .hex file from this ["Google drive directory"](https://drive.google.com/drive/folders/1FxXLVhaGF6UCVObQlh8cVLddyWyQqUT0) based on your sensor version (Shield and brand sensor).
+ - Dowload the .hex file from this ["Google drive directory"](https://drive.google.com/drive/folders/1FxXLVhaGF6UCVObQlh8cVLddyWyQqUT0) based on your sensor version (Shield and brand sensor). Find the .hex file that you are going to load into the Arduino, each sensor version (Sensirion, Winsen or Cubic) is available in the "hex files" directory. Example: "LibreCO2_Shield_Sensirion.hex" is the file for the Sensirion sensor with the Multifuntion Shiedl version. Note: Don't download it directly from the page with the "Save As" option, that ruins the file. Use only the Google Drive link.
  - Browse the .hex file in your cell phone.
  - Upload the code to your Arduino board.
  - FINISH.
