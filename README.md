@@ -237,6 +237,25 @@ T Pin 3 a 5-pin connector ---> 7
 ****************************
 # 3. Program / Burn the Firmware (the code in the Arduino).
 
+There are three options for the program of the Arduino: the easiest is using an Android cell phone and an USB OTG cable, the second is using a PC with the software Xloader and the last is installing Arduino on your PC.
+
+**1. Android cell phone.**
+
+![USB OTG cable](https://github.com/danielbernalb/LibreCO2/blob/main/images/Cable%20USB%20OTG-002.jpg)
+
+ - Connect the USB OTG cable to the cell phone.
+ - Install the Android app "Arduino Hex Uploader-Firmware Bin Upload".
+ - Dowload the .hex file from this Google Drive directory based on your sensor version (Shield and brand sensor).
+ - Browse the .hex file in your cell phone.
+ - Upload the code to your Arduino board.
+ - FINISH.
+
+Programming / burning video (in Spanish with English subtitles):
+
+[![](http://img.youtube.com/vi/_87qzZFMgwg/0.jpg)](http://www.youtube.com/watch?v=_87qzZFMgwg "LibreCO2")
+
+**2. Using your PC with Xloader software (only Windows):**
+
 1. Connect the Arduino to your computer. If the driver is not automatically detected , you will have to identify if your Arduino is the original or a Chinese clone:
 
 1.1. If the Arduino is a Chinese version, please follow the instructions on this web page: https://www.arduino.cc/en/Guide/ArduinoUno
@@ -265,7 +284,7 @@ https://drive.google.com/drive/folders/1FxXLVhaGF6UCVObQlh8cVLddyWyQqUT0
 
 2.1.6. When the .hex file has been loaded into the Arduino, the right screenshot, the message of "xxxxx bytes uploaded" appears, if it fails you will get the message of "upload fail"
 
-2.2. If you want to edit and compile the code please install the Arduino software in Windows, Mac or Linux:
+**3. If you want to edit and compile the code please install the Arduino software in Windows, Mac or Linux:**
   
   https://www.arduino.cc/en/software
   
