@@ -235,17 +235,17 @@ T Pin 3 a 5-pin connector ---> 7
 ![Cubic CM1106](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20UNO%20%20CM1106%20connection.jpg)
 
 ****************************
-# 3. Program / Burn the Firmware (the code in the Arduino).
+# 3. Program / Burn the Firmware (the code in the Arduino)
 
 There are three options for the program of the Arduino: the easiest is using an Android cell phone and an USB OTG cable, the second is using a PC with the software Xloader and the last is installing Arduino on your PC.
 
-**1. Android cell phone.**
+**1. Android cell phone**
 
 ![USB OTG cable](https://github.com/danielbernalb/LibreCO2/blob/main/images/Cable%20USB%20OTG-002.jpg)
 
  - Connect the USB OTG cable to the cell phone.
- - Install the Android app "Arduino Hex Uploader-Firmware Bin Upload".
- - Dowload the .hex file from this Google Drive directory based on your sensor version (Shield and brand sensor).
+ - Install the Android app ["Arduino Hex Uploader-Firmware Bin Upload"](https://play.google.com/store/apps/details?id=xyz.vidieukhien.embedded.arduinohexupload&hl=en_US&gl=US)
+ - Dowload the .hex file from this ["Google drive directory"](https://drive.google.com/drive/folders/1FxXLVhaGF6UCVObQlh8cVLddyWyQqUT0) based on your sensor version (Shield and brand sensor).
  - Browse the .hex file in your cell phone.
  - Upload the code to your Arduino board.
  - FINISH.
@@ -270,9 +270,7 @@ Programming / burning video (in Spanish with English subtitles):
 
 The left screenshot shows the window that Xloader displays when it starts.
 
-Explore until you find the .hex file that you are going to load into the Arduino. Each sensor version (Sensirion, Winsen or Cubic) is available in the "hex files" directory. Example: "LibreCO2_Shield_Sensirion.hex" is the file for the Sensirion sensor with the Multifuntion Shiedl version. Note: Don't download it directly from the page with the "Save As" option, that ruins the file. Use the following link of Google Drive to download your Sensor version (SCD30, MHZ14_9 or CM1106) and build option (with Shield or by Parts):
- 
-https://drive.google.com/drive/folders/1FxXLVhaGF6UCVObQlh8cVLddyWyQqUT0
+Explore until you find the .hex file that you are going to load into the Arduino. Each sensor version (Sensirion, Winsen or Cubic) is available in the "hex files" directory. Example: "LibreCO2_Shield_Sensirion.hex" is the file for the Sensirion sensor with the Multifuntion Shiedl version. Note: Don't download it directly from the page with the "Save As" option, that ruins the file. Use this ["Google Drive link"](https://drive.google.com/drive/folders/1FxXLVhaGF6UCVObQlh8cVLddyWyQqUT0) to download your Sensor version (SCD30, MHZ14_9 or CM1106) and build option (with Shield or by Parts).
 
 2.1.2. Select the device type you are going to load into (Uno/ATmega328).
 
@@ -294,7 +292,7 @@ https://drive.google.com/drive/folders/1FxXLVhaGF6UCVObQlh8cVLddyWyQqUT0
   
   YouTube contains hundreds of tutorials on how to install Arduino on different operating systems and on learning the programming. You can also collaborate by improving this code or create your own version.
   
-  # 4. Sensor Operation.
+  # 4. Sensor Operation
  
  When the Arduino programming has been completed, we have several sensor operating modes and options:
  
