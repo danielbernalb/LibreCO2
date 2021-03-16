@@ -238,6 +238,25 @@ T Pin 3 de la regleta de 5 pines ---> 7
 ****************************
 # 3. Programar el Firmware (codigo en el Arduino)
 
+Existen 3 opciones para programar el Arduino: la más fácil es usando un teléfono Android y un cable USB OTG, la segunda es usando un PC con el software Xloader y la última instalando Arduino en un PC.
+
+**1. Teléfono Android.**
+
+![USB OTG cable](https://github.com/danielbernalb/LibreCO2/blob/main/images/Cable%20USB%20OTG-002.jpg)
+
+ - Conecta el cable USB OTG al teléfono.
+ - Instala la app de Android "Arduino Hex Uploader-Firmware Bin Upload".
+ - Baja el archivo .hex de este directorio de Google Drive basado en tu versión (Shield y marca de sensor).
+ - Busca el archivo .hex en tú teléfono.
+ - Sube el codigo a tu tarjeta Arduino.
+ - FIN.
+
+Video de programación de el Firmware:
+
+[![](http://img.youtube.com/vi/_87qzZFMgwg/0.jpg)](http://www.youtube.com/watch?v=_87qzZFMgwg "LibreCO2")
+
+**2. Usando tu PC con el software Xloader (sólo Windows):**
+
 1. Conecta el Arduino a tu computador y espera a que el driver se instale automáticamente. Si el driver no se instala automáticamente debes identificar si tu Arduino es original o una copia:
 
 1.1. Si el Arduino es original, instala el paquete Arduino con drivers: https://www.arduino.cc/en/Guide/ArduinoUno
@@ -266,7 +285,7 @@ https://drive.google.com/drive/folders/1FxXLVhaGF6UCVObQlh8cVLddyWyQqUT0
 
 2.1.6. Cuando el archivo .hex file se carga en el Arduino, foto a la derecha, sale el mensaje de "xxxxx bytes uploaded", si falla te saldrá el mensaje de "upload fails".
 
-2.2. Si quieres editar y compilar el código instala el software Arduino en Windows, Mac o Linux:
+**3. Si quieres editar y compilar el código instala el software Arduino en Windows, Mac o Linux:**
   
   https://www.arduino.cc/en/software
   
