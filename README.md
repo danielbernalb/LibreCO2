@@ -270,7 +270,7 @@ Programming / burning video (in Spanish with English subtitles):
 
 The left screenshot shows the window that Xloader displays when it starts.
 
-Explore until you find the .hex file that you are going to load into the Arduino. Each sensor version (Sensirion, Winsen or Cubic) is available in the "hex files" directory. Example: "LibreCO2_Shield_Sensirion.hex" is the file for the Sensirion sensor with the Multifuntion Shiedl version. Note: Don't download it directly from the page with the "Save As" option, that ruins the file. Use this ["Google Drive link"](https://drive.google.com/drive/folders/1FxXLVhaGF6UCVObQlh8cVLddyWyQqUT0) to download your Sensor version (SCD30, MHZ14_9 or CM1106) and build option (with Shield or by Parts).
+Explore until you find the .hex file that you are going to load into the Arduino. Each sensor version (Sensirion, Winsen or Cubic) is available in the "hex files" directory. Example: "LibreCO2_Shield_SCD30.hex" is the file for the Sensirion SCD30 sensor with the Multifuntion Shield version. Note: Don't download it directly from the page with the "Save As" option, that ruins the file. Use this ["Google Drive link"](https://drive.google.com/drive/folders/1FxXLVhaGF6UCVObQlh8cVLddyWyQqUT0) to download your Sensor version (SCD30, MHZ14_9 or CM1106) and build option (with Shield or by Parts).
 
 2.1.2. Select the device type you are going to load into (Uno/ATmega328).
 
