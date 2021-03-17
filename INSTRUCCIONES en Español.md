@@ -271,7 +271,7 @@ Video de programación de el Firmware:
 
 A la izquierda se muestra la ventana del Xloader cuando se inicia.
 
-2.1.1. Explora hasta encontrar el achivo .hex que vas a cargar en el Arduino. Cada versión de sensor (Sensirion, Winsen o Cubic) se encuentra disponible en el directorio "hex files". Ejemplo: "LibreCO2_Shield_Sensirion.hex" es el archivo para el sensor Sensirion con el uso del Escudo Multifunción (shield). No lo descargues directamente de la página con la opción "Guardar como", eso arruina el archivo.  Usa el siguiente enlace de Google Drive para bajar el archivo .hex bucando tu versión de Sensor (SCD30, MHZ14_9 or CM1106) y construcción (con Shield o por Partes):
+2.1.1. Explora hasta encontrar el achivo .hex que vas a cargar en el Arduino. Cada versión de sensor (Sensirion, Winsen o Cubic) se encuentra disponible en el directorio "hex files". Ejemplo: "LibreCO2_Shield_SCD30.hex" es el archivo para el sensor Sensirion SCD30 con el uso del Escudo Multifunción (Shield). No lo descargues directamente de la página con la opción "Guardar como", eso arruina el archivo.  Usa el siguiente enlace de Google Drive para bajar el archivo .hex bucando tu versión de Sensor (SCD30, MHZ14_9 or CM1106) y construcción (con Shield o por Partes):
  
 https://drive.google.com/drive/folders/1FxXLVhaGF6UCVObQlh8cVLddyWyQqUT0
 
