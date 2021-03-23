@@ -19,7 +19,7 @@ There are two options for the sensor assembly: the easiest is using an Arduino M
 
 1. Arduino Multifunction Shield.
 
-The shield has a bug that can short-circuit with the USB connector, cut the pins shown in the photo:
+The shield has a bug that can short-circuit with the USB connector, cut the pins shown in the photo and add a piece of tape to the USB connector (shown in the video):
 
 ![Cut shield pins](https://github.com/danielbernalb/LibreCO2/blob/main/images/Cut%20shield%20pins.jpg)
 
