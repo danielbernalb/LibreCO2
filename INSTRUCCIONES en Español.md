@@ -22,7 +22,7 @@ Existen dos opciones para el armado de sensor, la más sencilla es usando un Esc
 
 The shield has a bug that can short-circuit with the USB connector, cut the pins shown in the photo:
 
-![Cortar pines escudo](https://github.com/danielbernalb/LibreCO2/blob/main/images/Corte%20pines%20shield.jpg)
+![Cortar pines escudo](https://github.com/danielbernalb/LibreCO2/blob/main/images/Corte%20pines%20escudo.jpg)
 
 2. Arduino UNO cualquier versión. Sirve el original o las versiones chinas, la diferencia entre los 2 está en la instalación del driver, ambos trabajan bien. Original a la derecha y copia a la izquierda:
 
