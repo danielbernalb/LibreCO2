@@ -19,6 +19,10 @@ There are two options for the sensor assembly: the easiest is using an Arduino M
 
 1. Arduino Multifunction Shield.
 
+The shield has a bug that can short-circuit with the USB connector, cut the pins shown in the photo:
+
+![Cut shield pins](https://github.com/danielbernalb/LibreCO2/blob/main/images/Cut%20shield%20pins.jpg)
+
 2. Arduino UNO, the original or Chinese version. The difference is the driver installation. Both are very easy to find in any country and work well. The original (right) and clone (left):
 
 ![Arduino original & clone](https://github.com/danielbernalb/LibreCO2/blob/main/images/arduino-uno-original-clone.jpg)
