@@ -20,7 +20,7 @@ Existen dos opciones para el armado de sensor, la más sencilla es usando un Esc
 
 1. Escudo multifunción (Arduino Shield multifunction).
 
-The shield has a bug that can short-circuit with the USB connector, cut the pins shown in the photo:
+El Escudo tiene un bug o error que puede cortocircuitarlo con el conector USB, corte los pines que se muestran en la foto y agregue un trozo de cinta al conector USB (que se muestra en el video):
 
 ![Cortar pines escudo](https://github.com/danielbernalb/LibreCO2/blob/main/images/Corte%20pines%20escudo.jpg)
 
