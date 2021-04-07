@@ -245,7 +245,7 @@ There are three options for the program of the Arduino: the easiest is using an 
 
 **1. Android cell phone**
 
-![USB OTG cable](https://github.com/danielbernalb/LibreCO2/blob/main/images/Cable%20USB%20OTG-002.jpg)
+![USB OTG cable](https://github.com/danielbernalb/LibreCO2/blob/main/images/Cable%20USB%20OTGex.jpg)
 
  - Connect the USB OTG cable to the cell phone.
  - Install the Android app ["Arduino Hex Uploader-Firmware Bin Upload"](https://play.google.com/store/apps/details?id=xyz.vidieukhien.embedded.arduinohexupload&hl=en_US&gl=US)
