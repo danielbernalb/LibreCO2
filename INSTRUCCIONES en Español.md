@@ -252,7 +252,7 @@ Existen 3 opciones para programar el Arduino: la más sencilla es usar un teléf
 
 **1. Teléfono Android.**
 
-![USB OTG cable](https://github.com/danielbernalb/LibreCO2/blob/main/images/Cable%20USB%20OTG-002.jpg)
+![USB OTG cable](https://github.com/danielbernalb/LibreCO2/blob/main/images/Cable%20USB%20OTGex.jpg)
 
  - Conecta el cable USB OTG al teléfono.
  - Instala la app de Android ["Arduino Hex Uploader-Firmware Bin Upload"](https://play.google.com/store/apps/details?id=xyz.vidieukhien.embedded.arduinohexupload&hl=en_US&gl=US).
