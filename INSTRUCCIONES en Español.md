@@ -24,17 +24,17 @@ El Escudo tiene un bug o error que puede cortocircuitarlo con el conector USB, c
 
 ![Cortar pines escudo](https://github.com/danielbernalb/LibreCO2/blob/main/images/Corte%20pines%20escudo_cinta.jpg)
 
-Link compra [Aliexpress](https://es.aliexpress.com/wholesale?SearchText=multifunction-arduino-shield), Link compra [Colombia](https://listado.mercadolibre.com.co/arduino-escudo-multi-funcion#D[A:arduino%20escudo%20multi%20funcion]), Compra Latinoamérica: Mercadolibre o tiendas de eléctronica.
+Link compra [Aliexpress](https://es.aliexpress.com/wholesale?SearchText=multifunction-arduino-shield), Link compra [Colombia](https://listado.mercadolibre.com.co/arduino-escudo-multi-funcion#D[A:arduino%20escudo%20multi%20funcion]), Compra Latinoamérica: Mercadolibre o tiendas de electrónica.
 
 2. Arduino UNO cualquier versión. Sirve el original o las versiones chinas, la diferencia entre los 2 está en la instalación del driver, ambos trabajan bien. Original a la derecha y copia a la izquierda:
 
 ![Arduino original & clone](https://github.com/danielbernalb/LibreCO2/blob/main/images/arduino-uno-original-clone.jpg)
 
-Link compra [Aliexpress](https://es.aliexpress.com/wholesale?catId=0&initiative_id=SB_20210322194538&SearchText=arduino+uno+r3), Link compra [Colombia](https://listado.mercadolibre.com.co/arduino-uno#D[A:arduino%20uno]), Compra Latinoamérica: Mercadolibre o tiendas de eléctronica.
+Link compra [Aliexpress](https://es.aliexpress.com/wholesale?catId=0&initiative_id=SB_20210322194538&SearchText=arduino+uno+r3), Link compra [Colombia](https://listado.mercadolibre.com.co/arduino-uno#D[A:arduino%20uno]), Compra Latinoamérica: Mercadolibre o tiendas de electrónica.
 
 3. 4 cables jumper hembra hembra.
 
-Link compra [Aliexpress](https://es.aliexpress.com/wholesale?SearchText=jumper-wires), Link compra [Colombia](https://listado.mercadolibre.com.co/arduino-jumper-hembre-hembra#D[A:arduino%20jumper%20hembre%20hembra]), Compra Latinoamérica: Mercadolibre o tiendas de eléctronica.
+Link compra [Aliexpress](https://es.aliexpress.com/wholesale?SearchText=jumper-wires), Link compra [Colombia](https://listado.mercadolibre.com.co/arduino-jumper-hembre-hembra#D[A:arduino%20jumper%20hembre%20hembra]), Compra Latinoamérica: Mercadolibre o tiendas de electrónica.
 
 4. Sensor, opciones:
 
@@ -246,7 +246,7 @@ T Pin 3 de la regleta de 5 pines ---> 7
 ![Cubic CM1106](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20UNO%20%20CM1106%20connection.jpg)
 
 ****************************
-# 3. Programar el Firmware (codigo en el Arduino)
+# 3. Programar el Firmware (código en el Arduino)
 
 Existen 3 opciones para programar el Arduino: la más sencilla es usar un teléfono Android y un cable USB OTG, la siguiente es usar un PC con el software Xloader y la última instalando Arduino en un PC.
 
@@ -258,14 +258,14 @@ Existen 3 opciones para programar el Arduino: la más sencilla es usar un teléf
  - Instala la app de Android ["Arduino Hex Uploader-Firmware Bin Upload"](https://play.google.com/store/apps/details?id=xyz.vidieukhien.embedded.arduinohexupload&hl=en_US&gl=US).
  - Baja el archivo .hex file de este ["Directorio de Google drive"](https://drive.google.com/drive/folders/1FxXLVhaGF6UCVObQlh8cVLddyWyQqUT0) basado en la versión de tu sensor (Shield y marca de sensor). Encuentra el archivo .hex que vas cargar en el Arduino, cada versión de sensor (Sensirion, Winsen or Cubic) se encuentra disponible el el directorio "hex files". Ejemplo: "LibreCO2_Shield_Sensirion.hex" es el arhivo para el sensor Sensirion con el Shield Multifunción. Nota: No descargues el archivo .hex directamente de la página con la opción "Salvar como", que daña el archivo. Usa solamente el enlace de Google Drive.
  - Busca el archivo .hex en tú teléfono.
- - Sube el codigo a tu tarjeta Arduino.
+ - Sube el código a tu tarjeta Arduino.
  - FIN.
 
 Video de programación de el Firmware:
 
 [![](http://img.youtube.com/vi/_87qzZFMgwg/0.jpg)](http://www.youtube.com/watch?v=_87qzZFMgwg "LibreCO2")
 
-Link compra Cable OTG USB [Aliexpress](https://es.aliexpress.com/wholesale?SearchText=otg+usb+cable&d=y&origin=n&catId=0&initiative_id=SB_20210315194053), Link compra [Colombia](https://listado.mercadolibre.com.co/cable-otg#D[A:cable%20otg]), Compra Latinoamérica: Mercadolibre o tiendas de eléctronica.
+Link compra Cable OTG USB [Aliexpress](https://es.aliexpress.com/wholesale?SearchText=otg+usb+cable&d=y&origin=n&catId=0&initiative_id=SB_20210315194053), Link compra [Colombia](https://listado.mercadolibre.com.co/cable-otg#D[A:cable%20otg]), Compra Latinoamérica: Mercadolibre o tiendas de electrónica.
 
 **2. Usando tu PC con el software Xloader (sólo Windows):**
 
@@ -283,7 +283,7 @@ Link compra Cable OTG USB [Aliexpress](https://es.aliexpress.com/wholesale?Searc
 
 A la izquierda se muestra la ventana del Xloader cuando se inicia.
 
-2.1.1. Explora hasta encontrar el achivo .hex que vas a cargar en el Arduino. Cada versión de sensor (Sensirion, Winsen o Cubic) se encuentra disponible en el directorio "hex files". Ejemplo: "LibreCO2_Shield_SCD30.hex" es el archivo para el sensor Sensirion SCD30 con el uso del Escudo Multifunción (Shield). No lo descargues directamente de la página con la opción "Guardar como", eso arruina el archivo.  Usa el siguiente enlace de Google Drive para bajar el archivo .hex bucando tu versión de Sensor (SCD30, MHZ14_9 or CM1106) y construcción (con Shield o por Partes):
+2.1.1. Explora hasta encontrar el achivo .hex que vas a cargar en el Arduino. Cada versión de sensor (Sensirion, Winsen o Cubic) se encuentra disponible en el directorio "hex files". Ejemplo: "LibreCO2_Shield_SCD30.hex" es el archivo para el sensor Sensirion SCD30 con el uso del Escudo Multifunción (Shield). No lo descargues directamente de la página con la opción "Guardar como", eso arruina el archivo.  Usa el siguiente enlace de Google Drive para bajar el archivo .hex buscando tu versión de Sensor (SCD30, MHZ14_9 o CM1106) y construcción (con Shield o por Partes):
  
 https://drive.google.com/drive/folders/1FxXLVhaGF6UCVObQlh8cVLddyWyQqUT0
 
@@ -293,7 +293,7 @@ https://drive.google.com/drive/folders/1FxXLVhaGF6UCVObQlh8cVLddyWyQqUT0
 
 2.1.4. Selecciona la velocidad Baud rate a 115200.
 
-2.1.5. Presiona el boton “Upload”.
+2.1.5. Presiona el botón “Upload”.
 
 2.1.6. Cuando el archivo .hex file se carga en el Arduino, foto a la derecha, sale el mensaje de "xxxxx bytes uploaded", si falla te saldrá el mensaje de "upload fails".
 
@@ -308,7 +308,7 @@ https://drive.google.com/drive/folders/1FxXLVhaGF6UCVObQlh8cVLddyWyQqUT0
   
  # 4. Caja para el sensor.
  
-Opciones inciando por la más sencilla y económica:
+Opciones iniciando por la más sencilla y económica:
 
 4.1. Caja comercial de bajo costo.
 
@@ -318,7 +318,7 @@ Busca una caja plástica con un ancho similar al del Arduino y un largo mayor pa
 
 Cuando quieras usar el teclado para la calibración o la programación del BEEP, abre la caja y accede al teclado para luego volver a cerrala.
 
-4.2. Caja en madera MDF usando corte laser. En desarrollo.
+4.2. Caja en madera MDF usando corte láser. En desarrollo.
 
 4.3. Caja en PLA con impresora 3D. En desarrollo.
   
