@@ -312,7 +312,8 @@ Opciones:
 
 4.1. Caja comercial de bajo costo.
 
-Busca una caja plastica en tu hogar con un ancho parecido al del Arduino y un largo mayor para colocar allí tu sensor. En la parte dónde quede el sensor perfora varios huecos por dónde entre aire para el mismo. ejemplo:
+Busca una caja plástica en tu hogar con un ancho parecido al del Arduino y un largo mayor para colocar allí tu sensor. En la parte dónde quede el sensor perfora varios huecos por dónde entre aire para el mismo. Hzle el hueco para el Buzzer y la alimentación. Ejemplo:
+
 ![Caja1](https://github.com/danielbernalb/LibreCO2/blob/main/images/Box%201.jpg)
 
 4.2. Caja en madera MDF usando corte laser.
