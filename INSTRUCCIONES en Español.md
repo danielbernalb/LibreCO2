@@ -26,7 +26,7 @@ El Escudo tiene un bug o error que puede cortocircuitarlo con el conector USB, c
 
 Link compra [Aliexpress](https://es.aliexpress.com/wholesale?SearchText=multifunction-arduino-shield), Link compra [Colombia](https://listado.mercadolibre.com.co/arduino-escudo-multi-funcion#D[A:arduino%20escudo%20multi%20funcion]), Compra Latinoamérica: Mercadolibre o tiendas de electrónica.
 
-2. Arduino UNO cualquier versión. Sirve el original Arduino Italiano o las versiones chinas, la diferencia entre los 2 está en la instalación del driver, ambos trabajan bien. Original a la izquierda y copia a la derecha:
+2. Arduino UNO cualquier versión. Sirve el original Arduino Italiano o las versiones chinas, la diferencia está en la instalación del driver. El que llaman "Original" a la izquierda y la copia o clone a la derecha:
 
 ![Arduino original & clone](https://github.com/danielbernalb/LibreCO2/blob/main/images/arduino-uno-original-clone.jpg)
 
