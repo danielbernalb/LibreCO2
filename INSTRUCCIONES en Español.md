@@ -312,11 +312,11 @@ Opciones inciando por la más sencilla y económica:
 
 4.1. Caja comercial de bajo costo.
 
-Busca una caja plástica con un ancho parecido al del Arduino y un largo mayor para colocar allí tu sensor. En la parte dónde vayas a ubicar el sensor perfora varios huecos por dónde entre aire para el mismo, en mi caso los hice con destornillador de 4mm. Haz otro hueco para el Buzzer, para el cable USB y el adaptador. Ejemplo:
-
-![Caja1](https://github.com/danielbernalb/LibreCO2/blob/main/images/Box%201.jpg)
+Busca una caja plástica con un ancho similar al del Arduino y un largo mayor para que en el espacio sobrante ubiques el sensor. En el espacio sobrante perfora varios huecos por dónde entre aire para el mismo, en mi caso los hice con destornillador de 4mm. Haz otro hueco para el Buzzer, para el cable USB y el adaptador y listo. Ejemplo:
 
 ![Caja4](https://github.com/danielbernalb/LibreCO2/blob/main/images/Images4.jpg)
+
+Cuando quieras usar el teclado para la calibración o la programación del BEEP, abre la caja y accede al teclado para luego volver a cerrala.
 
 4.2. Caja en madera MDF usando corte laser. En desarrollo.
 
