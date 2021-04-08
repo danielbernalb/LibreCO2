@@ -306,7 +306,22 @@ https://drive.google.com/drive/folders/1FxXLVhaGF6UCVObQlh8cVLddyWyQqUT0
   
   En Youtube existen cientos de tutoriales para instalar Arduino en diferentes sistemas operativos y aprender su programación, además puedes colaborar mejorando este código o crear tu propia versión.  
   
- # 4. Funcionamiento del sensor.
+ # 4. Caja par el sensor.
+ 
+Opciones:
+
+4.1. Caja comercial de bajo costo.
+
+Busca una caja plastica en tu hogar con un ancho parecido al del Arduino y un largo mayor para colocar allí tu sensor. En la parte dónde quede el sensor perfora varios huecos por dónde entre aire para el mismo. ejemplo:
+![Caja1](https://github.com/danielbernalb/LibreCO2/blob/main/images/Box1.jpg)
+
+4.2. Caja en madera MDF usando corte laser.
+En desarrollo.
+
+4.3. Caja en PLA con impresora 3D.
+5.En desarrollo.
+  
+ # 5. Funcionamiento del sensor.
  
  Cuando se haya realizado la programación del Arduino tenemos varios modos y opciones de funcionamiento del sensor:
  
