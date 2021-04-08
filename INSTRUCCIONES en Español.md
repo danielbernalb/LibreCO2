@@ -10,11 +10,11 @@ Todos los sensores usados aquí son NDIR que es el estándar actuales para medic
 https://www.co2meter.com/blogs/news/6010192-how-does-an-ndir-co2-sensor-work
 
 
-**Materiales:**
+# 1. Materiales:
 
 Existen dos opciones para el armado de sensor, la más sencilla es usando un Escudo Multifunción (Shield) de Arduino el cual ya incluye el Display de 4 dígitos, el buzzer y los botones, con lo cual se facilita mucho más el montaje. La segunda armando las partes por individual.
 
-# 1. Opción con Escudo multifunción:
+# 1.1. Opción con Escudo multifunción:
 
 ![Materiales](https://github.com/danielbernalb/LibreCO2/blob/main/images/Materiales%20sensor.jpg)
 
@@ -133,7 +133,7 @@ GND ---> G Pin 2 de la regleta de 4 pines
 
 [![](http://img.youtube.com/vi/KYHC06xhUu4/0.jpg)](http://www.youtube.com/watch?v=KYHC06xhUu4 "VideoLibreCO2")
 
-# 2. Opción por partes individuales:
+# 1.2. Opción por partes individuales:
 
 1. Arduino UNO original o versión china.
 2. Display TM1687.
@@ -246,7 +246,7 @@ T Pin 3 de la regleta de 5 pines ---> 7
 ![Cubic CM1106](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20UNO%20%20CM1106%20connection.jpg)
 
 ****************************
-# 3. Programar el Firmware (código en el Arduino)
+# 2. Programar el Firmware (código en el Arduino)
 
 Existen 3 opciones para programar el Arduino: la más sencilla es usar un teléfono Android y un cable USB OTG, la siguiente es usar un PC con el software Xloader y la última instalando Arduino en un PC.
 
@@ -306,11 +306,11 @@ https://drive.google.com/drive/folders/1FxXLVhaGF6UCVObQlh8cVLddyWyQqUT0
   
   En Youtube existen cientos de tutoriales para instalar Arduino en diferentes sistemas operativos y aprender su programación, además puedes colaborar mejorando este código o crear tu propia versión.  
   
- # 4. Caja para el sensor.
+ # 3. Caja para el sensor.
  
 Opciones iniciando por la más sencilla y económica:
 
-4.1. Caja comercial de bajo costo.
+3.1. Caja comercial de bajo costo.
 
 Busca una caja plástica con un ancho similar al del Arduino y un largo mayor para que en el espacio sobrante ubiques el sensor. En el espacio sobrante perfora varios huecos por dónde entre aire para el mismo, en mi caso los hice con destornillador de 4mm. Haz otro hueco para el Buzzer, para el cable USB y el adaptador y listo. Ejemplo:
 
@@ -318,11 +318,11 @@ Busca una caja plástica con un ancho similar al del Arduino y un largo mayor pa
 
 Cuando quieras usar el teclado para la calibración o la programación del BEEP, abre la caja y accede al teclado para luego volver a cerrala.
 
-4.2. Caja en madera MDF usando corte láser. En desarrollo.
+3.2. Caja en madera MDF usando corte láser. En desarrollo.
 
-4.3. Caja en PLA con impresora 3D. En desarrollo.
+3.3. Caja en PLA con impresora 3D. En desarrollo.
   
- # 5. Funcionamiento del sensor.
+ # 4. Funcionamiento del sensor.
  
  Cuando se haya realizado la programación del Arduino tenemos varios modos y opciones de funcionamiento del sensor:
  
