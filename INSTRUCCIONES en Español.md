@@ -306,21 +306,20 @@ https://drive.google.com/drive/folders/1FxXLVhaGF6UCVObQlh8cVLddyWyQqUT0
   
   En Youtube existen cientos de tutoriales para instalar Arduino en diferentes sistemas operativos y aprender su programación, además puedes colaborar mejorando este código o crear tu propia versión.  
   
- # 4. Caja par el sensor.
+ # 4. Caja para el sensor.
  
-Opciones:
+Opciones inciando por la más sencilla y económica:
 
 4.1. Caja comercial de bajo costo.
 
-Busca una caja plástica en tu hogar con un ancho parecido al del Arduino y un largo mayor para colocar allí tu sensor. En la parte dónde quede el sensor perfora varios huecos por dónde entre aire para el mismo. Hzle el hueco para el Buzzer y la alimentación. Ejemplo:
+Busca una caja plástica con un ancho parecido al del Arduino y un largo mayor para colocar allí tu sensor. En la parte dónde vayas a ubicar el sensor perfora varios huecos por dónde entre aire para el mismo, en mi caso los hice con destornillador de 4mm. Haz otro hueco para el Buzzer, para el cable USB y el adaptador. Ejemplo:
 
 ![Caja1](https://github.com/danielbernalb/LibreCO2/blob/main/images/Box%201.jpg)
+![Caja1](https://github.com/danielbernalb/LibreCO2/blob/main/images/Box%201.jpg)
 
-4.2. Caja en madera MDF usando corte laser.
-En desarrollo.
+4.2. Caja en madera MDF usando corte laser. En desarrollo.
 
-4.3. Caja en PLA con impresora 3D.
-5.En desarrollo.
+4.3. Caja en PLA con impresora 3D. En desarrollo.
   
  # 5. Funcionamiento del sensor.
  
@@ -341,6 +340,7 @@ Para cambiar el nivel de la alarma de 1000 ppm, por defecto, a otro valor entre 
 ### Contacto
 
 Si tienes alguna duda, bug, aporte o comentario escríbeme al correo electrónico danielbernalb@gmail.com o la cuenta de twitter [@danielbernalb](https://twitter.com/danielbernalb) 
+Más información en la página web: ["Aire ciudadano"](https://aireciudadano.com/)
 
 ****************************
 
