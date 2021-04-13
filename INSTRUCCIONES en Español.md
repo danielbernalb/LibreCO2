@@ -38,7 +38,7 @@ Link compra [Aliexpress](https://es.aliexpress.com/wholesale?SearchText=jumper-w
 
 4. Sensor, opciones:
 
-	a. SenseAir S8, el mejor en relación costo /beneficio. Traído desde China por Aliexpress cuesta 28 dólares y desde USA 44 dólares, es de los mejores que han sido probados y su costo es bajo.
+	a. SenseAir S8, el mejor en relación costo/beneficio. Traído desde China por Aliexpress cuesta 28 dólares y desde USA 44 dólares, es de los mejores y más recomendados y su costo es bajo.
 	
 	![SenseAir S8](https://github.com/danielbernalb/LibreCO2/blob/main/images/SenseAir_S8.jpg)
 	
@@ -63,7 +63,7 @@ Link compra [Aliexpress](https://es.aliexpress.com/wholesale?SearchText=jumper-w
 	
 	Para la conexión del Arduino al sensor Sensirion se usa el protocolo Modbus ya que este nos permite conectar directamente el Arduino al SCD30 sin necesidad de drivers de datos que complicarían mucho el montaje. Sólo debes conectar el pin SEL al VIN del sensor usando una resistencia de 100 kΩ (kilo ohmnios) como se vé en las fotos y video para habilitar el modo Modbus.
 
-	b. Winsen MH-Z14 o 19, el más barato y popular, buen desempeño, algo lento. Ten cuidado con las falsas copias del sensor!!!
+	c. Winsen MH-Z14 o 19, el más barato y popular, buen desempeño, algo lento. Ten cuidado con las falsas copias del sensor!!!
 
 	![Winsen MH-Z14a](https://github.com/danielbernalb/LibreCO2/blob/main/images/MH-Z14A.jpg)
 	
@@ -78,7 +78,7 @@ Link compra [Aliexpress](https://es.aliexpress.com/wholesale?SearchText=jumper-w
 	Venta de versiones originales en la página del fabricante en Aliexpress:
 	https://es.aliexpress.com/item/1005001865093513.html
 
-	c. Cubic CM1106, la última opción porque el distribuidor de China vende sólo unidades recuperadas de segunda mano y de vez en cuando están agotados, son muy baratos y su desempeño es aceptable. 
+	d. Cubic CM1106, la última opción porque el distribuidor de China vende sólo unidades recuperadas de segunda mano y de vez en cuando están agotados, son muy baratos y su desempeño es aceptable. 
 	https://www.aliexpress.com/item/4001082699057.html
 	
 	![Cubic CM1106](https://github.com/danielbernalb/LibreCO2/blob/main/images/Cubic%20CM1106.jpg)
