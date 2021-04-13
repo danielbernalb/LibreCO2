@@ -38,7 +38,7 @@ Link compra [Aliexpress](https://es.aliexpress.com/wholesale?SearchText=jumper-w
 
 4. Sensor, opciones:
 
-	a. SenseAir S8, el mejor en relación costo /beneficio. Traído desde China por Aliexpress cuesta 28 dólares y desde USA 44 dólares, es el mejor o el segundo mejor de los que han sido probados y su costo es bajo.
+	a. SenseAir S8, el mejor en relación costo /beneficio. Traído desde China por Aliexpress cuesta 28 dólares y desde USA 44 dólares, es de los mejores que han sido probados y su costo es bajo.
 	
 	![SenseAir S8](https://github.com/danielbernalb/LibreCO2/blob/main/images/SenseAir_S8.jpg)
 	
