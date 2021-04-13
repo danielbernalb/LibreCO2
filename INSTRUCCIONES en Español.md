@@ -1,7 +1,7 @@
 # LibreCO2
-LibreCO2: Medidor de CO2 usando Arduino UNO y un sensor de CO2 comercial (Sensirion SCD30, Winsen MH-Z14 o MHZ-19 o Cubic CM1106).
+LibreCO2: Medidor de CO2 usando Arduino UNO y un sensor de CO2 comercial (SenseAir S8, Sensirion SCD30, Winsen MH-Z14 o MHZ-19 o Cubic CM1106).
 
-Esta es una versión básica de un medidor de CO2 de bajo costo con los materiales más comunes del mercado: Arduino UNO y los 3 sensores de bajo costo de CO2 más populares: Sensirion SCD30, Winsen MH-Z14 o 19 y Cubic CM1106. LibreCO2 usa un Arduino UNO, pero puede extenderse al MEGA o nano, por ser muy popular en escuelas y frecuentemente usado en las clases de tecnología o electrónica y la mayoría de escuelas tienen muchos de ellos. 
+Esta es una versión básica de un medidor de CO2 de bajo costo con los materiales más comunes del mercado: Arduino UNO y los 3 sensores de bajo costo de CO2 más populares: SenseAir S8, Sensirion SCD30, Winsen MH-Z14 o 19 y Cubic CM1106. LibreCO2 usa un Arduino UNO, pero puede extenderse al MEGA o nano, por ser muy popular en escuelas y frecuentemente usado en las clases de tecnología o electrónica y la mayoría de escuelas tienen muchos de ellos. 
 
 El código del Arduino es lo más sencillo posible y puede programarse cargando el archivo .hex con el programa Xloader y así no necesitarías instalar el software Arduino para compilar y programar el código. Si buscas un sensor más avanzado y con conectividad por Bluetooth o por Wifi puedes encontrar un listado interesante al final de esta guía con varias iniciativas abiertas que incluye [CanAirIO](https://github.com/kike-canaries/canairio_firmware) con conectividad Bluetooth y Wifi. LibreCO2 usa los componentes más populares del mercado, así no sean los más avanzados, y el armado más sencillo posible sin necesitar el uso de cautín y soldadura de estaño.
 
@@ -38,14 +38,28 @@ Link compra [Aliexpress](https://es.aliexpress.com/wholesale?SearchText=jumper-w
 
 4. Sensor, opciones:
 
-	a. Sensirion SCD30, el más costoso (52 dólares) pero en nuestras pruebas el de mejor desempeño. Sensirion tiene distribuidores en USA y Europa que envían a Latinoamérica. Ejemplo:
+	a. SenseAir S8, el mejor en relación costo /beneficio. Traído desde China por Aliexpress cuesta 28 dólares y desde USA 44 dólares, es el mejor o el segundo mejor de los que han sido probados y su costo es bajo.
+	
+	![SenseAir S8](https://github.com/danielbernalb/LibreCO2/blob/main/images/SenseAir%20S8.jpg)
+	
+	Link desde Aliexpress China:
+	https://es.aliexpress.com/item/4000884582128.html
+	
+	Link desde Digikey USA:
+	https://www.digikey.com/es/products/detail/senseair-north-america-inc/004-0-0053/10416532
+	
+	A favor: excelente precio, muy buen desempeño (aceptable velocidad y fiel), rápido envío desde USA y envío gratis desde China.
+	
+	En contra: necesita soldadura para conectar los pines o cables. 
+	
+	b. Sensirion SCD30, el más costoso (52 dólares) pero en nuestras pruebas el de mejor desempeño. Sensirion tiene distribuidores en USA y Europa que envían a Latinoamérica. Ejemplo:
 	https://www.mouser.com/ProductDetail/Sensirion/SCD30/?qs=rrS6PyfT74fdywu4FxpYjQ%3D%3D
 	
 	![SCD30 Sensirion](https://github.com/danielbernalb/LibreCO2/blob/main/images/Sensirion%20SCD30.jpg)
 	
 	A favor: excelente desempeño (rápido y fiel), rápido envío en USA y Europa y envíos a Latinoamérica.
 	
-	En contra: precio (52 dólares). 
+	En contra: necesita soldadura para conectar los pines o cables, alto precio (52 dólares). 
 	
 	Para la conexión del Arduino al sensor Sensirion se usa el protocolo Modbus ya que este nos permite conectar directamente el Arduino al SCD30 sin necesidad de drivers de datos que complicarían mucho el montaje. Sólo debes conectar el pin SEL al VIN del sensor usando una resistencia de 100 kΩ (kilo ohmnios) como se vé en las fotos y video para habilitar el modo Modbus.
 
@@ -72,6 +86,22 @@ Link compra [Aliexpress](https://es.aliexpress.com/wholesale?SearchText=jumper-w
 ****************************
 
 **Conexiones para cada sensor:**
+
+
+**SenseAir S8 sensor**
+
+GND ---> G0 Pin 2 de la regleta de 4 pines
+
++5 &nbsp; ---> G+ Pin 1 de la regleta de 4 pines
+
+5 &nbsp; &nbsp; ---> Pin 2 de la regleta de 5 pines
+
+6 &nbsp; &nbsp; ---> Pin 3 de la regleta de 5 pines
+
+![SenseAir S8](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20Shield%20SenseAir%20connection.jpg)
+
+
+****************************
 
 **Sensirion SCD30**
 
@@ -334,7 +364,7 @@ Luego de cumplir con estas condiciones, debes presionar el botón S1-A1 en la ve
 Al finalizar este tiempo el sensor recibe la orden de calibración y queda listo para usarse de nuevo. Si quieres interrumpir el proceso de calibración presiona el botón S3-A3.
 
 3. Modo cambio de nivel del umbral de alarma BEEP: [Explicado en el video anexo](#video-explicativo).
-Para cambiar el nivel de la alarma de 1000 ppm, por defecto, a otro valor entre 700 y 1300 ppm debes presionar el botón S2-A2 en la versión con escudo, o colocar un cable o switch adicional del pin A3 a A5 en la versión por partes, durante más de 5 segundos y aparecerá el mensaje "BEEP" y luego el valor al que esta programado. Luego debes presionar de nuevo el botón para modificar el valor, cuando lo encuentres presiona el botón S3-A3 para programar este nuevo valor de nivel del BEEP.
+Para cambiar el nivel de la alarma de 1000 ppm, por defecto, a otro valor entre 700 y 1400 ppm o para apagarlo OFF debes presionar el botón S2-A2 en la versión con escudo, o colocar un cable o switch adicional del pin A3 a A5 en la versión por partes, durante más de 5 segundos y aparecerá el mensaje "BEEP" y luego el valor al que esta programado. Luego debes presionar de nuevo el botón para modificar el valor, cuando lo encuentres presiona el botón S3-A3 para programar este nuevo valor de nivel del BEEP.
   
   
 ****************************
