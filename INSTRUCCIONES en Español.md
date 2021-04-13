@@ -1,7 +1,7 @@
 # LibreCO2
 LibreCO2: Medidor de CO2 usando Arduino UNO y un sensor de CO2 comercial (SenseAir S8, Sensirion SCD30, Winsen MH-Z14 o MHZ-19 o Cubic CM1106).
 
-Esta es una versión básica de un medidor de CO2 de bajo costo con los materiales más comunes del mercado: Arduino UNO y los 3 sensores de bajo costo de CO2 más populares: SenseAir S8, Sensirion SCD30, Winsen MH-Z14 o 19 y Cubic CM1106. LibreCO2 usa un Arduino UNO, pero puede extenderse al MEGA o nano, por ser muy popular en escuelas y frecuentemente usado en las clases de tecnología o electrónica y la mayoría de escuelas tienen muchos de ellos. 
+Esta es una versión básica de un medidor de CO2 de bajo costo con los materiales más comunes del mercado: Arduino UNO y los 4 sensores de bajo costo de CO2 más populares: SenseAir S8, Sensirion SCD30, Winsen MH-Z14 o 19 y Cubic CM1106. LibreCO2 usa un Arduino UNO, pero puede extenderse al MEGA o nano, por ser muy popular en escuelas y frecuentemente usado en las clases de tecnología o electrónica y la mayoría de escuelas tienen muchos de ellos. 
 
 El código del Arduino es lo más sencillo posible y puede programarse cargando el archivo .hex con el programa Xloader y así no necesitarías instalar el software Arduino para compilar y programar el código. Si buscas un sensor más avanzado y con conectividad por Bluetooth o por Wifi puedes encontrar un listado interesante al final de esta guía con varias iniciativas abiertas que incluye [CanAirIO](https://github.com/kike-canaries/canairio_firmware) con conectividad Bluetooth y Wifi. LibreCO2 usa los componentes más populares del mercado, así no sean los más avanzados, y el armado más sencillo posible sin necesitar el uso de cautín y soldadura de estaño.
 
