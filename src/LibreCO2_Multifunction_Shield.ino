@@ -27,10 +27,10 @@
 
 // Uncomment your CO2 sensor
 
-//#define SenseAir_S8 // SenseAir S8
-#define SCD30           // Sensirion SCD30
+//#define SCD30           // Sensirion SCD30
 //#define MHZ14_9       // Winsen MHZ14 or 19
 //#define CM1106        // Cubic CM1106
+#define SenseAir_S8 // SenseAir S8
 
 #include <CRCx.h> //https://github.com/hideakitai/CRCx
 #include <SoftwareSerial.h>
