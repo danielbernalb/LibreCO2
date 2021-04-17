@@ -21,13 +21,16 @@
   Board TM1637 conectada a los pines 9 y 8
   Botón de Calibración o cable conectado a pin 4
   Botón de cambio del nivel del BEEP o chicharra conectado a pin A3
+
+  Rev 142
 */
 
 // Uncomment your CO2 sensor
-//#define SCD30           // Sensirion SCD30
+
+//#define SenseAir_S8 // SenseAir S8
+#define SCD30           // Sensirion SCD30
 //#define MHZ14_9       // Winsen MHZ14 or 19
 //#define CM1106        // Cubic CM1106
-#define SenseAir_S8 // SenseAir S8
 
 #include <CRCx.h> //https://github.com/hideakitai/CRCx
 #include <SoftwareSerial.h>
@@ -37,19 +40,22 @@
 #include <EEPROM.h>
 #include <avr/wdt.h>
 
+const byte RevVersion = 142; // Firmware version 16 april 2021
+
 const byte PIN_TX = 5;  // define TX pin to Sensor
 const byte PIN_RX = 6;  // define RX pin to Sensor
 const byte PIN_SEL = 9; // define SEL pin for SCD30
 const byte BUTTON_CALIB = A1;
 const byte BUTTON_BEEP = A2;
 const byte BUTTON_ENTER = A3;
+const byte address = 0;    // EEPROM address 0
+
 const byte MB_PKT_4 = 4;   //CM1106 receive Packet Size
 const byte MB_PKT_6 = 6;   //CM1106 receive Packet Size
 const byte MB_PKT_7 = 7;   //MODBUS Packet Size
 const byte MB_PKT_8 = 8;   //MODBUS Packet Size
 const byte MB_PKT_10 = 10; //CM1106 send Packet Size
 const byte MB_PKT_17 = 17; // MODBUS Packet Size
-const byte address = 0;    // EEPROM address 0
 
 const byte cmdConM[MB_PKT_8] = {0x61, 0x06, 0x00, 0x36, 0x00, 0x00, 0x60, 0x64}; // SCD30 Trigger continuous measurement with no ambient pressure compensation
 const byte cmdSetM[MB_PKT_8] = {0x61, 0x06, 0x00, 0x25, 0x00, 0x02, 0x10, 0x60}; // SCD30 Set measurement interval 2 seconds
@@ -100,7 +106,7 @@ SoftwareSerial co2sensor(PIN_RX, PIN_TX);
 #ifdef SCD30
 #define BAUDRATE 19200 // Device to SCD30 Serial baudrate (should not be changed)
 #else
-#define BAUDRATE 9600 // Device to MHZ19 and CM1106 Serial baudrate (should not be changed)
+#define BAUDRATE 9600 // Device to SenseAir S8, MHZ19 and CM1106 Serial baudrate (should not be changed)
 #endif
 #ifdef MHZ14_9
 MHZ19 co2MHZ;
@@ -111,6 +117,9 @@ void setup()
   Timer1.initialize();
   MFS.initialize(&Timer1); // initialize multi-function shield library
   Serial.begin(115200);
+
+  Serial.print("Firmware version: ");
+  Serial.println(RevVersion);
 
 #ifdef SCD30
   Serial.println("Start SCD30 Modbus lecture");
@@ -259,12 +268,7 @@ void CO2iniSCD30()
 
   while (co2SCD30() == 0 && (ConnRetry < 5))
   {
-    Serial.println("Air sensor not detected. Please check wiring... Try# " + String(ConnRetry));
-    MFS.write("");
-    delay(20);
-    MFS.write("bad");
-    delay(2500);
-    ConnRetry++;
+    BadConn();
   }
 
   if (ConnRetry == 5)
@@ -287,28 +291,23 @@ void CO2iniSCD30()
 void CO2iniMHZ19()
 {
   co2MHZ.autoCalibration(false); // Turn OFF calibration
-  Serial.print("MHZ19 Stop Autocalibration: ");
+  Serial.print("MHZ14_9 Stop Autocalibration: ");
   co2MHZ.getABC() ? Serial.println(" failed") : Serial.println(" done"); // now print it's status
   delay(100);
 
   while (co2MHZ.getCO2() == 0 && (ConnRetry < 5))
   {
-    Serial.println("Air sensor not detected. Please check wiring... Try# " + String(ConnRetry));
-    MFS.write("");
-    delay(20);
-    MFS.write("bad");
-    delay(2500);
-    ConnRetry++;
+    BadConn();
   }
 
   if (ConnRetry == 5)
     softwareReset(WDTO_60MS);
 
-  Serial.println("Air sensor detected MHZ19");
+  Serial.println("Air sensor detected MHZ14_9");
   MFS.write("");
   delay(10);
   MFS.write("good");
-  Serial.println("MHZ19 read OK");
+  Serial.println("MHZ14_9 read OK");
   delay(4000);
 }
 #endif
@@ -328,12 +327,7 @@ void CO2iniCM1106()
   // Connection test
   while (co2CM1106() == 0 && (ConnRetry < 5))
   {
-    Serial.println("Air sensor not detected. Please check wiring... Try# " + String(ConnRetry));
-    MFS.write("");
-    delay(20);
-    MFS.write("bad");
-    delay(2500);
-    ConnRetry++;
+    BadConn();
   }
 
   if (ConnRetry == 5)
@@ -364,12 +358,7 @@ void CO2iniSenseAir()
 
   while (co2SenseAir() == 0 && (ConnRetry < 5))
   {
-    Serial.println("Air sensor not detected. Please check wiring... Try# " + String(ConnRetry));
-    MFS.write("");
-    delay(20);
-    MFS.write("bad");
-    delay(2500);
-    ConnRetry++;
+    BadConn();
   }
 
   if (ConnRetry == 5)
@@ -463,17 +452,21 @@ int co2SCD30()
 int co2MHZ14_9()
 {
   CO2 = co2MHZ.getCO2();
+
+  Serial.print("Read MHZ14_9: ");
+
   if (CO2 != 0)
   {
+    Serial.println("OK DATA");
     return CO2;
   }
   else
   {
-    Serial.println("failed");
+    Serial.println("FAILED");
     MFS.write("");
     delay(10);
-    MFS.write("fail");
-    return (CO2);
+    MFS.write("----");
+    return 0;
   }
 }
 #endif
@@ -486,30 +479,38 @@ int co2CM1106()
   co2sensor.write(cmdReCM, MB_PKT_4);
   co2sensor.readBytes(response, MB_PKT_8);
   CO2 = (256 * response[3]) + response[4];
+
+  Serial.print("Read CM1106: ");
+
   if (CO2 != 0)
   {
+
     int crc = 0;
     for (int i = 0; i < 7; i++)
       crc += response[i];
     crc = 256 - crc % 256;
     if ((response[0] == 0x16) && (response[7] == crc))
     {
+      Serial.println("OK DATA");
       return CO2;
     }
     else
     {
       while (co2sensor.available() > 0)
         char t = co2sensor.read(); // Clear serial input buffer;
+
+      Serial.print("FAIL CRC_CO2");
+      MFS.write("----");
       return 0;
     }
   }
   else
   {
-    Serial.println("failed");
+    Serial.println("FAILED");
     MFS.write("");
     delay(10);
-    MFS.write("fail");
-    return (CO2);
+    MFS.write("----");
+    return 0;
   }
 }
 #endif
@@ -554,6 +555,18 @@ int co2SenseAir()
   }
 }
 #endif
+
+//Routine Bad connection
+
+void BadConn()
+{
+  Serial.println("Air sensor not detected. Please check wiring... Try# " + String(ConnRetry));
+  MFS.write("");
+  delay(20);
+  MFS.write("bad");
+  delay(2500);
+  ConnRetry++;
+}
 
 // Beep 900Hhz
 void Beep()
@@ -652,6 +665,7 @@ void check_calmode_active()
             if (digitalRead(BUTTON_ENTER) == LOW)
             {
               i = 0;
+              Serial.println("Calibration process canceled");
               ExitCali = true;
               break;
             }
@@ -757,7 +771,6 @@ void displayVALbeep()
   {
     VALDIS = VALDIS - 800;
   }
-  Serial.println(VALbeep); //!!!!!!!!!!!!!!!!!
   Serial.print("BEEP level: ");
   MFS.write("BEEP");
   delay(1000);
@@ -793,6 +806,7 @@ void CalibrationSCD30()
 void CalibrationMHZ19()
 {
   delay(100);
+  //Calibration set to 400ppm
   Serial.print("Resetting forced calibration factor to 400: ");
   co2MHZ.calibrate(); // Take a reading which be used as the zero point for 400 ppm
   Serial.println("done");
@@ -805,9 +819,12 @@ void CalibrationMHZ19()
 void CalibrationCM1106()
 {
   delay(100);
-  Serial.print("Resetting forced calibration factor to 400: ");
+
+  //Calibration set to 400ppm
   co2sensor.write(cmdCalC, MB_PKT_6);
   co2sensor.readBytes(responseCM, MB_PKT_4);
+
+  Serial.print("Resetting forced calibration factor to 400: ");
   CheckResponse(cmdOKca, responseCM, MB_PKT_4);
   delay(4000);
 }
