@@ -32,7 +32,7 @@ Link compra [Aliexpress](https://es.aliexpress.com/wholesale?SearchText=multifun
 
 Link compra [Aliexpress](https://es.aliexpress.com/wholesale?catId=0&initiative_id=SB_20210322194538&SearchText=arduino+uno+r3), Link compra [Colombia](https://listado.mercadolibre.com.co/arduino-uno#D[A:arduino%20uno]), Compra Latinoamérica: Mercadolibre o tiendas de electrónica.
 
-3. 4 cables jumper hembra hembra.
+3. 4 cables jumper hembra hembra (sirve cualquier tamaño pero es preferible 10 o 15cm).
 
 Link compra [Aliexpress](https://es.aliexpress.com/wholesale?SearchText=jumper-wires), Link compra [Colombia](https://listado.mercadolibre.com.co/arduino-jumper-hembre-hembra#D[A:arduino%20jumper%20hembre%20hembra]), Compra Latinoamérica: Mercadolibre o tiendas de electrónica.
 
