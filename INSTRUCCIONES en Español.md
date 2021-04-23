@@ -347,7 +347,7 @@ Busca una caja plástica con un ancho similar al del Arduino y un largo mayor pa
 ![Caja1](https://github.com/danielbernalb/LibreCO2/blob/main/images/ImagesX4.jpg)
 
 Cuando quieras usar el teclado para la calibración o la programación del BEEP, abre la caja y accede al teclado para luego volver a cerrala.
-Puedes acomodar cualquier caja, en el siguiente caso se usa una espuma debajo porque la caja es más alta, además se hacen 3 huecos de un tamaño mediano (7mm) para los 3 botones y acceder desde afuera a los botones:
+Puedes acomodar cajas plásticas de diferentes tamaños, en el siguiente caso se usa una espuma debajo porque la caja es más alta, además se hacen 3 huecos de un tamaño mediano (7mm) para los 3 botones y asó poder acceder desde afuera a los botones sin necesidad de abrir la caja:
 
 ![Caja2](https://github.com/danielbernalb/LibreCO2/blob/main/images/Images4_2.jpg)
 
