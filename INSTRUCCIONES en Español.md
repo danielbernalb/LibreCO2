@@ -348,6 +348,10 @@ Busca una caja plástica con un ancho similar al del Arduino y un largo mayor pa
 
 Cuando quieras usar el teclado para la calibración o la programación del BEEP, abre la caja y accede al teclado para luego volver a cerrala.
 
+![Caja2](https://github.com/danielbernalb/LibreCO2/blob/main/images/Images4_2.jpg)
+
+Puedes acomodar cualquier caja, en este caso se usa una espuma debajo por lo alto de la caja.
+
 3.2. Caja en madera MDF usando corte láser. En desarrollo.
 
 3.3. Caja en PLA con impresora 3D. En desarrollo.
