@@ -1,18 +1,16 @@
+
 /*
   Reading CO2 from the SCD30, MHZ14 or 19, CM1106 or the SenseAir S8.
   By: Daniel Bernal
   Date: April 22, 2021
-
   Hardware Connections:
   Please see the instructions in github (https://github.com/danielbernalb/LibreCO2) or aireciudadano (https://aireciudadano.com/guia-de-construccion-medidor-libreco2/)
-  
+
   Leyendo CO2 desde el sensor SCD30, MHZ14 o 19, CM1106 o SenseAir S8.
   Por: Daniel Bernal
   Fecha: Abril 22, 2021
-
   Conección de Hardware:
   Favor revisar las instrucciones en github (https://github.com/danielbernalb/LibreCO2/blob/main/INSTRUCCIONES%20en%20Espa%C3%B1ol.md) o aireciudadano (https://aireciudadano.com/guia-de-construccion-medidor-libreco2/)
-
   Rev 144
 */
 
@@ -20,10 +18,10 @@
 // ***************************************************************************
 // UNCOMMENT YOUR CO2 SENSOR!!!
 
-//#define SCD30 // Sensirion SCD30
-//#define MHZ14_9 // Winsen MHZ14 or 19
-//#define CM1106         // Cubic CM1106
-#define SenseAir_S8 // SenseAir S8
+//#define SCD30        // Sensirion SCD30
+//#define MHZ14_9      // Winsen MHZ14 or 19
+//#define CM1106       // Cubic CM1106
+#define SenseAir_S8  // SenseAir S8
 
 // ***************************************************************************
 // ***************************************************************************
@@ -229,9 +227,13 @@ void loop()
 void BadConn()
 {
   Serial.println("Air sensor not detected. Please check wiring... Try# " + String(ConnRetry));
-  MFS.write("");
-  delay(20);
-  MFS.write("bad");
+
+  if (ConnRetry > 1)
+  {
+    MFS.write("");
+    delay(20);
+    MFS.write("bad");
+  }
   delay(2500);
   ConnRetry++;
 }
