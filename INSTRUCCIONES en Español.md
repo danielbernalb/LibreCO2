@@ -63,7 +63,7 @@ Link compra [Aliexpress](https://es.aliexpress.com/wholesale?SearchText=jumper-w
 	
 	Para la conexión del Arduino al sensor Sensirion se usa el protocolo Modbus ya que este nos permite conectar directamente el Arduino al SCD30 sin necesidad de drivers de datos que complicarían mucho el montaje. Sólo debes conectar el pin SEL al VIN del sensor usando una resistencia de 100 kΩ (kilo ohmnios) como se vé en las fotos y video para habilitar el modo Modbus.
 
-	c. Winsen MH-Z14 o 19, el más barato y popular, buen desempeño, algo lento. Ten cuidado con las falsas copias del sensor!!!
+	c. Winsen MH-Z14 o 19, el más barato y popular, buen desempeño, algo lento. Puedes usar cualquie versión de sensor: MH-Z14, MH-Z14A, MH-Z19B o MH-Z19C.b Ten cuidado con las falsas copias del sensor!!!
 
 	![Winsen MH-Z14a](https://github.com/danielbernalb/LibreCO2/blob/main/images/MH-Z14A.jpg)
 	
@@ -71,7 +71,7 @@ Link compra [Aliexpress](https://es.aliexpress.com/wholesale?SearchText=jumper-w
 	
 	En contra: tiempo de envío variable con Aliexpress desde China (20 días a mes y medio), falsificaciones (ten cuidado, sólo compra de la tienda Oficial de Aliexpress).
 
-	REPITO: sólo compra el MH-Z19 de la tienda de distribución de Winsen en Aliexpress, el mercado está invadido de falsas copias, más información en: https://emariete.com/sensores-co2-mh-z19b-falsos/ o en ingles en: https://youtu.be/5_QQe75-SZI
+	REPITO: sólo compra el MH-Z19B o MH-Z19C de la tienda de distribución de Winsen en Aliexpress, el mercado está invadido de falsas copias, más información en: https://emariete.com/sensores-co2-mh-z19b-falsos/ o en ingles en: https://youtu.be/5_QQe75-SZI
 
 	![Original Winsen MH-Z19b](https://github.com/danielbernalb/LibreCO2/blob/main/images/MH-Z19B.jpg)
 
@@ -103,7 +103,7 @@ GND ---> G0 Pin 2 de la regleta de 4 pines
 
 ****************************
 
-**Sensirion SCD30**
+**Sensor Sensirion SCD30**
 
 PIN del Escudo ---> Sensor
 
@@ -119,7 +119,7 @@ GND ---> GND
 
 
 ****************************
-**Winsen MH-Z19B sensor**
+**Sensor Winsen MH-Z19B o 19C**
 
 GND ---> GND
 
@@ -133,7 +133,7 @@ GND ---> GND
 
 
 ****************************
-**Winsen MH-Z14A sensor**
+**Sensor Winsen MH-Z14 o MH-Z14A**
 
 GND ---> Pin 5 or 16 del conector
 
@@ -147,7 +147,7 @@ GND ---> Pin 5 or 16 del conector
 
 
 ****************************
-**Cubic CM1106 sensor**
+**Sensor Cubic CM1106**
 
 GND ---> G Pin 2 de la regleta de 4 pines
 
