@@ -1,17 +1,16 @@
-
 /*
   Reading CO2 from the SCD30, MHZ14 or 19, CM1106 or the SenseAir S8.
   By: Daniel Bernal
-  Date: April 22, 2021
+  Date: May 26, 2021
   Hardware Connections:
   Please see the instructions in github (https://github.com/danielbernalb/LibreCO2) or aireciudadano (https://aireciudadano.com/guia-de-construccion-medidor-libreco2/)
 
   Leyendo CO2 desde el sensor SCD30, MHZ14 o 19, CM1106 o SenseAir S8.
   Por: Daniel Bernal
-  Fecha: Abril 22, 2021
+  Fecha: Mayo 26, 2021
   Conección de Hardware:
   Favor revisar las instrucciones en github (https://github.com/danielbernalb/LibreCO2/blob/main/INSTRUCCIONES%20en%20Espa%C3%B1ol.md) o aireciudadano (https://aireciudadano.com/guia-de-construccion-medidor-libreco2/)
-  Rev 144
+  Rev 145
 */
 
 // ***************************************************************************
@@ -21,7 +20,10 @@
 //#define SCD30        // Sensirion SCD30
 //#define MHZ14_9      // Winsen MHZ14 or 19
 //#define CM1106       // Cubic CM1106
-#define SenseAir_S8  // SenseAir S8
+#define SenseAir_S8 // SenseAir S8
+
+// UNCOMMENT FOR DEBUG MODE
+//#define DEBUG
 
 // ***************************************************************************
 // ***************************************************************************
@@ -33,7 +35,7 @@
 #include <CRCx.h> //https://github.com/hideakitai/CRCx
 #include <avr/wdt.h>
 
-const byte RevVersion = 144; // Firmware version 22 april 2021
+const byte RevVersion = 145; // Firmware version 26 may 2021
 
 const byte PIN_TX = 5;  // define TX pin to Sensor
 const byte PIN_RX = 6;  // define RX pin to Sensor
@@ -53,6 +55,8 @@ const byte MB_PKT_17 = 17; // MODBUS Packet Size
 
 // SCD30 MODBUS commands
 const byte cmdConM[MB_PKT_8] = {0x61, 0x06, 0x00, 0x36, 0x00, 0x00, 0x60, 0x64}; // SCD30 Trigger continuous measurement with no ambient pressure compensation
+//const byte cmdConM[MB_PKT_8] = {0x61, 0x06, 0x00, 0x36, 0x02, 0xF2, 0xE0, 0x81}; // SCD30 Trigger continuous measurement 754 mbar Bogota
+//const byte cmdConM[MB_PKT_8] = {0x61, 0x06, 0x00, 0x36, 0x03, 0xF5, 0xA0, 0xD3}; // SCD30 Trigger continuous measurement 1013 mbar sea level
 const byte cmdSetM[MB_PKT_8] = {0x61, 0x06, 0x00, 0x25, 0x00, 0x02, 0x10, 0x60}; // SCD30 Set measurement interval 2 seconds
 const byte cmdAuto[MB_PKT_8] = {0x61, 0x06, 0x00, 0x3A, 0x00, 0x00, 0xA0, 0x67}; // SCD30 Deactivate Automatic Self-Calibration
 const byte cmdRead[MB_PKT_8] = {0x61, 0x03, 0x00, 0x28, 0x00, 0x06, 0x4C, 0x60}; // SCD30 Read CO2
@@ -104,7 +108,7 @@ void setup()
 {
   Timer1.initialize();
   MFS.initialize(&Timer1); // initialize multi-function shield library
-  Serial.begin(115200);
+  Serial.begin(9600);
 
   Serial.print("Firmware version: ");
   Serial.println(RevVersion);
@@ -179,7 +183,11 @@ void loop()
 
   if (CO2 > 0)
   {
+#ifdef DEBUG
     Serial.print("CO2(ppm): ");
+#else
+    Serial.print(" ");
+#endif
     Serial.println(CO2);
 
     MFS.write("");
@@ -188,7 +196,11 @@ void loop()
   }
   else
   {
+#ifdef DEBUG
     Serial.println("ERROR CO2=<0");
+#else
+    Serial.println("CO2=<0");
+#endif
     delay(10);
   }
 
@@ -218,7 +230,7 @@ void loop()
   delay(1978); // for CM1106 2 seconds
 #endif
 #ifdef SenseAir_S8
-  delay(3969); // for SenseAir S8 4 seconds
+  delay(3967); // for SenseAir S8 4 seconds
 #endif
 }
 
@@ -537,7 +549,9 @@ int co2SCD30()
   co2sensor.write(cmdRead, MB_PKT_8);
   co2sensor.readBytes(responseval, MB_PKT_17);
 
+#ifdef DEBUG
   Serial.print("Read SCD30: ");
+#endif
 
   // CRC Routine
   u.uByte[0] = responseval[6];
@@ -550,16 +564,16 @@ int co2SCD30()
     crc_cmd = crcx::crc16(responseval, 15);
     if (responseval[15] == lowByte(crc_cmd) && responseval[16] == highByte(crc_cmd))
     {
+#ifdef DEBUG
       Serial.println(" OK");
+#else
+      Serial.print("OK");
+#endif
       return (u.uCO2);
     }
     else
     {
-      Serial.print("FAIL CO2 old: ");
-      Serial.println(CO2);
       CO2temp = u.uCO2;
-      Serial.print("FAIL CRC_CO2actual: ");
-      Serial.println(CO2temp);
 
       if (CO2temp - CO2 < 10 && CO2temp - CO2 > -10)
       {
@@ -569,13 +583,20 @@ int co2SCD30()
       {
         if (CO2 == 0)
         {
+
+#ifdef DEBUG
           Serial.println("FAIL CRC_CO2 = 0");
+#else
+          Serial.println("FAIL");
+#endif
           MFS.write("----");
           return 0;
         }
         else
         {
+#ifdef DEBUG
           Serial.println("FAIL CRC CO2 last");
+#endif
           return CO2;
         }
       }
@@ -586,13 +607,21 @@ int co2SCD30()
   {
     if (CO2 == 0)
     {
+#ifdef DEBUG
       Serial.println("FAIL CRC_CO2 = 0");
+#else
+      Serial.println("FAIL");
+#endif
       MFS.write("----");
       return 0;
     }
     else
     {
+#ifdef DEBUG
       Serial.println("FAIL CRC CO2 continuously");
+#else
+      Serial.println("FAIL");
+#endif
       //return CO2;
       MFS.write("----");
       return 0;
@@ -656,7 +685,9 @@ int co2MHZ14_9()
   co2sensor.readBytes(responseval, MB_PKT_9);
   CO2 = (256 * responseval[2]) + responseval[3];
 
+#ifdef DEBUG
   Serial.print("Read MHZ14_9: ");
+#endif
 
   if (CO2 != 0)
   {
@@ -669,7 +700,11 @@ int co2MHZ14_9()
 
     if ((responseval[1] == 0x86) && (responseval[8] == crc))
     {
+#ifdef DEBUG
       Serial.println("OK DATA");
+#else
+      Serial.print("OK");
+#endif
       return CO2;
     }
     else
@@ -677,14 +712,22 @@ int co2MHZ14_9()
       while (co2sensor.available() > 0)
         char t = co2sensor.read(); // Clear serial input buffer;
 
+#ifdef DEBUG
       Serial.print("FAIL CRC_CO2");
+#else
+      Serial.print("FAIL");
+#endif
       MFS.write("----");
       return 0;
     }
   }
   else
   {
+#ifdef DEBUG
     Serial.println("FAILED");
+#else
+    Serial.print("FAIL");
+#endif
     MFS.write("");
     delay(10);
     MFS.write("----");
@@ -747,7 +790,9 @@ int co2CM1106()
   co2sensor.readBytes(response, MB_PKT_8);
   CO2 = (256 * response[3]) + response[4];
 
+#ifdef DEBUG
   Serial.print("Read CM1106: ");
+#endif
 
   if (CO2 != 0)
   {
@@ -758,7 +803,11 @@ int co2CM1106()
     crc = 256 - crc % 256;
     if ((response[0] == 0x16) && (response[7] == crc))
     {
+#ifdef DEBUG
       Serial.println("OK DATA");
+#else
+      Serial.print("OK");
+#endif
       return CO2;
     }
     else
@@ -766,14 +815,22 @@ int co2CM1106()
       while (co2sensor.available() > 0)
         char t = co2sensor.read(); // Clear serial input buffer;
 
+#ifdef DEBUG
       Serial.print("FAIL CRC_CO2");
+#else
+      Serial.print("FAIL");
+#endif
       MFS.write("----");
       return 0;
     }
   }
   else
   {
+#ifdef DEBUG
     Serial.println("FAILED");
+#else
+    Serial.print("FAIL");
+#endif
     MFS.write("");
     delay(10);
     MFS.write("----");
@@ -840,7 +897,9 @@ int co2SenseAir()
   co2sensor.readBytes(responseSA, MB_PKT_7);
   CO2 = (256 * responseSA[3]) + responseSA[4];
 
+#ifdef DEBUG
   Serial.print("Read SenseAir S8: ");
+#endif
 
   if (CO2 != 0)
   {
@@ -848,7 +907,11 @@ int co2SenseAir()
     crc_cmd = crcx::crc16(responseSA, 5);
     if (responseSA[5] == lowByte(crc_cmd) && responseSA[6] == highByte(crc_cmd))
     {
+#ifdef DEBUG
       Serial.println("OK DATA");
+#else
+      Serial.print("OK");
+#endif
 
       return CO2;
     }
@@ -857,14 +920,23 @@ int co2SenseAir()
       while (co2sensor.available() > 0)
         char t = co2sensor.read(); // Clear serial input buffer;
 
+#ifdef DEBUG
       Serial.print("FAIL CRC_CO2");
+#else
+      Serial.print("FAIL");
+#endif
+
       MFS.write("----");
       return 0;
     }
   }
   else
   {
+#ifdef DEBUG
     Serial.println("FAILED");
+#else
+    Serial.print("FAIL");
+#endif
     MFS.write("");
     delay(10);
     MFS.write("----");
