@@ -115,23 +115,23 @@ void setup()
   MFS.initialize(&Timer1); // initialize multi-function shield library
   Serial.begin(9600);
 
-  Serial.print("Firmware version: ");
+  Serial.print(F("Firmware version: "));
   Serial.println(RevVersion);
 
   MFS.write("Lco2");
-  Serial.println("Start LibreCO2");
+  Serial.println(F("Start LibreCO2"));
 
 #ifdef SCD30
-  Serial.println("Start SCD30 Modbus lecture");
+  Serial.println(F("Start SCD30 Modbus lecture"));
 #endif
 #ifdef MHZ14_9
-  Serial.println("Start MH-Z14 or MH-Z19 lecture");
+  Serial.println(F("Start MH-Z14 or MH-Z19 lecture"));
 #endif
 #ifdef CM1106
-  Serial.println("Start CM1106 lecture");
+  Serial.println(F("Start CM1106 lecture"));
 #endif
 #ifdef SenseAir_S8
-  Serial.println("Start SenseAir S8 lecture");
+  Serial.println(F("Start SenseAir S8 lecture"));
 #endif
   co2sensor.begin(BAUDRATE); // Sensor serial start
   delay(4000);
@@ -162,7 +162,7 @@ void setup()
 #endif
 
   // Preheat routine: min 30 seconds for SCD30 & CM1106 & SenseAir S8, 180 seconds for MH-Z14 or 19
-  Serial.print("Preheat: ");
+  Serial.print(F("Preheat: "));
 #ifdef MHZ14_9
   for (int i = 180; i > -1; i--)
 #else
@@ -178,7 +178,7 @@ void setup()
     i--;
   }
 
-  Serial.println("Start measurements compensated by Altitude");
+  Serial.println(F("Start measurements compensated by Altitude"));
 
   MFS.write("CO2-");
   delay(5000);
@@ -194,7 +194,7 @@ void loop()
   int CO2value = co2MHZ14_9();
   float CO2cor = (0.016 * ((1013 - hpa) / 10 ) * (CO2value - 400)) + CO2value;      // Increment of 1.6% for every hPa of difference at sea level
   CO2 = round (CO2cor);
-  Serial.print("  values: ");
+  Serial.print(F("  values: "));
   Serial.print(hpa);
   Serial.print("  ");
   Serial.print(CO2value);
@@ -205,7 +205,7 @@ void loop()
   int CO2value = co2CM1106();
   float CO2cor = (0.016 * ((1013 - hpa) / 10 ) * (CO2value - 400)) + CO2value;      // Increment of 1.6% for every hPa of difference at sea level
   CO2 = round (CO2cor);
-  Serial.print("  values: ");
+  Serial.print(F("  values: "));
   Serial.print(hpa);
   Serial.print("  ");
   Serial.print(CO2value);
@@ -216,7 +216,7 @@ void loop()
   int CO2value = co2SenseAir();
   float CO2cor = (0.016 * ((1013 - hpa) / 10 ) * (CO2value - 400)) + CO2value;      // Increment of 1.6% for every hPa of difference at sea level
   CO2 = round (CO2cor);
-  Serial.print("  values: ");
+  Serial.print(F("  values: "));
   Serial.print(hpa);
   Serial.print("  ");
   Serial.print(CO2value);
@@ -224,13 +224,13 @@ void loop()
   Serial.println(CO2cor);
 #endif
 
-  //    Serial.print("hPa: ");
+  //    Serial.print(F("hPa: "));
   //    Serial.print(hpa);
 
   if (CO2 > 0)
   {
 #ifdef DEBUG
-    Serial.print("CO2(ppm): ");
+    Serial.print(F("CO2(ppm): "));
 #else
     Serial.print(" ");
 #endif
@@ -243,7 +243,7 @@ void loop()
   else
   {
 #ifdef DEBUG
-    Serial.println("ERROR CO2=<0");
+    Serial.println(F("ERROR CO2=<0"));
 #endif
     delay(10);
   }
@@ -303,7 +303,7 @@ void Beep()
 
 void Done()
 {
-  Serial.println("done");
+  Serial.println(F("done"));
   MFS.write("");
   delay(10);
   MFS.write("done");
@@ -311,7 +311,7 @@ void Done()
 
 void Failed()
 {
-  Serial.println("failed");
+  Serial.println(F("failed"));
   MFS.write("");
   delay(10);
   MFS.write("fail");
@@ -365,10 +365,10 @@ void check_calmode_active()
         MFS.write("");
         delay(100);
 #ifdef MHZ14_9
-        Serial.println("Start calibration process: 1200 seconds of 400 ppm stable");
+        Serial.println(F("Start calibration process: 1200 seconds of 400 ppm stable"));
         for (int i = 1200; i > -1; i--)
 #else
-        Serial.println("Start calibration process: 300 seconds of 400 ppm stable");
+        Serial.println(F("Start calibration process: 300 seconds of 400 ppm stable"));
         for (int i = 300; i > -1; i--)
 #endif
         { // loop from 0 to 300
@@ -389,7 +389,7 @@ void check_calmode_active()
 #ifdef SenseAir_S8
           CO2 = co2SenseAir();
 #endif
-          Serial.print("CO2(ppm): ");
+          Serial.print(F("CO2(ppm): "));
           Serial.println(CO2);
           MFS.write(i);
           delay(1000);
@@ -401,7 +401,7 @@ void check_calmode_active()
             if (digitalRead(BUTTON_BEEP) == LOW)
             {
               i = 0;
-              Serial.println("Calibration process canceled");
+              Serial.println(F("Calibration process canceled"));
               ExitCali = true;
               Failed();
               delay(2000);
@@ -435,7 +435,7 @@ void check_calmode_active()
     {
       StartPress_ms = millis();
       isLongPressCALI = true;
-      Serial.println("Button CALI has been pressed, hold 5s more to start calibration");
+      Serial.println(F("Button CALI has been pressed, hold 5s more to start calibration"));
     }
   }
   else
@@ -451,7 +451,7 @@ void check_calmode_active()
     {
       if (currentTime_ms > (StartPress_ms + LongPress_ms))
       {
-        Serial.println("Routine BEEP change");
+        Serial.println(F("Routine BEEP change"));
         displayVALbeep(1500);
 
         while (digitalRead(BUTTON_ALTI) == HIGH)
@@ -476,9 +476,9 @@ void check_calmode_active()
         {
           EEPROM.write(addressBEEP, VALbeep);
           isLongPressBEEP = false;
-          Serial.print("New Beep Value: ");
+          Serial.print(F("New Beep Value: "));
           if (VALDIS == 1450)
-            Serial.println("OFF");
+            Serial.println(F("OFF"));
           else
             Serial.println(VALDIS);
           Done();
@@ -486,7 +486,7 @@ void check_calmode_active()
         }
         else
         {
-          Serial.println("no change in BEEP value");
+          Serial.println(F("no change in BEEP value"));
           Failed();
         }
       }
@@ -495,7 +495,7 @@ void check_calmode_active()
     {
       StartPress_ms = millis();
       isLongPressBEEP = true;
-      Serial.println("Button BEEP has been pressed, hold 5s more to start BEEP level change routine");
+      Serial.println(F("Button BEEP has been pressed, hold 5s more to start BEEP level change routine"));
     }
   }
 
@@ -507,7 +507,7 @@ void check_calmode_active()
     {
       if (currentTime_ms > (StartPress_ms + LongPress_ms))
       {
-        Serial.println("Routine ALTITUDE change");
+        Serial.println(F("Routine ALTITUDE change"));
         displayVALalti();
         delay(500);
 
@@ -523,7 +523,7 @@ void check_calmode_active()
               VALalti++;
               if (VALalti > 80 || VALalti == 0xFF)
                 VALalti = 0;
-              Serial.print("ALTITUDE level: ");
+              Serial.print(F("ALTITUDE level: "));
               Serial.print(VALalti * 50);
               Serial.println(" m");
               MFS.write(VALalti * 50);
@@ -539,7 +539,7 @@ void check_calmode_active()
               if (VALalti == 0 || VALalti == 0xFF)
                 VALalti = 81;
               VALalti--;
-              Serial.print("ALTITUDE level: ");
+              Serial.print(F("ALTITUDE level: "));
               Serial.print(VALalti * 50);
               Serial.println(" m");
               MFS.write(VALalti * 50);
@@ -585,14 +585,14 @@ void check_calmode_active()
           co2sensor.write(cmdSalt, MB_PKT_8);
           co2sensor.readBytes(response, MB_PKT_8);
 
-          Serial.println("SCD30 Altitude compensation setted: ");
+          Serial.println(F("SCD30 Altitude compensation setted: "));
           CheckResponse(cmdSalt, response, MB_PKT_8);
           delay(2000);
 
           co2sensor.write(cmdGalt, MB_PKT_8);
           co2sensor.readBytes(resALTI, 7);
 
-          Serial.print("Altitude value for SCD30: ");
+          Serial.print(F("Altitude value for SCD30: "));
           VALalti = ((256 * resALTI[3]) + resALTI[4]) / 50;
 
           MFS.write("ALTI");
@@ -602,7 +602,7 @@ void check_calmode_active()
           Serial.println(" m");
 
 #else
-          Serial.print("New Altitude Value: ");
+          Serial.print(F("New Altitude Value: "));
           MFS.write("ALTI");
           delay(1000);
           MFS.write(VALalti * 50);
@@ -616,7 +616,7 @@ void check_calmode_active()
         }
         else
         {
-          Serial.println("no change in ALTITUDE value");
+          Serial.println(F("no change in ALTITUDE value"));
           Failed();
         }
       }
@@ -625,7 +625,7 @@ void check_calmode_active()
     {
       StartPress_ms = millis();
       isLongPressALTI = true;
-      Serial.println("Button ALTITUDE has been pressed, hold 5s more to start ALTITUDE change routine");
+      Serial.println(F("Button ALTITUDE has been pressed, hold 5s more to start ALTITUDE change routine"));
     }
   }
 
@@ -646,13 +646,13 @@ void displayVALbeep(unsigned int delayIN)
   {
     VALDIS = VALDIS - 800;
   }
-  Serial.print("BEEP level: ");
+  Serial.print(F("BEEP level: "));
   MFS.write("BEEP");
   delay(delayIN);
   if (VALDIS == 1450)
   {
     MFS.write("OFF");
-    Serial.println("OFF");
+    Serial.println(F("OFF"));
   }
   else
   {
@@ -678,10 +678,10 @@ void displayVALalti()
   memset(response, 0, MB_PKT_8);
   co2sensor.write(cmdGalt, MB_PKT_8);
   co2sensor.readBytes(resALTI, 7);
-  Serial.println("Altitude value for SCD30: ");
+  Serial.println(F("Altitude value for SCD30: "));
   VALalti = ((256 * resALTI[3]) + resALTI[4]) / 50;
 #else
-  Serial.print("Altitude value: ");
+  Serial.print(F("Altitude value: "));
 #endif
   MFS.write("ALTI");
   delay(1000);
@@ -695,10 +695,8 @@ void displayVALalti()
 void hPaCalculation()
 {
   hpa = 1013 - 5.9 * VALalti + 0.011825 * VALalti * VALalti;            // Cuadratic regresion formula obtained PA (hpa) from high above the sea
-  //Serial.print("Atmospheric pressure calculation of the sea level value inserted: ");
-  Serial.print("hPa calculated: ");
+  Serial.print(F("Atmospheric pressure calculated by the sea level value inserted (hPa): "));
   Serial.println(hpa);
-  //Serial.println(" hPa");
 }
 
 //Software RESET
@@ -706,7 +704,7 @@ void hPaCalculation()
 void softwareReset(uint8_t prescaller)
 {
   delay(2000);
-  Serial.println("RESET...");
+  Serial.println(F("RESET..."));
   wdt_enable(prescaller);
   while (1)
   {
@@ -727,7 +725,7 @@ void CO2iniSCD30()
   delay(5);
   co2sensor.readBytes(response, MB_PKT_8);
 
-  Serial.print("Continious measurement: ");
+  Serial.print(F("Continious measurement: "));
   CheckResponse(cmdConM, response, MB_PKT_8);
   delay(1000);
 
@@ -736,7 +734,7 @@ void CO2iniSCD30()
   delay(5);
   co2sensor.readBytes(response, MB_PKT_8);
 
-  Serial.print("Interval 2 seconds: ");
+  Serial.print(F("Interval 2 seconds: "));
   CheckResponse(cmdSetM, response, MB_PKT_8);
   delay(1000);
 
@@ -745,7 +743,7 @@ void CO2iniSCD30()
   delay(5);
   co2sensor.readBytes(response, MB_PKT_8);
 
-  Serial.print("ABC off: ");
+  Serial.print(F("ABC off: "));
   CheckResponse(cmdAuto, response, MB_PKT_8);
   delay(2000);
 
@@ -757,13 +755,13 @@ void CO2iniSCD30()
   if (ConnRetry == 5)
     softwareReset(WDTO_60MS);
 
-  Serial.println(" Air sensor detected SCD30 Modbus");
+  Serial.println(F(" Air sensor detected SCD30 Modbus"));
 
   MFS.write("");
   delay(10);
   MFS.write("good");
   delay(2500);
-  Serial.println("SCD30 read OK");
+  Serial.println(F("SCD30 read OK"));
   delay(4000);
 }
 
@@ -783,7 +781,7 @@ int co2SCD30()
   co2sensor.readBytes(responseSCD, MB_PKT_17);
 
 #ifdef DEBUG
-  Serial.print("Read SCD30: ");
+  Serial.print(F("Read SCD30: "));
 #endif
 
   // CRC Routine
@@ -820,9 +818,9 @@ int co2SCD30()
       else
       {
 #ifdef DEBUG
-        Serial.println("FAIL CRC CO2 last");
+        Serial.println(F("FAIL CRC CO2 last"));
 #else
-        Serial.println("FAIL1");
+        Serial.println(F("FAIL1"));
 #endif
         return CO2;
       }
@@ -831,9 +829,9 @@ int co2SCD30()
   else
   {
 #ifdef DEBUG
-    Serial.println("FAIL CRC CO2 continuously");
+    Serial.println(F("FAIL CRC CO2 continuously"));
 #else
-    Serial.println("FAIL3");
+    Serial.println(F("FAIL3"));
 #endif
     //return CO2;
     MFS.write("----");
@@ -850,7 +848,7 @@ void CalibrationSCD30()
   co2sensor.write(cmdCali, MB_PKT_8);
   co2sensor.readBytes(response, MB_PKT_8);
 
-  Serial.print("Resetting calibration to 400: ");
+  Serial.print(F("Resetting calibration to 400: "));
   CheckResponse(cmdCali, response, MB_PKT_8);
   delay(4000);
 }
@@ -866,7 +864,7 @@ void CO2iniMHZ19()
   //Deactivate Automatic Self-Calibration
   co2sensor.write(cmdOFFM, MB_PKT_9);
 
-  Serial.println("Deactivate Automatic Self-Calibration MHZ14_9: done");
+  Serial.println(F("Deactivate Automatic Self-Calibration MHZ14_9: done"));
   delay(2000);
 
   while (co2MHZ14_9() == 0 && (ConnRetry < 5))
@@ -877,13 +875,13 @@ void CO2iniMHZ19()
   if (ConnRetry == 5)
     softwareReset(WDTO_60MS);
 
-  Serial.println(" Air sensor detected MHZ14_9");
+  Serial.println(F(" Air sensor detected MHZ14_9"));
 
   MFS.write("");
   delay(10);
   MFS.write("good");
   delay(2500);
-  Serial.println("MHZ14_9 read OK");
+  Serial.println(F("MHZ14_9 read OK"));
   delay(4000);
 }
 
@@ -897,7 +895,7 @@ int co2MHZ14_9()
   CO2 = (256 * responseMH[2]) + responseMH[3];
 
 #ifdef DEBUG
-  Serial.print("Read MHZ14_9: ");
+  Serial.print(F("Read MHZ14_9: "));
 #endif
 
   if (CO2 != 0)
@@ -912,7 +910,7 @@ int co2MHZ14_9()
     if ((responseMH[1] == 0x86) && (responseMH[8] == crc))
     {
 #ifdef DEBUG
-      Serial.println("OK DATA");
+      Serial.println(F("OK DATA"));
 #else
       Serial.print("OK");
 #endif
@@ -924,9 +922,9 @@ int co2MHZ14_9()
         char t = co2sensor.read(); // Clear serial input buffer;
 
 #ifdef DEBUG
-      Serial.println("FAIL CRC_CO2");
+      Serial.println(F("FAIL CRC_CO2"));
 #else
-      Serial.println("FAIL");
+      Serial.println(F("FAIL"));
 #endif
       MFS.write("----");
       return 0;
@@ -935,9 +933,9 @@ int co2MHZ14_9()
   else
   {
 #ifdef DEBUG
-    Serial.println("FAILED");
+    Serial.println(F("FAILED"));
 #else
-    Serial.println("FAIL");
+    Serial.println(F("FAIL"));
 #endif
     MFS.write("");
     delay(10);
@@ -954,7 +952,7 @@ void CalibrationMHZ19()
   //Calibration set to 400ppm
   co2sensor.write(cmdCalM, MB_PKT_9);
 
-  Serial.print("Resetting forced calibration factor to 400: done");
+  Serial.print(F("Resetting forced calibration factor to 400: done"));
   delay(4000);
 }
 #endif
@@ -971,7 +969,7 @@ void CO2iniCM1106()
   co2sensor.write(cmdOFFa, MB_PKT_10);
   co2sensor.readBytes(responseCM, MB_PKT_4);
 
-  Serial.print("CM1106 Stop Autocalibration: ");
+  Serial.print(F("CM1106 Stop Autocalibration: "));
   CheckResponse(cmdOKqu, responseCM, MB_PKT_4);
   delay(1000);
 
@@ -984,12 +982,12 @@ void CO2iniCM1106()
   if (ConnRetry == 5)
     softwareReset(WDTO_60MS);
 
-  Serial.println(" Air sensor detected CM1106");
+  Serial.println(F(" Air sensor detected CM1106"));
   MFS.write("");
   delay(10);
   MFS.write("good");
 
-  Serial.println("CM1106 read OK");
+  Serial.println(F("CM1106 read OK"));
   delay(4000);
 }
 
@@ -1003,7 +1001,7 @@ int co2CM1106()
   CO2 = (256 * responseCM[3]) + responseCM[4];
 
 #ifdef DEBUG
-  Serial.print("Read CM1106: ");
+  Serial.print(F("Read CM1106: "));
 #endif
 
   if (CO2 != 0)
@@ -1016,7 +1014,7 @@ int co2CM1106()
     if ((responseCM[0] == 0x16) && (responseCM[7] == crc))
     {
 #ifdef DEBUG
-      Serial.println("OK DATA");
+      Serial.println(F("OK DATA"));
 #else
       Serial.print("OK");
 #endif
@@ -1028,9 +1026,9 @@ int co2CM1106()
         char t = co2sensor.read(); // Clear serial input buffer;
 
 #ifdef DEBUG
-      Serial.println("FAIL CRC_CO2");
+      Serial.println(F("FAIL CRC_CO2"));
 #else
-      Serial.println("FAIL");
+      Serial.println(F("FAIL"));
 #endif
       MFS.write("----");
       return 0;
@@ -1039,9 +1037,9 @@ int co2CM1106()
   else
   {
 #ifdef DEBUG
-    Serial.println("FAILED");
+    Serial.println(F("FAILED"));
 #else
-    Serial.println("FAIL");
+    Serial.println(F("FAIL"));
 #endif
     MFS.write("");
     delay(10);
@@ -1060,7 +1058,7 @@ void CalibrationCM1106()
   co2sensor.write(cmdCalC, MB_PKT_6);
   co2sensor.readBytes(responseCM, MB_PKT_4);
 
-  Serial.print("Resetting forced calibration factor to 400: ");
+  Serial.print(F("Resetting forced calibration factor to 400: "));
   CheckResponse(cmdOKca, responseCM, MB_PKT_4);
   delay(4000);
 }
@@ -1077,7 +1075,7 @@ void CO2iniSenseAir()
   co2sensor.write(cmdOFFs, MB_PKT_8);
   co2sensor.readBytes(response, MB_PKT_8);
 
-  Serial.println("Deactivate Automatic Self-Calibration SenseAir");
+  Serial.println(F("Deactivate Automatic Self-Calibration SenseAir"));
   CheckResponse(cmdOFFs, response, MB_PKT_8);
   delay(2000);
 
@@ -1089,13 +1087,13 @@ void CO2iniSenseAir()
   if (ConnRetry == 5)
     softwareReset(WDTO_60MS);
 
-  Serial.println(" Air sensor detected AirSense S8 Modbus");
+  Serial.println(F(" Air sensor detected AirSense S8 Modbus"));
 
   MFS.write("");
   delay(10);
   MFS.write("good");
   //delay(2500);
-  Serial.println("SenseAir read OK");
+  Serial.println(F("SenseAir read OK"));
   delay(4000);
 }
 
@@ -1109,7 +1107,7 @@ int co2SenseAir()
   CO2 = (256 * responseSA[3]) + responseSA[4];
 
 #ifdef DEBUG
-  Serial.print("Read SenseAir S8: ");
+  Serial.print(F("Read SenseAir S8: "));
 #endif
 
   if (CO2 != 0)
@@ -1118,7 +1116,7 @@ int co2SenseAir()
     if (responseSA[5] == lowByte(crc_cmd) && responseSA[6] == highByte(crc_cmd))
     {
 #ifdef DEBUG
-      Serial.println("OK DATA");
+      Serial.println(F("OK DATA"));
 #else
       Serial.print("OK");
 #endif
@@ -1130,9 +1128,9 @@ int co2SenseAir()
         char t = co2sensor.read(); // Clear serial input buffer;
 
 #ifdef DEBUG
-      Serial.println("FAIL CRC_CO2");
+      Serial.println(F("FAIL CRC_CO2"));
 #else
-      Serial.println("FAIL");
+      Serial.println(F("FAIL"));
 #endif
       MFS.write("----");
       return 0;
@@ -1141,9 +1139,9 @@ int co2SenseAir()
   else
   {
 #ifdef DEBUG
-    Serial.println("FAILED");
+    Serial.println(F("FAILED"));
 #else
-    Serial.println("FAIL");
+    Serial.println(F("FAIL"));
 #endif
     MFS.write("");
     delay(10);
@@ -1163,7 +1161,7 @@ void CalibrationSenseAir()
   co2sensor.write(cmdCal1, MB_PKT_8);
   co2sensor.readBytes(response, MB_PKT_8);
 
-  Serial.print("Calibration Step1: ");
+  Serial.print(F("Calibration Step1: "));
   CheckResponse(cmdCal1, response, MB_PKT_8);
   delay(1000);
 
@@ -1171,7 +1169,7 @@ void CalibrationSenseAir()
   co2sensor.write(cmdCal2, MB_PKT_8);
   co2sensor.readBytes(response, MB_PKT_8);
 
-  Serial.print("Calibration Step2: ");
+  Serial.print(F("Calibration Step2: "));
   CheckResponse(cmdCal2, response, MB_PKT_8);
   delay(4000);
 
@@ -1179,7 +1177,7 @@ void CalibrationSenseAir()
   co2sensor.write(cmdCal3, MB_PKT_8);
   co2sensor.readBytes(responseSA, MB_PKT_7);
 
-  Serial.print("Resetting forced calibration factor to 400: ");
+  Serial.print(F("Resetting forced calibration factor to 400: "));
   CheckResponse(cmdCalR, responseSA, MB_PKT_7);
   delay(3000);
 }
