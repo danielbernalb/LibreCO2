@@ -23,7 +23,7 @@
 #define SenseAir_S8 // SenseAir S8
 
 // UNCOMMENT FOR DEBUG MODE
-#define DEBUG
+//#define DEBUG
 
 // ***************************************************************************
 // ***************************************************************************
@@ -763,7 +763,7 @@ void CO2iniSCD30()
   if (ConnRetry == 5)
     softwareReset(WDTO_60MS);
 
-  Serial.println(F("Air sensor detected SCD30 Modbus"));
+  Serial.println(F(" Air sensor detected SCD30 Modbus"));
 
   MFS.write("");
   delay(10);
@@ -881,7 +881,7 @@ void CO2iniMHZ19()
   if (ConnRetry == 5)
     softwareReset(WDTO_60MS);
 
-  Serial.println(F("Air sensor detected MHZ14_9"));
+  Serial.println(F(" Air sensor detected MHZ14_9"));
   MFS.write("");
   delay(10);
   MFS.write("good");
@@ -985,7 +985,7 @@ void CO2iniCM1106()
   if (ConnRetry == 5)
     softwareReset(WDTO_60MS);
 
-  Serial.println(F("Air sensor detected CM1106"));
+  Serial.println(F(" Air sensor detected CM1106"));
   MFS.write("");
   delay(10);
   MFS.write("good");
@@ -1086,7 +1086,7 @@ void CO2iniSenseAir()
   if (ConnRetry == 5)
     softwareReset(WDTO_60MS);
 
-  Serial.println(F("Air sensor detected AirSense S8 Modbus"));
+  Serial.println(F(" Air sensor detected AirSense S8 Modbus"));
 
   MFS.write("");
   delay(10);
