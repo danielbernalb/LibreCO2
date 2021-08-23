@@ -95,7 +95,7 @@ int VALDIS = 0;
 byte VALalti = 0;
 byte ConnRetry = 0;
 int CO2 = 0;
-unsigned int CO2value;
+int CO2value;
 unsigned int CO2temp = 0;
 unsigned int crc_cmd;
 unsigned int delayIN = 0;
@@ -197,9 +197,9 @@ void loop()
 #ifdef MHZ14_9
   CO2value = co2MHZ14_9();
   if (CO2value != 0)
-{
-  CO2cor = (0.016 * ((1013 - hpa) / 10 ) * (CO2value - 400)) + CO2value;      // Increment of 1.6% for every hPa of difference at sea level
-    CO2 = round (CO2cor);
+  {
+    CO2cor = float(CO2value) + (0.016 * ((1013 - float(hpa)) / 10) * (float(CO2value) - 400)); // Increment of 1.6% for every hPa of difference at sea level
+    CO2 = round(CO2cor);
   }
 #ifdef DEBUG
   DebugCO2val();
@@ -208,9 +208,9 @@ void loop()
 #ifdef CM1106
   CO2value = co2CM1106();
   if (CO2value != 0)
-{
-  CO2cor = (0.016 * ((1013 - hpa) / 10 ) * (CO2value - 400)) + CO2value;      // Increment of 1.6% for every hPa of difference at sea level
-    CO2 = round (CO2cor);
+  {
+    CO2cor = float(CO2value) + (0.016 * ((1013 - float(hpa)) / 10) * (float(CO2value) - 400)); // Increment of 1.6% for every hPa of difference at sea level
+    CO2 = round(CO2cor);
   }
 #ifdef DEBUG
   DebugCO2val();
@@ -219,10 +219,12 @@ void loop()
 #ifdef SenseAir_S8
   CO2value = co2SenseAir();
   if (CO2value != 0)
-{
-  CO2cor = (0.016 * ((1013 - hpa) / 10 ) * (CO2value - 400)) + CO2value;      // Increment of 1.6% for every hPa of difference at sea level
-    CO2 = round (CO2cor);
+  {
+    CO2cor = float(CO2value) + (0.016 * ((1013 - float(hpa)) / 10) * (float(CO2value) - 400)); // Increment of 1.6% for every hPa of difference at sea level
+    CO2 = round(CO2cor);
   }
+  else
+    CO2 = 0;
 #ifdef DEBUG
   DebugCO2val();
 #endif
@@ -245,7 +247,9 @@ void loop()
 #ifdef DEBUG
     Serial.println(F("ERROR CO2=<0"));
 #endif
+    MFS.write("");
     delay(10);
+    MFS.write("----");
   }
 
   // Alarm if CO2 is greater than VALDIS
@@ -568,15 +572,24 @@ void check_calmode_active()
           uint16_t CRC16 = 0;
           uint16_t ALT16 = VALalti * 50;
 
-          cmdTemp[0] = 0x61; cmdTemp[1] = 0x06; cmdTemp[2] = 0x00; cmdTemp[3] = 0x38;
+          cmdTemp[0] = 0x61;
+          cmdTemp[1] = 0x06;
+          cmdTemp[2] = 0x00;
+          cmdTemp[3] = 0x38;
 
-          cmdTemp[4] = ALT16 / 256; cmdTemp[5] = ALT16 % 256;
+          cmdTemp[4] = ALT16 / 256;
+          cmdTemp[5] = ALT16 % 256;
 
           CRC16 = crcx::crc16(cmdTemp, 6);
 
-          cmdSalt[0] = 0x61; cmdSalt[1] = 0x06; cmdSalt[2] = 0x00; cmdSalt[3] = 0x38;
-          cmdSalt[4] = ALT16 / 256; cmdSalt[5] = ALT16 % 256;
-          cmdSalt[6] = CRC16 % 256; cmdSalt[7] = CRC16 / 256;
+          cmdSalt[0] = 0x61;
+          cmdSalt[1] = 0x06;
+          cmdSalt[2] = 0x00;
+          cmdSalt[3] = 0x38;
+          cmdSalt[4] = ALT16 / 256;
+          cmdSalt[5] = ALT16 % 256;
+          cmdSalt[6] = CRC16 % 256;
+          cmdSalt[7] = CRC16 / 256;
 
           //Altitude compensation value
           co2sensor.write(cmdSalt, MB_PKT_8);
@@ -624,7 +637,6 @@ void check_calmode_active()
       Serial.println(F("Button ALTITUDE has been pressed, hold 5s more to start ALTITUDE change routine"));
     }
   }
-
   else
   {
     isLongPressALTI = false;
@@ -690,7 +702,7 @@ void displayVALalti()
 
 void hPaCalculation()
 {
-  hpa = 1013 - 5.9 * VALalti + 0.011825 * VALalti * VALalti;            // Cuadratic regresion formula obtained PA (hpa) from high above the sea
+  hpa = 1013 - 5.9 * float(VALalti) + 0.011825 * float(VALalti) * float(VALalti); // Cuadratic regresion formula obtained PA (hpa) from high above the sea
   Serial.print(F("Atmospheric pressure calculated by the sea level inserted (hPa): "));
   Serial.println(hpa);
 }
