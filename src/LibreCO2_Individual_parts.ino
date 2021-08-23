@@ -35,7 +35,7 @@
 #include <CRCx.h> //https://github.com/hideakitai/CRCx
 #include <avr/wdt.h>
 
-const byte RevVersion = 147; // Firmware version 23 aug 2021
+const byte RevVersion = 147; // Firmware version 127 - 23 aug 2021
 
 const byte PIN_TX = 5;  // define TX pin to Sensor
 const byte PIN_RX = 6;  // define RX pin to Sensor
