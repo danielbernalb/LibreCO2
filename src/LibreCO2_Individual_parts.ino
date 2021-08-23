@@ -1,16 +1,16 @@
 /*
   Reading CO2 from the SCD30, MHZ14 or 19, CM1106 or the SenseAir S8.
   By: Daniel Bernal
-  Date: May 27, 2021
+  Date: August 23, 2021
   Hardware Connections:
   Please see the instructions in github (https://github.com/danielbernalb/LibreCO2) or aireciudadano (https://aireciudadano.com/guia-de-construccion-medidor-libreco2/)
 
   Leyendo CO2 desde el sensor SCD30, MHZ14 o 19, CM1106 o SenseAir S8.
   Por: Daniel Bernal
-  Fecha: Mayo 27, 2021
+  Fecha: Agosto 23, 2021
   Conección de Hardware:
   Favor revisar las instrucciones en github (https://github.com/danielbernalb/LibreCO2/blob/main/INSTRUCCIONES%20en%20Espa%C3%B1ol.md) o aireciudadano (https://aireciudadano.com/guia-de-construccion-medidor-libreco2/)
-  Rev 145
+  Rev 147
 */
 
 // ***************************************************************************
@@ -35,7 +35,7 @@
 #include <CRCx.h> //https://github.com/hideakitai/CRCx
 #include <avr/wdt.h>
 
-const byte RevVersion = 147; // Firmware version 147 beta 21 ago 2021
+const byte RevVersion = 147; // Firmware version 23 aug 2021
 
 const byte PIN_TX = 5;  // define TX pin to Sensor
 const byte PIN_RX = 6;  // define RX pin to Sensor
