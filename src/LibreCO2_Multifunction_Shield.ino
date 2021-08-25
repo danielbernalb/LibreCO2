@@ -17,13 +17,13 @@
 // ***************************************************************************
 // MANDATORY: UNCOMMENT YOUR CO2 SENSOR MODEL!!!
 
-#define SCD30        // Sensirion SCD30
+//#define SCD30        // Sensirion SCD30
 //#define MHZ14_9      // Winsen MHZ14 or 19
 //#define CM1106       // Cubic CM1106
-//#define SenseAir_S8 // SenseAir S8
+#define SenseAir_S8 // SenseAir S8
 
 // UNCOMMENT FOR DEBUG MODE
-#define DEBUG
+//#define DEBUG
 
 // ***************************************************************************
 // ***************************************************************************
