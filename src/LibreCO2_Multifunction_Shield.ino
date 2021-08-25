@@ -15,15 +15,15 @@
 
 // ***************************************************************************
 // ***************************************************************************
-// UNCOMMENT YOUR CO2 SENSOR!!!
+// MANDATORY: UNCOMMENT YOUR CO2 SENSOR MODEL!!!
 
-//#define SCD30        // Sensirion SCD30
+#define SCD30        // Sensirion SCD30
 //#define MHZ14_9      // Winsen MHZ14 or 19
 //#define CM1106       // Cubic CM1106
-#define SenseAir_S8 // SenseAir S8
+//#define SenseAir_S8 // SenseAir S8
 
 // UNCOMMENT FOR DEBUG MODE
-//#define DEBUG
+#define DEBUG
 
 // ***************************************************************************
 // ***************************************************************************
@@ -35,11 +35,10 @@
 #include <CRCx.h> //https://github.com/hideakitai/CRCx
 #include <avr/wdt.h>
 
-const byte RevVersion = 147; // Firmware version 127 - 23 aug 2021
+const byte RevVersion = 147; // Firmware version 23 aug 2021
 
 const byte PIN_TX = 5;  // define TX pin to Sensor
 const byte PIN_RX = 6;  // define RX pin to Sensor
-const byte PIN_SEL = 9; // define SEL pin for SCD30
 const byte BUTTON_CALI = A1;
 const byte BUTTON_BEEP = A2;
 const byte BUTTON_ALTI = A3;
@@ -301,7 +300,6 @@ void BadConn()
 // Beep 900Hhz
 void Beep()
 {
-  if (VALbeep != 9)
     MFS.beep(33);
 }
 
