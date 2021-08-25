@@ -98,7 +98,7 @@ GND ---> G0 Pin 2 de la regleta de 4 pines
 
 6 &nbsp; &nbsp; ---> Pin 3 de la regleta de 5 pines
 
-![SenseAir S8](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20Shield%20SenseAir%20connection.jpg)
+![SenseAir S8](https://github.com/danielbernalb/LibreCO2/blob/main/images/shield_senseair.jpg)
 
 
 ****************************
@@ -115,7 +115,7 @@ GND ---> GND
 
 6 &nbsp; &nbsp; ---> TX/SCL
 
-![SCD30 connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20Shield%20SCD30%20connection.jpg)
+![SCD30 connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/shield_scd30.jpg)
 
 
 ****************************
@@ -129,7 +129,7 @@ GND ---> GND
 
 6 &nbsp; &nbsp; ---> TX
 
-![MH-Z19B connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20Shield%20MHZ19%20connection.jpg)
+![MH-Z19B connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/shield_mhz19.jpg)
 
 
 ****************************
@@ -143,7 +143,7 @@ GND ---> Pin 5 or 16 del conector
 
 6 &nbsp; &nbsp; ---> Pin 2 o 19 del conector
 
-![MH-Z14A connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20Shield%20MHZ14%20connection.jpg)	
+![MH-Z14A connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/shield_mhz14.jpg)	
 
 
 ****************************
@@ -157,7 +157,7 @@ GND ---> G Pin 2 de la regleta de 4 pines
 
 6 &nbsp; &nbsp; ---> T Pin 3 de la regleta de 5 pines
 
-![Cubic CM1106](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20Shield%20Cubic%20connection.jpg)
+![Cubic CM1106](https://github.com/danielbernalb/LibreCO2/blob/main/images/shield_cm1106.jpg)
 
 ## Video explicativo:
 
@@ -202,17 +202,38 @@ otro  ---> GND
 
 **Pulsador de calibración**
 
+Cualquiera ---> A0
+
+Cualquiera ---> A2
+
+
+**Pulsador de nivel del Beep**
+
+Cualquiera ---> A3
+
+Cualquiera ---> A5
+
+
+**Pulsador de altura sobre el nivel del mar**
+
 Cualquiera ---> 2
 
 Cualquiera ---> 4
 
 
-**Pulsador de nivel del Beep**
+****************************
+**SenseAir S8**
 
-Cualquiera ---> A5
+VIN Pin 1 de regleta de 4 pines ---> 5V 
 
-Cualquiera ---> A3
+GND Pin 2 de regleta de 4 pines ---> GND
 
+RX Pin 2 de regleta de 5 pines ---> 6
+
+TX Pin 3 de regleta de 5 pines ---> 7 
+
+
+![SenseAir S8 connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/parts_senseair.jpg)
 
 
 ****************************
@@ -229,7 +250,7 @@ RX/SDA ---> 6
 SEL    ---> 3.3V
 
 
-![SCD30 connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20UNO%20SCD30%20connection%20Modbus.jpg)
+![SCD30 connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/parts_scd30.jpg)
 
 
 ****************************
@@ -244,7 +265,7 @@ RX Pin 2 de regleta de 5 pines ---> 6
 TX Pin 3 de regleta de 5 pines ---> 7 
 
 
-![MH-Z19B connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20UNO%20MHZ19%20connection.jpg)
+![MH-Z19B connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/parts_mhz19.jpg)
 
 
 ****************************
@@ -259,7 +280,7 @@ Pin 4 o 17 del conector ---> 5V
 Pin 5 or 16 del conector ---> GND 
 
 
-![MH-Z14A connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20UNO%20MHZ14%20connection.jpg)	
+![MH-Z14A connection](https://github.com/danielbernalb/LibreCO2/blob/main/images/parts_mhz14.jpg)	
 
 
 ****************************
@@ -273,7 +294,7 @@ R Pin 2 de la regleta de 5 pines ---> 6
 
 T Pin 3 de la regleta de 5 pines ---> 7 
 
-![Cubic CM1106](https://github.com/danielbernalb/LibreCO2/blob/main/images/Arduino%20UNO%20%20CM1106%20connection.jpg)
+![Cubic CM1106](https://github.com/danielbernalb/LibreCO2/blob/main/images/parts_cm1106.jpg)
 
 ****************************
 # 2. Programar el Firmware (código en el Arduino)
