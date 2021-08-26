@@ -348,7 +348,7 @@ https://drive.google.com/drive/folders/1FxXLVhaGF6UCVObQlh8cVLddyWyQqUT0
 
 2.1.6. When the .hex file is uploaded to the Arduino, photo on the right, the message "xxxxx bytes uploaded" appears, if it fails, the message "upload fails" will appear.
 
-**3. If you want to edit and compile the code, install the Arduino software on Windows, Mac or Linux: **
+**3. If you want to edit and compile the code, install the Arduino software on Windows, Mac or Linux:**
   
   https://www.arduino.cc/en/software
   
