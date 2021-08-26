@@ -9,6 +9,19 @@ Todos los sensores usados aquí son NDIR que es el estándar actuales para medic
 
 https://www.co2meter.com/blogs/news/6010192-how-does-an-ndir-co2-sensor-work
 
+Además se ha agregado la compensación de la altura sobre el nivel del mar a la que tomamos la medición.
+Es muy importante activar este ajuste por encima de los 1000 metros pues el margen de error sería superior al 11%:
+
+| Altura | Error (%) |
+|--------|-----------|
+|   0    |    0      |
+|  500   |    6      |
+|  1000  |    11     |
+|  1500  |    16     |
+|  2000  |    21     |
+|  2500  |    26     |
+|  3000  |    30     |
+|  3500  |    34     |
 
 # 1. Materiales:
 
@@ -382,15 +395,15 @@ Puedes acomodar cajas plásticas de diferentes tamaños, en el siguiente caso se
  
  1. Modo normal: Al encender el sensor aparece el aviso BEEP y un número entre 700 y 1300 que muestra el nivel de la alarma que tenemos programado. En el numeral 3 se explicará cómo modificarlo. Luego de ello el medidor verifica la conexión al sensor de bajo costo. Si aparece el mensaje "good" la conexión está bien hecha y se continuará con el proceso de calentamiento del sensor ("heat") que dura 30 segundos para los sensores Sensirion y Cubic, y 3 minutos para los Winsen. Si el mensaje es "fail" la conexión ha fallado y debemos verificar la conexión entre el Arduino y el sensor. Después de el calentamiento el valor de CO2 en partes por millón ppm, aparece en pantalla. Cuando el valor es superior al nivel Beep la alarma suena y los leds del escudo titilan.
 
- 2. Modo Calibración: [Explicado en el video anexo](#video-explicativo).
+ 2. CALI Modo Calibración: [Explicado en el video anexo](#video-explicativo).
 La calibración del sensor se recomienda después de armado el sensor y cuando se aprecien mediciones muy diferentes al aire libre del rango estimado de 400 ppm. Todos estos sensores de bajo costo se calibran al aire libre, colocándolos en un espacio exterior por unos minutos sin que reciban viento fuerte pues esto afecta la medición, por ello se recomienda colocarlos dentro de una caja que evite el viento directo.
 Luego de cumplir con estas condiciones, debes presionar el botón S1-A1 (CALI) en la versión con escudo, o el "switch" en la versión por partes, durante más de 5 segundos, y aparecerá en pantalla el mensaje "cal-" y comenzando un conteo regresivo de 5 minutos para el Sensirion y Cubic y 20 minutos para el Winsen.
 Al finalizar este tiempo el sensor recibe la orden de calibración y queda listo para usarse de nuevo. Si quieres interrumpir el proceso de calibración presiona el botón S2-A2 (BEEP).
 
-3. Modo cambio de nivel del umbral de alarma BEEP: [Explicado en el video anexo](#video-explicativo).
+3. BEEP Modo cambio de nivel del umbral de alarma: [Explicado en el video anexo](#video-explicativo).
 Para cambiar el nivel de la alarma de 1000 ppm, por defecto, a otro valor entre 700 y 1400 ppm o para apagarlo OFF debes presionar el botón S2-A2 (BEEP) en la versión con escudo, o colocar un cable o switch adicional del pin A3 a A5 en la versión por partes, durante más de 5 segundos y aparecerá el mensaje "BEEP" y luego el valor al que esta programado. Luego debes presionar de nuevo el botón para modificar el valor, cuando lo encuentres presiona el botón S3-A3 (ALTI) para programar este nuevo valor de nivel del BEEP. Aparecerá el mensaje "done" confirmando el ingreso correcto del valor.
 
-4. Modo cambio del valor de altura sobre el nivel del mar:
+4. ALTI Modo cambio del valor de altura sobre el nivel del mar:
 Para cambiar el valor de la altura sobre el nivel del mar del lugar en que nos encontramos debes presionar el botón S3-A3 (ALTI) en la versión con escudo, o colocar un cable o switch adicional del pin A0 a A2 en la versión por partes, durante más de 5 segundos y aparecerá el mensaje "ALTI" y luego el valor que tiene programado. Luego debes presionar de nuevo o mantener el botón presionado aumentar el valor o presionar el botón S2 - A2 (BEEP) para disminur, cuando encuentres el valor correcto presiona el botón S1-A1 (CALI) para programar este nuevo valor de nivel de ALTI. Aparecerá el mensaje "done" confirmando el ingreso correcto del valor.
 
   
