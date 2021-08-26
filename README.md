@@ -387,7 +387,7 @@ Calibration of the sensor is recommended after the sensor is armed and when ther
 After fulfilling these conditions, you must press the S1-A1 (CALI) button in the version with shield, or the "switch" in the version by parts, for more than 5 seconds, and the message "cal-" will appear on the screen. and starting a countdown of 5 minutes for the Sensirion and Cubic and 20 minutes for the Winsen.
 At the end of this time, the sensor receives the calibration order and is ready to be used again. If you want to interrupt the calibration process, press the S2-A2 (BEEP) button.
 
-3. BEEP alarm threshold level change mode: [Explained in the attached video](#explanatory video).
+3. BEEP alarm threshold level change mode: [Explained in the attached video](#video-explanatory).
 To change the alarm level from 1000 ppm, by default, to another value between 700 and 1400 ppm or to turn it OFF you must press the S2-A2 (BEEP) button in the version with shield, or place an additional cable or switch of the pin A3 to A5 in the version by parts, for more than 5 seconds and the message "BEEP" will appear and then the value to which it is programmed. Then you must press the button again to modify the value, when you find it press the S3-A3 (ALTI) button to program this new BEEP level value. The message "done" will appear confirming the correct entry of the value.
 
 4. Change mode of the height value above sea level:
