@@ -320,7 +320,7 @@ Existen 3 opciones para programar el Arduino: la más sencilla es usar un teléf
 
  - Conecta el cable USB OTG al teléfono.
  - Instala la app de Android ["Arduino Hex Uploader-Firmware Bin Upload"](https://play.google.com/store/apps/details?id=xyz.vidieukhien.embedded.arduinohexupload&hl=en_US&gl=US).
- - Baja el archivo .hex file de este ["Directorio de Google drive"](https://drive.google.com/drive/folders/1FxXLVhaGF6UCVObQlh8cVLddyWyQqUT0) basado en la versión de tu sensor (Shield y marca de sensor). Encuentra el archivo .hex que vas cargar en el Arduino, cada versión de sensor (Sensirion, Winsen or Cubic) se encuentra disponible el el directorio "hex files". Ejemplo: "LibreCO2_Shield_Sensirion.hex" es el arhivo para el sensor Sensirion con el Shield Multifunción. Nota: No descargues el archivo .hex directamente de la página con la opción "Salvar como", que daña el archivo. Usa solamente el enlace de Google Drive.
+ - Baja el archivo .hex file de este ["Directorio de Google drive"](https://drive.google.com/drive/folders/1FxXLVhaGF6UCVObQlh8cVLddyWyQqUT0) basado en la versión de tu sensor (Shield y marca de sensor). Encuentra el archivo .hex que vas cargar en el Arduino, cada versión de sensor (Sensirion, Winsen or Cubic) se encuentra disponible el el directorio "hex files". Ejemplo: "LibreCO2_MFShield_SCD30.hex" es el arhivo para el sensor Sensirion con el Shield Multifunción. Nota: No descargues el archivo .hex directamente de la página con la opción "Salvar como", que daña el archivo. Usa solamente el enlace de Google Drive.
  - Busca el archivo .hex en tú teléfono.
  - Sube el código a tu tarjeta Arduino.
  - FIN.
