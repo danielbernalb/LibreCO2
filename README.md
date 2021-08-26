@@ -382,16 +382,16 @@ You can accommodate plastic boxes of different sizes, in the following case a fo
  
  1. Normal mode: When the sensor is turned on, the BEEP warning appears and a number between 700 and 1300 shows the level of the alarm that we have programmed. In number 3 it will be explained how to modify it. After that the meter verifies the connection to the low cost sensor. If the "good" message appears, the connection is well made and the sensor heating process ("heat") will continue, which lasts 30 seconds for the Sensirion and Cubic sensors, and 3 minutes for the Winsen sensors. If the message is "fail" the connection has failed and we must verify the connection between the Arduino and the sensor. After heating the CO2 value in parts per million ppm appears on the screen. When the value is higher than the Beep level, the alarm sounds and the shield LEDs flash.
 
- 2. Calibration Mode: [Explained in the attached video](#video-explanatory).
+ 2. CALI Calibration Mode: [Explained in the attached video](#video-explanatory).
 Calibration of the sensor is recommended after the sensor is armed and when there are measurements that are very different outdoors from the estimated range of 400 ppm. All these low-cost sensors are calibrated outdoors, placing them in an outdoor space for a few minutes without receiving strong wind as this affects the measurement, therefore it is recommended to place them inside a box that avoids direct wind.
 After fulfilling these conditions, you must press the S1-A1 (CALI) button in the version with shield, or the "switch" in the version by parts, for more than 5 seconds, and the message "cal-" will appear on the screen. and starting a countdown of 5 minutes for the Sensirion and Cubic and 20 minutes for the Winsen.
 At the end of this time, the sensor receives the calibration order and is ready to be used again. If you want to interrupt the calibration process, press the S2-A2 (BEEP) button.
 
-3. BEEP alarm threshold level change mode: [Explained in the attached video](#video-explanatory).
+3. BEEP Alarm threshold level change mode: [Explained in the attached video](#video-explanatory).
 To change the alarm level from 1000 ppm, by default, to another value between 700 and 1400 ppm or to turn it OFF you must press the S2-A2 (BEEP) button in the version with shield, or place an additional cable or switch of the pin A3 to A5 in the version by parts, for more than 5 seconds and the message "BEEP" will appear and then the value to which it is programmed. Then you must press the button again to modify the value, when you find it press the S3-A3 (ALTI) button to program this new BEEP level value. The message "done" will appear confirming the correct entry of the value.
 
-4. Change mode of the height value above sea level:
-To change the value of the height above sea level of the place where we are, you must press the S3-A3 (ALTI) button in the version with shield, or place an additional cable or switch from pin A0 to A2 in the version for parts, for more than 5 seconds and the message "ALTI" will appear and then the value that has been programmed. Then you must press again or keep the button pressed to increase the value or press the S2 - A2 (BEEP) button to decrease, when you find the correct value press the S1-A1 (CALI) button to program this new ALTI level value. The message "done" will appear confirming the correct entry of the value.
+4. ALTI Change value of the altitude value above the sea level:
+To change the value of the altitude above sea level of the place where we are, you must press the S3-A3 (ALTI) button in the version with shield, or place an additional cable or switch from pin A0 to A2 in the version for parts, for more than 5 seconds and the message "ALTI" will appear and then the value that has been programmed. Then you must press again or keep the button pressed to increase the value or press the S2 - A2 (BEEP) button to decrease, when you find the correct value press the S1-A1 (CALI) button to program this new ALTI level value. The message "done" will appear confirming the correct entry of the value.
   
 ****************************
 ### Contact
