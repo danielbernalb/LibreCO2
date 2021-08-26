@@ -9,6 +9,19 @@ All the sensors used are NDIR , which is the actual standard for real CO2 measur
 
 https://www.co2meter.com/blogs/news/6010192-how-does-an-ndir-co2-sensor-work
 
+In addition, the compensation for the altitude above sea level at which we take the measurement has been added.
+It is very important to activate this setting above 1000 meters as the margin of error would be greater than 11%:
+
+|Altitude| Error(%) |
+|--------|----------|
+|   0    |    0     |
+|  500   |    6     |
+|  1000  |    11    |
+|  1500  |    16    |
+|  2000  |    21    |
+|  2500  |    26    |
+|  3000  |    30    |
+|  3500  |    34    |
 
 # 1. Materials:
 
