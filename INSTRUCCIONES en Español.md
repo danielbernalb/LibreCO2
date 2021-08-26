@@ -12,16 +12,16 @@ https://www.co2meter.com/blogs/news/6010192-how-does-an-ndir-co2-sensor-work
 Además se ha agregado la compensación de la altura sobre el nivel del mar a la que tomamos la medición.
 Es muy importante activar este ajuste por encima de los 1000 metros pues el margen de error sería superior al 11%:
 
-| Altura | Error (%) |
-|--------|-----------|
-|   0    |    0      |
-|  500   |    6      |
-|  1000  |    11     |
-|  1500  |    16     |
-|  2000  |    21     |
-|  2500  |    26     |
-|  3000  |    30     |
-|  3500  |    34     |
+| Altura | Error(%) |
+|--------|----------|
+|   0    |    0     |
+|  500   |    6     |
+|  1000  |    11    |
+|  1500  |    16    |
+|  2000  |    21    |
+|  2500  |    26    |
+|  3000  |    30    |
+|  3500  |    34    |
 
 # 1. Materiales:
 
