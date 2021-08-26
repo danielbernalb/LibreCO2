@@ -103,7 +103,7 @@ GND ---> G0 Pin 2 of the 4-pin strip
 
 ****************************
 
-** Sensirion SCD30 sensor **
+**Sensirion SCD30 sensor**
 
 Shield PIN ---> Sensor
 
@@ -119,7 +119,7 @@ GND ---> GND
 
 
 ****************************
-** Winsen MH-Z19B or 19C sensor **
+**Winsen MH-Z19B or 19C sensor**
 
 GND ---> GND
 
@@ -133,7 +133,7 @@ GND ---> GND
 
 
 ****************************
-** Winsen MH-Z14 or MH-Z14A sensor **
+**Winsen MH-Z14 or MH-Z14A sensor**
 
 GND ---> Pin 5 or 16 of the connector
 
@@ -147,7 +147,7 @@ GND ---> Pin 5 or 16 of the connector
 
 
 ****************************
-** Cubic CM1106 Sensor **
+**Cubic CM1106 Sensor**
 
 GND ---> G Pin 2 of the 4-pin strip
 
@@ -307,7 +307,7 @@ There are 3 options for programming the Arduino: the simplest is to use an Andro
 
  - Connect the USB OTG cable to the phone.
  - Install the Android app ["Arduino Hex Uploader-Firmware Bin Upload"](https://play.google.com/store/apps/details?id=xyz.vidieukhien.embedded.arduinohexupload&hl=en_US&gl=US).
- - Download the .hex file from this ["Google drive directory"] (https://drive.google.com/drive/folders/1FxXLVhaGF6UCVObQlh8cVLddyWyQqUT0) based on your sensor version (Shield and sensor brand). Find the .hex file that you are going to load into the Arduino, each sensor version (SenseAir, Sensirion, Winsen or Cubic) is available in the "hex files" directory. Example: "LibreCO2_Shield_Sensirion.hex" is the file for the Sensirion sensor with the Multifunction Shield. Note: Do not download the .hex file directly from the page with the "Save as" option, which corrupts the file. Only use the Google Drive link.
+ - Download the .hex file from this ["Google drive directory"](https://drive.google.com/drive/folders/1FxXLVhaGF6UCVObQlh8cVLddyWyQqUT0) based on your sensor version (Shield and sensor brand). Find the .hex file that you are going to load into the Arduino, each sensor version (SenseAir, Sensirion, Winsen or Cubic) is available in the "hex files" directory. Example: "LibreCO2_Shield_Sensirion.hex" is the file for the Sensirion sensor with the Multifunction Shield. Note: Do not download the .hex file directly from the page with the "Save as" option, which corrupts the file. Only use the Google Drive link.
  - Find the .hex file on your phone.
  - Upload the code to your Arduino board.
  - END.
@@ -370,7 +370,7 @@ Find a plastic box with a width similar to that of the Arduino and a greater len
 When you want to use the keyboard for BEEP calibration or programming, open the box and access the keyboard and then close it again.
 You can accommodate plastic boxes of different sizes, in the following case a foam is used underneath because the box is taller, in addition 3 holes of a medium size (7mm) are made for the 3 buttons and so you can access the buttons from the outside without need to open the box:
 
-![Box2] (https://github.com/danielbernalb/LibreCO2/blob/main/images/Images4_2.jpg)
+![Box2](https://github.com/danielbernalb/LibreCO2/blob/main/images/Images4_2.jpg)
 
 3.2. MDF wooden box using laser cutting. Developing.
 
@@ -396,16 +396,16 @@ To change the value of the height above sea level of the place where we are, you
 ****************************
 ### Contact
 
-If you have any doubt, bug, contribution or commentrio write me to the email danielbernalb@gmail.com or the twitter account [@danielbernalb] (https://twitter.com/danielbernalb)
-More information on the website: ["Aire Ciudadadano"] (https://aireciudadano.com/)
+If you have any doubt, bug, contribution or commentrio write me to the email danielbernalb@gmail.com or the twitter account [@danielbernalb](https://twitter.com/danielbernalb)
+More information on the website: ["Aire Ciudadadano"](https://aireciudadano.com/)
 
 ****************************
 
 ### Other recommended open projects of CO2 sensors or that include CO2 sensors:
 
-- [CanAirIO Citizen network for monitoring air quality] (https://canair.io/es/index.html).
-- [M5Stack ESP32 Core Ink + SCD30] (https://github.com/hpsaturn/co2_m5coreink).
-- [Codos] (https://github.com/miguelangelcasanova/codos).
-- [Anaire] (https://github.com/anaireorg/anaire-devices).
-- [eMariete] (https://emariete.com/en/home-co2-meter/).
-- [Medicion de CO2] (http://www.jorgealiaga.com.ar/?page_id=2864).
+- [CanAirIO Citizen network for monitoring air quality](https://canair.io/es/index.html).
+- [M5Stack ESP32 Core Ink + SCD30](https://github.com/hpsaturn/co2_m5coreink).
+- [Codos](https://github.com/miguelangelcasanova/codos).
+- [Anaire](https://github.com/anaireorg/anaire-devices).
+- [eMariete](https://emariete.com/en/home-co2-meter/).
+- [Medicion de CO2](http://www.jorgealiaga.com.ar/?page_id=2864).
