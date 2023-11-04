@@ -418,8 +418,6 @@ Más información en la página web: ["Aire ciudadano"](https://aireciudadano.co
 
 ### Otros proyectos abiertos recomendados de sensores de CO2 o que incluyen sensores de CO2:
 
-- [CanAirIO Citizen network for monitoring air quality](https://canair.io/es/index.html).
-- [M5Stack ESP32 Core Ink + SCD30](https://github.com/hpsaturn/co2_m5coreink).
 - [Codos](https://github.com/miguelangelcasanova/codos).
 - [Anaire](https://github.com/anaireorg/anaire-devices).
 - [eMariete](https://emariete.com/en/home-co2-meter/).
