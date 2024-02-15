@@ -3,7 +3,7 @@ LibreCO2: CO2 meter using Arduino UNO and a commercial CO2 sensor (SenseAir S8, 
 
 This is a simple and low cost sensor version of a CO2 meter built with the most common materials on the market: an Arduino UNO and the three most popular low cost REAL CO2 sensors: SenseAir S8, Sensirion SCD30, Winsen MH-Z14 or 19 and Cubic CM1106. LibreCO2 uses an Arduino UNO but can be extended to MEGA or nano, that are very popular in schools and frequently used in technology and the electronics classes. Also, the majority of schools have many of them.
 
-The code is the most basic and the .hex file is published for the programming of the Arduino with the software Xloader.  You don't have to install Arduino software to compile and program the code. If you are searching for Wi-Fi or Bluetooth connectivity , you can find many open source alternatives on a list at the end of the guide, for example [CanAirIO](https://github.com/kike-canaries/canairio_firmware). The CO2 meter uses the most popular components on the market, not the most advanced, and the simplest building without the need of an iron solder.
+The code is the most basic and the .hex file is published for the programming of the Arduino with the software Xloader.  You don't have to install Arduino software to compile and program the code. If you are searching for Wi-Fi or Bluetooth connectivity , you can find many open source alternatives on a list at the end of the guide, for example our project [AireCiudadano](https://github.com/danielbernalb/AireCiudadano). The CO2 meter uses the most popular components on the market, not the most advanced, and the simplest building without the need of an iron solder.
 
 All the sensors used are NDIR , which is the actual standard for real CO2 measurements:
 
@@ -416,7 +416,9 @@ More information on the website: ["Aire Ciudadadano"](https://aireciudadano.com/
 
 ### Other recommended open projects of CO2 sensors or that include CO2 sensors:
 
+- [AireCiudadano](https://github.com/danielbernalb/AireCiudadano).
 - [Codos](https://github.com/miguelangelcasanova/codos).
 - [Anaire](https://github.com/anaireorg/anaire-devices).
 - [eMariete](https://emariete.com/en/home-co2-meter/).
 - [Medicion de CO2](http://www.jorgealiaga.com.ar/?page_id=2864).
+- Canairio on the web
