@@ -100,6 +100,7 @@ https://www.mouser.com/ProductDetail/Sensirion/SCD30/?qs=rrS6PyfT74fdywu4FxpYjQ%
 
 **Connections for each sensor:**
 
+Shield PIN ---> Sensor
 
 **SenseAir S8 sensor**
 
@@ -117,8 +118,6 @@ GND ---> G0 Pin 2 of the 4-pin strip
 ****************************
 
 **Sensirion SCD30 sensor**
-
-Shield PIN ---> Sensor
 
 GND ---> GND
 
