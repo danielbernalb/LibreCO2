@@ -100,6 +100,7 @@ Link compra [Aliexpress](https://es.aliexpress.com/wholesale?SearchText=jumper-w
 
 **Conexiones para cada sensor:**
 
+PIN del Escudo ---> Sensor
 
 **SenseAir S8 sensor**
 
@@ -117,8 +118,6 @@ GND ---> G0 Pin 2 de la regleta de 4 pines
 ****************************
 
 **Sensor Sensirion SCD30**
-
-PIN del Escudo ---> Sensor
 
 GND ---> GND
 
